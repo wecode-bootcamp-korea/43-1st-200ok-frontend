@@ -14,8 +14,8 @@ li .navCateGoryInner {
   top: 92px;
   font-size: 0;
   cursor: pointer;
-  box-shadow: 0 537px 0 rgba(0, 0, 0, 0.5);
-  min-height: 538px;
+  box-shadow: 0 480px 0 rgba(0, 0, 0, 0.5);
+  min-height: 480px;
 
   li:first-child {
     margin-left: 0;
@@ -27,14 +27,14 @@ li .navCateGoryInner {
     font-size: 20px;
 
     &:first-child {
-      margin: 80px 90px 80px 326px;
-      padding-right: 19px;
+      margin: 60px 90px 80px 295px;
+      // padding-right: 19px;
     }
 
     &:nth-child(2) {
-      margin: 76px 90px 80px 5px;
+      margin: 56px 90px 80px 5px;
       border-left: 1px solid #6b6969e3;
-      padding-left: 52px;
+      padding-left: 48px;
       color: #6b6969e3;
     }
 
@@ -45,15 +45,15 @@ li .navCateGoryInner {
   .categoryPhoto {
     display: inline-block;
     vertical-align: top;
-    margin: 80px 90px 80px 400px;
-    width: 39%;
+    margin: 60px 90px 80px 275px;
+    width: 34%;
 
     li {
       display: inline;
       img {
         display: inline;
-        width: 30%;
-        padding-right: 15px;
+        width: 31%;
+        padding-right: 12px;
       }
     }
   }
