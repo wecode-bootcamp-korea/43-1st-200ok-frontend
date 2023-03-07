@@ -1,0 +1,167 @@
+.signUp {
+  position: relative;
+  min-width: 1000px;
+}
+
+.signUpHeader {
+  margin: 50px;
+
+  .signUpLogo {
+    width: 150px;
+    margin-left: 150px;
+    padding-top: 7px;
+  }
+  .signUpTitle {
+    font-family: 'KimjungchulGothic-Bold';
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 35px;
+  }
+  .signUpLine {
+    margin: 0 150px 0 150px;
+  }
+}
+
+.signUpWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .infoFirst {
+    margin-bottom: 5px;
+    .signUpCircle {
+      width: 20px;
+    }
+    .signUpInfoTitle {
+      font-size: 25px;
+      margin-left: 5px;
+    }
+  }
+}
+
+th {
+  color: #333;
+  background: #f3f3f3;
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  width: 180px;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+  display: table-cell;
+  width: 300px;
+}
+
+.inputWrap {
+  display: flex;
+  height: 52px;
+  align-items: center;
+}
+
+.infoTitle {
+  padding: 20px;
+  font-size: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: 1px solid black;
+}
+
+.inputInfo {
+  margin: 0 20px 0 20px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.btnIdCheck {
+}
+
+.emailForm {
+  margin-left: 22px;
+  font-size: 13px;
+  color: #bb2420;
+}
+.passwordForm {
+  margin-left: 22px;
+  font-size: 13px;
+}
+
+.ns {
+  color: #bb2420;
+}
+
+.signUpYesOrNo {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btnCancelSignup {
+  border: 1px solid #ccc;
+  background: #fff;
+  min-width: 150px;
+  max-width: 150px;
+  height: 40px;
+  font-size: 17px;
+}
+
+.signUpButtonAction {
+  border: 1px solid #ccc;
+  background: #bb2420;
+  min-width: 150px;
+  max-width: 150px;
+  height: 40px;
+  font-size: 17px;
+  margin-left: 10px;
+  color: white;
+}
+.signUpButtonInaction {
+  border: 1px solid #ccc;
+  background: #fff;
+  min-width: 150px;
+  max-width: 150px;
+  height: 40px;
+  font-size: 17px;
+  margin-left: 10px;
+}
+
+.signupDoneCheck {
+  color: black;
+}
+
+.emailFormCorrect {
+  color: black;
+  margin-left: 22px;
+  font-size: 13px;
+}
+
+.passwordFormCorrect {
+  color: black;
+  margin-left: 22px;
+  font-size: 13px;
+}
+
+.passwordForm {
+  margin-left: 22px;
+  font-size: 13px;
+  color: #bb2420;
+}
+
+.addressForm {
+  color: black;
+  margin-left: 22px;
+  font-size: 13px;
+}
+.pwCheckForm {
+  margin-left: 22px;
+  font-size: 13px;
+  color: #bb2420;
+}
+.pwCheckFormCorrect {
+  color: black;
+  margin-left: 22px;
+  font-size: 13px;
+}
