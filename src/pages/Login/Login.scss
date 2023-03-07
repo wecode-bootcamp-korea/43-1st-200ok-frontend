@@ -30,19 +30,12 @@
   margin: 15px 0px 15px 0px;
   color: white;
   border: none;
-  .activeButton {
-    background-color: brown;
-  }
 }
 
-// .activeButton {
-//   text-align: center;
-//   width: 100%;
-//   background-color: brown;
-//   font-size: 20px;
-//   color: white;
-//   border: none;
-// }
+.activeButton {
+  @extend .unActiveButton;
+  background-color: brown;
+}
 
 .saveEmail {
   display: flex;
@@ -51,11 +44,10 @@
   margin: 10px 0px 10px 0px;
 }
 
-.signUp,
-.lostAccounts {
+.signUp {
   margin: 35px 0px 15px;
   color: rgb(117, 117, 117);
-  font-size: 20px;
+  font-size: 20.3px;
   font-weight: normal;
   line-height: 1.33;
   text-align: center;
@@ -63,5 +55,6 @@
 }
 
 .lostAccounts {
+  @extend .signUp;
   margin-left: 50px;
 }

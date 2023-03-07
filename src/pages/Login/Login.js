@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
-  const [{ email, password }, { setEmail, setPassword }] = useState({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isActive, setIsActive] = useState(false);
 
   const navigate = useNavigate();
 
   const isInputLogin = () => {
-    return email.includes('@' && '.com') && password.length >= 5
+    return email.includes('@', 4 && '.com') && password.length >= 5
       ? setIsActive(true)
       : setIsActive(false);
   };
+
+  const handleIdInput = event => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordInput = event => {
+    setPassword(event.target.value);
+  };
+
   const login = e => {
     e.preventDefault();
 
@@ -41,18 +48,22 @@ const Login = () => {
       <header />
       <nav />
       <form className="loginForm">
-        <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
+        <Link to="/">
+          <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
+        </Link>
         <div>
           <input
             className="idInput"
             type="text"
             placeholder="이메일을 입력하세요."
+            onChange={handleIdInput}
             onKeyUp={isInputLogin}
           />
           <input
             className="pwInput"
             type="password"
             placeholder="비밀번호를 입력하세요."
+            onChange={handlePasswordInput}
             onKeyUp={isInputLogin}
           />
           <div className="saveEmail">
@@ -66,7 +77,7 @@ const Login = () => {
               disabled={email === '' || password === '' ? true : false}
               onClick={login}
             >
-              로그인 버튼
+              로그인 하기
             </button>
           </span>
           <div>

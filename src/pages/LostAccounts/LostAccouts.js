@@ -8,7 +8,7 @@ const LostAccounts = () => {
       <nav />
       <form className="lostAccountsForm">
         <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
-        <div className="idInput">
+        <div className="emailInput">
           <input type="text" placeholder="이메일을 입력하세요." />
         </div>
         <span>
