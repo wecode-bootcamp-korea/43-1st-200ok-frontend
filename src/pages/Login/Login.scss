@@ -3,45 +3,65 @@
   flex-direction: column;
   align-items: center;
   text-align: left;
-  margin: 20%;
-  top: 50%;
+  margin: 10%;
 }
 
 .mainLogo {
-  width: 380px;
+  width: 300px;
   margin-bottom: 15px;
 }
 
 .idInput,
 .pwInput {
-  padding: 0 10px 0 10px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 4px 4px 0px 0px;
+  padding: 25px 0px 25px 25px;
 }
 
 .unActiveButton {
   text-align: center;
-  width: 100%;
   background-color: #ffcbcb;
-  font-size: 20px;
-  color: white;
-  border: none;
-}
-
-.activeButton {
-  text-align: center;
   width: 100%;
-  background-color: brown;
+  height: 50px;
   font-size: 20px;
+  margin: 15px 0px 15px 0px;
   color: white;
   border: none;
+  .activeButton {
+    background-color: brown;
+  }
 }
 
-.loginEtc {
+// .activeButton {
+//   text-align: center;
+//   width: 100%;
+//   background-color: brown;
+//   font-size: 20px;
+//   color: white;
+//   border: none;
+// }
+
+.saveEmail {
   display: flex;
-  font-size: 20px;
+  color: rgb(117, 117, 117);
+  font-size: 15.3px;
+  margin: 10px 0px 10px 0px;
 }
 
 .signUp,
 .lostAccounts {
-  display: flex;
-  font-size: 18px;
+  margin: 35px 0px 15px;
+  color: rgb(117, 117, 117);
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.33;
+  text-align: center;
+  width: 100%;
+}
+
+.lostAccounts {
+  margin-left: 50px;
 }

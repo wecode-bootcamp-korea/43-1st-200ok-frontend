@@ -38,6 +38,8 @@ const Login = () => {
 
   return (
     <section className="login">
+      <header />
+      <nav />
       <form className="loginForm">
         <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
         <div>
@@ -53,6 +55,10 @@ const Login = () => {
             placeholder="비밀번호를 입력하세요."
             onKeyUp={isInputLogin}
           />
+          <div className="saveEmail">
+            <input type="checkbox" />
+            <label>이메일 저장</label>
+          </div>
           <span>
             <button
               className={isActive ? 'activeButton' : 'unActiveButton'}
@@ -64,16 +70,12 @@ const Login = () => {
             </button>
           </span>
           <div>
-            <div className="loginEtc">
-              <input className="saveEmail" type="checkbox" />
-              <label>이메일 저장</label>
-            </div>
-            <button className="signUp" type="button">
+            <a className="signUp" href="/signup">
               회원가입
-            </button>
-            <button className="lostAccounts" type="button">
-              이메일/비밀번호 찾기
-            </button>
+            </a>
+            <a className="lostAccounts" href="/lostAccounts">
+              이메일, 비밀번호 찾기
+            </a>
           </div>
         </div>
       </form>
