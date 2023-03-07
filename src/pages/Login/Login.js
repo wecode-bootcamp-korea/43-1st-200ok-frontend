@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import './Login.scss';
 import { useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [{ email, password }, { setEmail, setPassword }] = useState({
+    email: '',
+    password: '',
+  });
+  const [isActive, setIsActive] = useState(false);
 
   const navigate = useNavigate();
-
-  const [isActive, setIsActive] = useState(false);
 
   const isInputLogin = () => {
     return email.includes('@' && '.com') && password.length >= 5
       ? setIsActive(true)
       : setIsActive(false);
   };
-  const Login = e => {
+  const login = e => {
     e.preventDefault();
 
     fetch('', {
@@ -38,9 +39,7 @@ const Login = () => {
   return (
     <section className="login">
       <form className="loginForm">
-        <div>
-          <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
-        </div>
+        <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
         <div>
           <input
             className="idInput"
@@ -59,7 +58,7 @@ const Login = () => {
               className={isActive ? 'activeButton' : 'unActiveButton'}
               type="button"
               disabled={email === '' || password === '' ? true : false}
-              onClick={Login}
+              onClick={login}
             >
               로그인 버튼
             </button>
@@ -67,9 +66,7 @@ const Login = () => {
           <div>
             <div className="loginEtc">
               <input className="saveEmail" type="checkbox" />
-              <label>
-                <span>이메일 저장</span>
-              </label>
+              <label>이메일 저장</label>
             </div>
             <button className="signUp" type="button">
               회원가입
