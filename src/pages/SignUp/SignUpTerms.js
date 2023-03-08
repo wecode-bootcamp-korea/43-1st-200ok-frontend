@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SignUpTerms.scss';
 
 const SignUpTerms = () => {
@@ -25,6 +25,7 @@ const SignUpTerms = () => {
     }, 0);
     setAllChecked(checkedLength === updatedCheckedState.length);
   };
+
   const goToSignup = event => {
     event.preventDefault();
     if (checkedState[0]) {
@@ -64,11 +65,12 @@ const SignUpTerms = () => {
   return (
     <div className="signUpTerms">
       <div className="signUpHeader">
-        <Link to="/">
-          <img className="signUpLogo" src="images/logo.png" alt="signUpLogo" />
-        </Link>
-        <span className="signUpTitle">회원가입</span>
-        <hr className="signUpLine" />
+        <p className="signUpTitle">
+          회원가입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👚&nbsp;&nbsp;&nbsp;
+          👕&nbsp;&nbsp;&nbsp; 👖&nbsp;&nbsp;&nbsp; 🩳&nbsp;&nbsp;&nbsp;&nbsp;
+          👗&nbsp;&nbsp;&nbsp; 👔&nbsp;&nbsp;&nbsp;&nbsp; 🎽&nbsp;&nbsp;&nbsp;
+          🧦&nbsp;&nbsp;&nbsp; 🧢{' '}
+        </p>
       </div>
       <div className="termsWrap">
         <div className="allCheck">

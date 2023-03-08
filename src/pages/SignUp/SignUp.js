@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
 const SignUp = () => {
@@ -12,6 +12,7 @@ const SignUp = () => {
     phoneNumber: '',
   });
   const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
+
   const handleInput = event => {
     const { name, value } = event.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -21,14 +22,8 @@ const SignUp = () => {
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/;
 
-  // const specialLetter = password.search(/[!@#$%]/gi);
-  // const numberList = password.search(/[0-9]/gi);
-  // const isValidPassword =
-  //   password.length >= 8 && specialLetter.length >= 1 && numberList.length >= 1;
-
   // 가입하기 버튼 활성화
-  // 이름과 핸드폰번호의 value가 1자 이상이 되어야 한다
-  const isValidInput = userName.length >= 1 && phoneNumber.length >= 11;
+  const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
 
   // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동한다. 버튼 클릭 이벤트가 발생할때 넣어줄 함수.
   // const activeButton = () => {
@@ -44,7 +39,7 @@ const SignUp = () => {
   const goToLogin = event => {
     event.preventDefault();
     if (isValidEmail && isValidInput && isValidPassWord) {
-      navigate('/signupterms');
+      navigate('/login');
     } else {
       alert('양식에 맞춰서 다시 입력해주세요.');
     }
@@ -55,8 +50,6 @@ const SignUp = () => {
       ? setGetIsActive(true)
       : setGetIsActive(false);
   };
-  // 버튼이 비활성화 될 때 버튼을 클릭하면 아래와 같은 경고창이 뜬다.
-
   // backend 연결 - activeButton 함수 안에 넣기
   // fetch(``, {
   //   method: 'POST',
@@ -80,11 +73,12 @@ const SignUp = () => {
   return (
     <div className="signUp">
       <div className="signUpHeader">
-        <Link to="/">
-          <img className="signUpLogo" src="images/logo.png" alt="signUpLogo" />
-        </Link>
-        <span className="signUpTitle">회원가입</span>
-        <hr className="signUpLine" />
+        <p className="signUpTitle">
+          회원가입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👚&nbsp;&nbsp;&nbsp;
+          👕&nbsp;&nbsp;&nbsp; 👖&nbsp;&nbsp;&nbsp; 🩳&nbsp;&nbsp;&nbsp;&nbsp;
+          👗&nbsp;&nbsp;&nbsp; 👔&nbsp;&nbsp;&nbsp;&nbsp; 🎽&nbsp;&nbsp;&nbsp;
+          🧦&nbsp;&nbsp;&nbsp; 🧢{' '}
+        </p>
       </div>
       <div className="signUpWrap">
         <div className="infoFirst">
