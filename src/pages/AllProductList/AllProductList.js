@@ -27,11 +27,12 @@ const AllProductList = () => {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        category: item.category,
+        category: item,
       }),
     })
       .then(response => response.json())
       .then(data => console.log(data));
+    console.log(item);
   };
 
   return (
