@@ -61,8 +61,8 @@ const NAVMENU = [
     ],
     photo: [
       '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112128342.jpg',
+      '/images/KakaoTalk_20230303_112109123.jpg',
+      '/images/KakaoTalk_20230303_112042004.jpg',
     ],
   },
   {

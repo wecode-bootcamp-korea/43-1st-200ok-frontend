@@ -7,9 +7,12 @@ const ProductForm = ({ id, url, colors }) => {
         <span className={id < 5 ? 'num' : 'num new'}>{`${id}`}</span>
         <div className="images">
           <div className="list">
-            <Link>
-              <img className="menu" src="/images/menu.png" alt="menu" />
-            </Link>
+            <img
+              onClick={() => console.log('zzz')}
+              className="menu"
+              src="/images/menu.png"
+              alt="menu"
+            />
           </div>
           <Link href="#!">
             <img src={`${url}`} alt="" />
