@@ -91,15 +91,16 @@ table {
   display: inline-block;
   border-radius: 5px;
 }
-
-.emailForm {
-  margin-left: 22px;
-  font-size: 13px;
+.idForm {
+  @include errorMessage;
   color: #bb2420;
 }
-.passwordForm {
-  margin-left: 22px;
-  font-size: 13px;
+.idFormCorrect {
+  @include errorMessage;
+}
+.emailForm {
+  @include errorMessage;
+  color: #bb2420;
 }
 
 .ns {
@@ -130,17 +131,14 @@ table {
 
 .signupDoneCheck {
   @include errorMessage;
-  color: black;
 }
 
 .emailFormCorrect {
   @include errorMessage;
-  color: black;
 }
 
 .passwordFormCorrect {
   @include errorMessage;
-  color: black;
 }
 
 .passwordForm {
@@ -150,7 +148,6 @@ table {
 
 .addressForm {
   @include errorMessage;
-  color: black;
 }
 .pwCheckForm {
   @include errorMessage;
@@ -158,7 +155,6 @@ table {
 }
 .pwCheckFormCorrect {
   @include errorMessage;
-  color: black;
 }
 
 .dress {

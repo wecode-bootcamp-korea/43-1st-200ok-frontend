@@ -6,16 +6,19 @@ const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
   const [inputValue, setInputValue] = useState({
     userName: '',
+    id: '',
     email: '',
     password: '',
     passwordCheck: '',
     phoneNumber: '',
   });
-  const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
+  const { userName, id, email, password, passwordCheck, phoneNumber } =
+    inputValue;
 
   const navigate = useNavigate();
 
   //유효성 검사
+  const isValidId = id.length >= 1;
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
@@ -24,7 +27,11 @@ const SignUp = () => {
   // 가입하기 버튼 활성화
   const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
   const activeBtn =
-    isValidEmail && isValidInput && isValidPassWord && isValidPasswordcheck;
+    isValidEmail &&
+    isValidInput &&
+    isValidPassWord &&
+    isValidPasswordcheck &&
+    isValidId;
 
   // const activeBtn = () => {
   //   return isValidEmail &&
@@ -91,6 +98,34 @@ const SignUp = () => {
                       onChange={handleInput}
                     />
                   </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div className="infoTitle">
+                    아이디
+                    <span className="ns" title="필수입력">
+                      {' '}
+                      *
+                    </span>
+                  </div>
+                </th>
+                <td>
+                  <div className="inputWrap">
+                    <input
+                      type="text"
+                      className="inputInfo"
+                      title="아이디 입력"
+                      name="id"
+                      value={id}
+                      onChange={handleInput}
+                    />
+                  </div>
+                  {isValidId ? (
+                    <em className="idFormCorrect">올바른 형식입니다.</em>
+                  ) : (
+                    <em className="idForm">5자리 이상</em>
+                  )}
                 </td>
               </tr>
               <tr>
