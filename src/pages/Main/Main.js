@@ -1,5 +1,3 @@
-import BestProduct from '../../components/BestProduct/BestProduct';
-import NewProduct from '../../components/NewProduct/NewProduct';
 import './Main.scss';
 
 const Main = () => {
@@ -9,12 +7,8 @@ const Main = () => {
         <div className="mainImg">
           <img src="/images/KakaoTalk_20230303_112042004.jpg" alt="zz" />
         </div>
-        <div className="best">
-          <BestProduct />
-        </div>
-        <div className="new">
-          <NewProduct />
-        </div>
+        <div className="best" />
+        <div className="new" />
       </div>
     </div>
   );
