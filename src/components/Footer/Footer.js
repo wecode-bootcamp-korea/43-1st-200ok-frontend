@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -32,61 +33,50 @@ const Footer = () => {
             </span>
           </div>
           <div className="icon">
-            <div className="em">
-              <i className="bi bi-github" />
-              <i className="bi bi-github" />|
+            <div className="iconPhoto">
+              <p>사진들어갈 자리</p>
             </div>
             <div>
-              <a href="#!">
-                <i className="bi bi-apple" />
-              </a>
-              <a href="#!">
-                <i className="bi bi-apple" />
-              </a>
-              <a href="#!">
-                <i className="bi bi-apple" />
-              </a>
-              <a href="#!">
-                <i className="bi bi-apple" />
-              </a>
-              <a href="#!">
-                <i className="bi bi-apple" />
-              </a>
+              <Link href="#!">추후 들어갈 예정</Link>
+              <Link href="#!">추후 들어갈 예정</Link>
+              <Link href="#!">추후 들어갈 예정</Link>
+              <Link href="#!">추후 들어갈 예정</Link>
+              <Link href="#!">추후 들어갈 예정</Link>
             </div>
           </div>
         </div>
         <div className="footerSection02">
           <ul>
             <li>
-              <a href="#!">브랜드 소개</a>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
             <li>
-              <a href="#!">온라인매장</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="#!">개인정보 처리방침</a>
-            </li>
-            <li>
-              <a href="#!">약관 안내</a>
-            </li>
-            <li>
-              <a href="#!">윤리경영</a>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
           </ul>
           <ul>
             <li>
-              <a href="#!">공지사항</a>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
             <li>
-              <a href="#!">회원혜택</a>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
             <li>
-              <a href="#!">채용정보 및 인사제도</a>
+              <Link href="#!">추후 들어갈 예정</Link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
             <li>
-              <a href="#!">자주묻는 질문 FAQ</a>
+              <Link href="#!">추후 들어갈 예정</Link>
+            </li>
+            <li>
+              <Link href="#!">추후 들어갈 예정</Link>
+            </li>
+            <li>
+              <Link href="#!">추후 들어갈 예정</Link>
             </li>
           </ul>
         </div>

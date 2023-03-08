@@ -50,20 +50,13 @@
     .icon {
       display: flex;
 
-      .em {
+      .iconPhoto {
         display: flex;
         align-items: center;
         margin-right: 20px;
-        i {
-          font-size: 35px;
-          margin-right: 12px;
-        }
       }
       a {
         margin-right: 15px;
-      }
-      i {
-        font-size: 35px;
       }
     }
 
@@ -82,11 +75,6 @@
         line-height: 30px;
         font-size: 13px;
         color: #606060;
-      }
-      .move {
-        position: relative;
-        margin-top: 76px;
-        float: right;
       }
     }
   }
