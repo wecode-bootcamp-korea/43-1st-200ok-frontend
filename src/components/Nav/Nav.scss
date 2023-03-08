@@ -1,0 +1,91 @@
+.nav {
+  position: fixed;
+  top: 0 !important;
+  left: 0px;
+  right: 0;
+  z-index: 11;
+
+  .width {
+    position: relative;
+    border: 1px solid #e5e5e5e5;
+    background-color: white;
+    margin: 0 auto;
+    padding: 0 5%;
+    height: 90px;
+
+    .logo {
+      float: left;
+      height: 90px;
+      line-height: 90px;
+
+      a {
+        height: 90px;
+        line-height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 150px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .topMenu {
+      float: left;
+      margin-left: 35px;
+
+      > ul {
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        li {
+          a {
+            font-weight: 600;
+            font-size: 16px;
+            display: block;
+            line-height: 90px;
+            position: relative;
+            z-index: 11;
+            padding: 0 20px;
+          }
+        }
+
+        a:after {
+          display: block;
+          content: '';
+          border-bottom: solid 3px black;
+          transform: scaleX(0);
+          transition: transform 250ms ease-in-out;
+        }
+
+        a:hover:after {
+          transform: scaleX(1);
+        }
+      }
+    }
+    .topMember {
+      float: right;
+
+      ul {
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        li {
+          padding-left: 32px;
+          font-family: 'KimjungchulGothic-Light';
+
+          img {
+            width: 31px;
+            height: 31px;
+          }
+        }
+      }
+    }
+  }
+}
