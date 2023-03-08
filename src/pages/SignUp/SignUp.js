@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
 
 const SignUp = () => {
-  const [getIsActive, setGetIsActive] = useState(false);
+  // const [getIsActive, setGetIsActive] = useState(false);
   const [inputValue, setInputValue] = useState({
     userName: '',
     email: '',
@@ -13,72 +13,50 @@ const SignUp = () => {
   });
   const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
 
+  const navigate = useNavigate();
+
+  //유효성 검사
+  const isValidEmail = email.includes('@', 4) && email.includes('.com');
+  const isValidPassWord = new RegExp(
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
+  ).test(password);
+  const isValidPasswordcheck = password === passwordCheck;
+  // 가입하기 버튼 활성화
+  const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
+  const activeBtn =
+    isValidEmail && isValidInput && isValidPassWord && isValidPasswordcheck;
+
+  // const activeBtn = () => {
+  //   return isValidEmail &&
+  //     isValidInput &&
+  //     isValidPassWord &&
+  //     isValidPasswordcheck
+  //     ? setGetIsActive(true)
+  //     : setGetIsActive(false);
+  // };
+
   const handleInput = event => {
     const { name, value } = event.target;
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  //유효성 검사
-  const isValidEmail = email.includes('@', 4) && email.includes('.com');
-  const isValidPassWord = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/;
-
-  // 가입하기 버튼 활성화
-  const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
-
-  // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동한다. 버튼 클릭 이벤트가 발생할때 넣어줄 함수.
-  // const activeButton = () => {
-  //   if (isValidEmail && isValidInput && isValidPassWord) {
-  //     setGetIsActive(true);
-  //   } else {
-  //     alert('양식에 맞춰서 다시 입력해주세요.');
-  //     setGetIsActive(false);
-  //   }
-  // };
-
-  const navigate = useNavigate();
   const goToLogin = event => {
     event.preventDefault();
-    if (isValidEmail && isValidInput && isValidPassWord) {
+    if (activeBtn) {
       navigate('/login');
     } else {
       alert('양식에 맞춰서 다시 입력해주세요.');
     }
   };
 
-  const activeBtn = () => {
-    return isValidEmail && isValidInput && isValidPassWord
-      ? setGetIsActive(true)
-      : setGetIsActive(false);
+  const goToTerms = () => {
+    navigate('/signupterms');
   };
-  // backend 연결 - activeButton 함수 안에 넣기
-  // fetch(``, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json;charset=utf-8',
-  //   },
-  //   body: JSON.stringify({
-  //     name: userName,
-  //     email: email,
-  //     password: password,
-  //     passwordCheck: passwordCheck,
-  //     phoneNumber: phoneNumber,
-  //   }),
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
-  //     navigate('/login');
-  //   });
 
   return (
     <div className="signUp">
       <div className="signUpHeader">
-        <p className="signUpTitle">
-          회원가입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👚&nbsp;&nbsp;&nbsp;
-          👕&nbsp;&nbsp;&nbsp; 👖&nbsp;&nbsp;&nbsp; 🩳&nbsp;&nbsp;&nbsp;&nbsp;
-          👗&nbsp;&nbsp;&nbsp; 👔&nbsp;&nbsp;&nbsp;&nbsp; 🎽&nbsp;&nbsp;&nbsp;
-          🧦&nbsp;&nbsp;&nbsp; 🧢{' '}
-        </p>
+        <p className="signUpTitle">회원가입</p>
       </div>
       <div className="signUpWrap">
         <div className="infoFirst">
@@ -166,7 +144,7 @@ const SignUp = () => {
                     />
                   </div>
                   <div id="em_pwdValidMsg" />
-                  {isValidPassWord.test(password) ? (
+                  {isValidPassWord ? (
                     <em className="passwordFormCorrect">올바른 형식입니다.</em>
                   ) : (
                     <em className="passwordForm">
@@ -242,7 +220,6 @@ const SignUp = () => {
                       name="phoneNumber"
                       value={phoneNumber}
                       onChange={handleInput}
-                      onKeyUp={activeBtn}
                     />
                   </div>
                   <div id="em_pwdValidMsg2" />
@@ -264,14 +241,14 @@ const SignUp = () => {
           </table>
         </div>
         <div className="signUpYesOrNo">
-          <button className="btnCancelSignup">
+          <button className="btnCancelSignup" onClick={goToTerms}>
             <span>가입취소</span>
           </button>
           <button
             className={
-              getIsActive ? 'signUpButtonAction' : 'signUpButtonInaction'
+              activeBtn ? 'signUpButtonAction' : 'signUpButtonInaction'
             }
-            disabled={!getIsActive}
+            disabled={!activeBtn}
             onClick={goToLogin}
           >
             가입하기
