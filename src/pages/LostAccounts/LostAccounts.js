@@ -1,5 +1,5 @@
 import React from 'react';
-import './LostAccount.scss';
+import './LostAccounts.scss';
 
 const LostAccounts = () => {
   return (
@@ -11,11 +11,9 @@ const LostAccounts = () => {
         <div className="emailInput">
           <input type="text" placeholder="이메일을 입력하세요." />
         </div>
-        <span>
-          <button className="submit" type="button" disabled>
-            확인
-          </button>
-        </span>
+        <button className="submit" type="button" disabled>
+          확인
+        </button>
       </form>
     </section>
   );
