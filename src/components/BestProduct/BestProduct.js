@@ -10,7 +10,9 @@ const BestProduct = () => {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setBestPhoto(data)]);
+      .then(data => [
+        setBestPhoto(data.filter(item => item.type === '베스트')),
+      ]);
   }, []);
 
   const woman = () => {
@@ -18,15 +20,15 @@ const BestProduct = () => {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setBestPhoto(data)]);
+      .then(data => [setBestPhoto(data.filter(item => item.sex === '여자'))]);
   };
 
   const men = () => {
-    fetch('./data/New.json', {
+    fetch('./data/Best.json', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setBestPhoto(data)]);
+      .then(data => [setBestPhoto(data.filter(item => item.sex === '남자'))]);
   };
 
   return (

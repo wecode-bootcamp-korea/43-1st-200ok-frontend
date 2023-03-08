@@ -2,41 +2,113 @@
   {
     "id": 1,
     "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "yellow"]
+    "colors": ["red", "yellow"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 2,
     "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"]
+    "colors": ["red", "blue", "yellow"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 3,
     "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow"]
+    "colors": ["red", "pink", "yellow"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 4,
     "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "blue", "yellow", "pink"]
+    "colors": ["red", "blue", "yellow", "pink"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 5,
     "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink"]
+    "colors": ["red", "pink"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 6,
     "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"]
+    "colors": ["red", "blue", "yellow"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 7,
     "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow", "blue"]
+    "colors": ["red", "pink", "yellow", "blue"],
+    "type": "신상품",
+    "sex": "남자"
   },
   {
     "id": 8,
     "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"]
+    "colors": ["red", "blue", "yellow"],
+    "type": "신상품",
+    "sex": "남자"
+  },
+  {
+    "id": 9,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "yellow"],
+    "type": "베스트",
+    "sex": "남자"
+  },
+  {
+    "id": 10,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 11,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink", "yellow"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 12,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "blue", "yellow", "pink"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 13,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 14,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 15,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink", "yellow", "blue"],
+    "type": "베스트",
+    "sex": "여자"
+  },
+  {
+    "id": 16,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "type": "베스트",
+    "sex": "여자"
   }
 ]

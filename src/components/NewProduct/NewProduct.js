@@ -6,12 +6,14 @@ const NewProduct = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    fetch('./data/New.json', {
+    fetch('./data/best.json', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setNewPhoto(data)]);
+      .then(data => [setNewPhoto(data.filter(item => item.type === '신상품'))]);
   }, []);
+
+  console.log(newPhoto);
 
   const testNext = () => {
     if (count < newPhoto.length - 4 && count >= 0) {
