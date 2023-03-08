@@ -19,8 +19,6 @@ const AllProductList = () => {
     .filter(item => item);
 
   const duplicationCategoryList = [...new Set(duplicationCategory)];
-  console.log(duplicationCategory);
-  console.log(duplicationCategoryList);
 
   const onClick = item => {
     fetch('./data/Best.json', {
