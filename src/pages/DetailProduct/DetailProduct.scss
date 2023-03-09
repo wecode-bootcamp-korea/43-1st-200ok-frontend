@@ -1,0 +1,151 @@
+header {
+  width: 100%;
+  height: 50px;
+  background-color: moccasin;
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+  background-color: turquoise;
+}
+
+.detailProduct {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+}
+
+.detailProductArea {
+  display: flex;
+}
+
+.productInfo {
+  width: 40%;
+  height: 800px;
+  margin-left: 90px;
+  font-size: 20px;
+  // background-color: lawngreen;
+  text-align: center;
+}
+
+.productImg {
+  height: 750px;
+  margin-top: 25px;
+}
+
+.infoArea {
+  width: 40%;
+  // height: 700px;
+  // padding-top: 20px;
+  margin-left: 40px;
+  font-size: 18.3px;
+  // background-color: rgb(61, 79, 160);
+  // text-align: center;
+}
+
+.productName {
+  text-align: left;
+  margin: 25px 0px 0px 25px;
+  font-size: 35px;
+}
+
+.productPrice {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.productCount {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.productColor {
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.productColor1 {
+  width: 110px;
+  height: 50px;
+  margin: 20px 10px 15px 10px;
+  color: white;
+  background-color: black;
+}
+
+.productColor2 {
+  @extend .productColor1;
+  background-color: blue;
+}
+
+.productColor3 {
+  @extend .productColor1;
+  background-color: green;
+}
+
+.productColor4 {
+  @extend .productColor1;
+  background-color: yellowgreen;
+}
+
+.productSize {
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.productSize1 {
+  width: 110px;
+  height: 50px;
+  margin: 20px 10px 15px 10px;
+  color: white;
+  background-color: gray;
+}
+
+.productSize2,
+.productSize3,
+.productSize4 {
+  @extend .productSize1;
+}
+
+.sumPrice {
+  text-align: center;
+  margin-top: 30px;
+  padding: 1em;
+}
+
+.buttons {
+  justify-content: space-around;
+  width: 100%;
+  height: 85px;
+  text-align: center;
+  margin-top: 50px;
+  // background-color: darkgoldenrod;
+}
+
+.wishImg {
+  height: 50px;
+  margin: 15px 0 0 10px;
+}
+
+.cartButton {
+  width: 100px;
+  height: 50px;
+  margin: 15px 0 0 10px;
+  color: white;
+  background-color: gray;
+}
+
+.orderButton {
+  @extend .cartButton;
+  background-color: lightsalmon;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
