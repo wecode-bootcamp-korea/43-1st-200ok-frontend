@@ -27,7 +27,6 @@ nav {
   height: 800px;
   margin-left: 90px;
   font-size: 20px;
-  // background-color: lawngreen;
   text-align: center;
 }
 
@@ -38,70 +37,103 @@ nav {
 
 .infoArea {
   width: 40%;
-  // height: 700px;
-  // padding-top: 20px;
-  margin-left: 40px;
+  margin: 25px 0 25px 40px;
   font-size: 18.3px;
-  // background-color: rgb(61, 79, 160);
-  // text-align: center;
 }
 
 .productName {
   text-align: left;
-  margin: 25px 0px 0px 25px;
-  font-size: 35px;
+  padding: 0.75em;
+  font-size: 22.3px;
+  font-weight: 900;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
+}
+
+.priceArea {
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .productPrice {
-  text-align: center;
-  margin-top: 30px;
+  @extend .productSalePrice;
+  font-weight: 900;
+}
+
+.productSalePrice {
+  width: 50%;
+  text-align: left;
+  padding: 0.75em;
+  margin-top: 10px;
 }
 
 .productCount {
-  text-align: center;
-  margin-top: 30px;
+  text-align: left;
+  padding: 0.75em;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .productColor {
   justify-content: space-between;
-  text-align: center;
-  margin-top: 30px;
+  padding: 0.75em;
+  margin-top: 10px;
+  text-align: left;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .productColor1 {
-  width: 110px;
-  height: 50px;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  width: 90px;
+  height: 42px;
   margin: 20px 10px 15px 10px;
   color: white;
-  background-color: black;
+  font-size: 20px;
+  background-color: #fa5a5a;
 }
 
 .productColor2 {
   @extend .productColor1;
-  background-color: blue;
+  background-color: #6698cb;
 }
 
 .productColor3 {
   @extend .productColor1;
-  background-color: green;
+  background-color: #82c8a0;
 }
 
 .productColor4 {
   @extend .productColor1;
-  background-color: yellowgreen;
+  background-color: #cb99c5;
 }
 
 .productSize {
   justify-content: space-between;
-  text-align: center;
-  margin-top: 30px;
+  text-align: left;
+  padding: 0.75em;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .productSize1 {
-  width: 110px;
-  height: 50px;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  width: 60px;
+  height: 40px;
   margin: 20px 10px 15px 10px;
   color: white;
+  font-size: 17px;
+  text-align: center;
   background-color: gray;
 }
 
@@ -112,18 +144,21 @@ nav {
 }
 
 .sumPrice {
-  text-align: center;
-  margin-top: 30px;
-  padding: 1em;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: 900;
+  padding: 0.75em;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .buttons {
   justify-content: space-around;
   width: 100%;
   height: 85px;
-  text-align: center;
-  margin-top: 50px;
-  // background-color: darkgoldenrod;
+  text-align: left;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .wishImg {
@@ -132,16 +167,25 @@ nav {
 }
 
 .cartButton {
-  width: 100px;
+  text-decoration: none;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  width: 190px;
   height: 50px;
-  margin: 15px 0 0 10px;
+  margin: 15px 0 0 30px;
   color: white;
-  background-color: gray;
+  font-size: 17.5px;
+  background-color: rgb(39, 25, 25);
 }
 
 .orderButton {
   @extend .cartButton;
-  background-color: lightsalmon;
+  background-color: rgb(236, 76, 12);
 }
 
 footer {
