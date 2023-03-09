@@ -14,7 +14,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
             </Link>
           </div>
           <Link href="#!">
-            <img src={`${image}`} alt="" />
+            <img src={image} alt="제품 사진" />
           </Link>
         </div>
         <div className="description">
@@ -25,7 +25,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
           <p className="price">
             {disPrice}
             <span className="originalPrice">&nbsp;{price}</span>&nbsp;
-            <span className="rateDiscount">{`${rate}%`}</span>
+            <span className="rateDiscount">{!(rate === 0) && `${rate}%`}</span>
           </p>
         </div>
       </div>

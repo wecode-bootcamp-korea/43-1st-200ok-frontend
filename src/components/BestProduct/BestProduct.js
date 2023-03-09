@@ -5,6 +5,7 @@ import './BestProduct.scss';
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
 
+  //백앤드 주소
   // useEffect(() => {
   //   fetch('http://10.58.52.163:3010/mainpage/bests/man', {
   //     method: 'GET',
@@ -13,30 +14,23 @@ const BestProduct = () => {
   //     .then(data => [setBestPhoto(data.data)]);
   // }, []);
 
+  // 연습용
   useEffect(() => {
-    fetch('/data/Best.json', {
-      method: 'GET',
-    })
+    fetch('./data/New.json')
       .then(res => res.json())
-      .then(data => [setBestPhoto(data)]);
+      .then(data => setBestPhoto(data));
   }, []);
 
-  console.log(bestPhoto);
-
   const woman = () => {
-    fetch('http://10.58.52.163:3010/mainpage/bests/woman', {
-      method: 'GET',
-    })
+    fetch('http://10.58.52.163:3010/mainpage/bests/woman')
       .then(res => res.json())
-      .then(data => [setBestPhoto(data.data)]);
+      .then(data => setBestPhoto(data.data));
   };
 
   const men = () => {
-    fetch('http://10.58.52.163:3010/mainpage/bests/man', {
-      method: 'GET',
-    })
+    fetch('http://10.58.52.163:3010/mainpage/bests/man')
       .then(res => res.json())
-      .then(data => [setBestPhoto(data.data)]);
+      .then(data => setBestPhoto(data.data));
   };
 
   return (
