@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
+import SignUpTerms from './SignUpTerms';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
@@ -17,6 +18,28 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  const [isAllChecked, setAllChecked] = useState(false);
+  const [checkedState, setCheckedState] = useState(new Array(2).fill(false));
+
+  const handleAllCheck = () => {
+    setAllChecked(prev => !prev);
+    let array = new Array(2).fill(!isAllChecked);
+    setCheckedState(array);
+  };
+  const handleMonoCheck = position => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+    const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
+      if (currentState === true) {
+        return sum + 1;
+      }
+      return sum;
+    }, 0);
+    setAllChecked(checkedLength === updatedCheckedState.length);
+  };
+
   //유효성 검사
   const isValidId = id.length >= 5;
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
@@ -26,21 +49,14 @@ const SignUp = () => {
   const isValidPasswordcheck = password === passwordCheck;
   // 가입하기 버튼 활성화
   const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
+  const isValidSignUp = (checkedState[0] && checkedState[1]) || checkedState[0];
   const activeBtn =
     isValidEmail &&
     isValidInput &&
     isValidPassWord &&
     isValidPasswordcheck &&
-    isValidId;
-
-  // const activeBtn = () => {
-  //   return isValidEmail &&
-  //     isValidInput &&
-  //     isValidPassWord &&
-  //     isValidPasswordcheck
-  //     ? setGetIsActive(true)
-  //     : setGetIsActive(false);
-  // };
+    isValidId &&
+    isValidSignUp;
 
   const handleInput = event => {
     const { name, value } = event.target;
@@ -48,25 +64,33 @@ const SignUp = () => {
   };
 
   const goToLogin = event => {
-    fetch('http://10.58.52.165:8007/signUp', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify({
-        name: userName,
-        loginId: id,
-        email: email,
-        password: password,
-        passwordCheck: passwordCheck,
-        phoneNumber: phoneNumber,
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
-        navigate('/login');
-      });
+    if (activeBtn) {
+      fetch('http://10.58.52.165:8007/signUp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          name: userName,
+          loginId: id,
+          email: email,
+          password: password,
+          passwordCheck: passwordCheck,
+          phoneNumber: phoneNumber,
+          privacyTermEssential: checkedState[0],
+          privacyTermOptional: checkedState[1],
+        }),
+      }).then(response => response.json());
+      alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
+      // navigate('/login');
+    } else {
+      alert('양식에 맞춰서 다시 입력해주세요.');
+    }
+
+    // .then(data => {
+    //   alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
+    //   navigate('/login');
+    // });
 
     // event.preventDefault();
     // if (activeBtn) {
@@ -76,8 +100,8 @@ const SignUp = () => {
     // }
   };
 
-  const goToTerms = () => {
-    navigate('/signupterms');
+  const goToMain = () => {
+    navigate('/');
   };
 
   return (
@@ -85,15 +109,15 @@ const SignUp = () => {
       <div className="signUpHeader">
         <p className="signUpTitle">회원가입</p>
       </div>
+      <div className="infoFirst">
+        <img
+          className="signUpCircle"
+          src="images/signup-circle.png"
+          alt="signUpCircle"
+        />
+        <span className="signUpInfoTitle">기본정보</span>
+      </div>
       <div className="signUpWrap">
-        <div className="infoFirst">
-          <img
-            className="signUpCircle"
-            src="images/signup-circle.png"
-            alt="signUpCircle"
-          />
-          <span className="signUpInfoTitle">기본정보</span>
-        </div>
         <div className="infoFirstContent">
           <table summary="이름, 이메일, 비밀번호, 비밀번호 재입력, 생년월일, 핸드폰번호">
             <tbody>
@@ -295,8 +319,15 @@ const SignUp = () => {
             </tbody>
           </table>
         </div>
+        <SignUpTerms
+          handleAllCheck={handleAllCheck}
+          ß
+          handleMonoCheck={handleMonoCheck}
+          isAllChecked={isAllChecked}
+          checkedState={checkedState}
+        />
         <div className="signUpYesOrNo">
-          <button className="btnCancelSignup" onClick={goToTerms}>
+          <button className="btnCancelSignup" onClick={goToMain}>
             <span>가입취소</span>
           </button>
           <button
