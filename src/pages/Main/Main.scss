@@ -6,16 +6,17 @@
   min-width: 1240px;
 
   .wrap {
-    max-width: 1920px;
-    width: 100%;
+    width: 1920px;
     margin: 0 auto 0;
 
     .mainImg {
+      display: flex;
+      overflow: hidden;
       margin-bottom: 70px;
 
       img {
         height: 845px;
-        width: 100%;
+        min-width: 100%;
       }
     }
   }

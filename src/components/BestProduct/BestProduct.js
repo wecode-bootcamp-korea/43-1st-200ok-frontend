@@ -20,7 +20,9 @@ const BestProduct = () => {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setBestPhoto(data.filter(item => item.sex === '여자'))]);
+      .then(data => [
+        setBestPhoto(data.filter(item => item.sex === '여자' && item.id <= 8)),
+      ]);
   };
 
   const men = () => {
@@ -28,7 +30,9 @@ const BestProduct = () => {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setBestPhoto(data.filter(item => item.sex === '남자'))]);
+      .then(data => [
+        setBestPhoto(data.filter(item => item.sex === '남자' && item.id <= 8)),
+      ]);
   };
 
   return (

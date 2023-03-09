@@ -3,7 +3,7 @@ import ProductForm from '../ProductForm/ProductForm';
 import './NewProduct.scss';
 const NewProduct = () => {
   const [newPhoto, setNewPhoto] = useState([]);
-  const [count, setCount] = useState(0);
+  const [newPhotoCount, setNewPhotoCount] = useState(0);
 
   useEffect(() => {
     fetch('./data/best.json', {
@@ -16,18 +16,18 @@ const NewProduct = () => {
   console.log(newPhoto);
 
   const testNext = () => {
-    if (count < newPhoto.length - 4 && count >= 0) {
-      setCount(count + 1);
+    if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
+      setNewPhotoCount(newPhotoCount + 1);
     } else {
-      setCount(0);
+      setNewPhotoCount(0);
     }
   };
 
   const testPre = () => {
-    if (count <= newPhoto.length && count > 0) {
-      setCount(count - 1);
-    } else if (count <= 0) {
-      setCount(newPhoto.length - 4);
+    if (newPhotoCount <= newPhoto.length && newPhotoCount > 0) {
+      setNewPhotoCount(newPhotoCount - 1);
+    } else if (newPhotoCount <= 0) {
+      setNewPhotoCount(newPhoto.length - 4);
     }
   };
 
@@ -36,7 +36,10 @@ const NewProduct = () => {
       <p className="header">신상품</p>
       <ul
         className="products"
-        style={{ transform: `translate(${count * -432}px)`, transition: `1s` }}
+        style={{
+          transform: `translate(${newPhotoCount * -432}px)`,
+          transition: `1s`,
+        }}
       >
         {newPhoto.map(item => {
           return (
