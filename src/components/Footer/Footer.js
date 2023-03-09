@@ -5,8 +5,8 @@ import './Footer.scss';
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="padding">
-        <div className="footerSection01">
+      <div className="footerWrap">
+        <div className="footerInfo">
           <div className="information">
             <p className="phone">1670-9600</p>
             <p>상담시간: 오전 10시~ 오후 5시(토요일,공휴일 휴무)</p>
@@ -36,48 +36,40 @@ const Footer = () => {
             <div className="iconPhoto">
               <p>사진들어갈 자리</p>
             </div>
-            <div>
-              <Link href="#!">추후 들어갈 예정</Link>
-              <Link href="#!">추후 들어갈 예정</Link>
-              <Link href="#!">추후 들어갈 예정</Link>
-              <Link href="#!">추후 들어갈 예정</Link>
-              <Link href="#!">추후 들어갈 예정</Link>
+            <div className="iconPhotoList">
+              <Link className="iconPhotoLink" href="#!">
+                추후 들어갈 예정
+              </Link>
             </div>
           </div>
         </div>
-        <div className="footerSection02">
-          <ul>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
+        <div className="footerPolicy">
+          <ul className="policyList">
+            {TEAMNAME.map(({ id, content }) => (
+              <li key={id}>
+                <Link className="policyLink" href="#!">
+                  {content}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <ul>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
+          <ul className="policyList">
+            {TEAMINFOR.map(({ id, content }) => (
+              <li key={id}>
+                <Link className="policyLink" href="#!">
+                  {content}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <ul>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
-            <li>
-              <Link href="#!">추후 들어갈 예정</Link>
-            </li>
+          <ul className="policyList">
+            {TEAMPHONE.map(({ id, content }) => (
+              <li key={id}>
+                <Link className="policyLink" href="#!">
+                  {content}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -86,3 +78,19 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const TEAMNAME = [
+  { id: 1, content: '추후 들어갈 예정' },
+  { id: 2, content: '추후 들어갈 예정' },
+];
+const TEAMINFOR = [
+  { id: 1, content: '추후 들어갈 예정' },
+  { id: 2, content: '추후 들어갈 예정' },
+  { id: 3, content: '추후 들어갈 예정' },
+];
+const TEAMPHONE = [
+  { id: 1, content: '추후 들어갈 예정' },
+  { id: 2, content: '추후 들어갈 예정' },
+  { id: 3, content: '추후 들어갈 예정' },
+  { id: 3, content: '추후 들어갈 예정' },
+];
