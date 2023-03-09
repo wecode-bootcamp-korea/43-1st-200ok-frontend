@@ -14,11 +14,11 @@ const Count = props => {
   return (
     <div className="count">
       <div className="countInput">
-        <button className="minusCount" onClick={minusCount}>
-          —
+        <button className="countButton" onClick={minusCount}>
+          –
         </button>
         <span className="countInputText">{count}</span>
-        <button className="plusCount" onClick={plusCount}>
+        <button className="countButton" onClick={plusCount}>
           +
         </button>
       </div>

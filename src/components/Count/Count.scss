@@ -1,16 +1,17 @@
-.minusCount {
+.countButton {
   border: 1px solid #ddd;
-  width: 20px;
-  height: 20px;
+
+  width: 22px;
+  height: 22px;
   display: inline-block;
+  color: black;
+  margin: 0 10px 0 10px;
 }
 .countInputText {
   margin: 0 10px 0 10px;
+  font-size: 17px;
 }
-.plusCount {
-  border: 1px solid #ddd;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  font-size: 18px;
+
+.count {
+  margin: 0 20px 0 20px;
 }
