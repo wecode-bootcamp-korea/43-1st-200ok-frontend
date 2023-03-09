@@ -12,6 +12,7 @@
     margin: 0 auto;
     padding: 0 5%;
     height: 90px;
+    min-width: 1720px;
 
     .logo {
       float: left;
@@ -67,6 +68,7 @@
         }
       }
     }
+
     .topMember {
       float: right;
 
@@ -83,6 +85,13 @@
           img {
             width: 31px;
             height: 31px;
+          }
+
+          &:nth-child(even) {
+            img {
+              width: 34px;
+              height: 34px;
+            }
           }
         }
       }
