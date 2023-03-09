@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const ProductForm = ({ id, url, colors }) => {
+const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
   return (
     <li className="productForm">
       <div className="thumb">
-        <span className={id < 5 ? 'num' : 'num new'}>{`${id}`}</span>
+        <span className={id < 5 ? 'num' : 'num new'}>
+          {id >= 1 && id < 9 && `${id}`}
+        </span>
         <div className="images">
           <div className="list">
             <Link>
@@ -12,23 +14,19 @@ const ProductForm = ({ id, url, colors }) => {
             </Link>
           </div>
           <Link href="#!">
-            <img src={`${url}`} alt="" />
+            <img src={`${image}`} alt="" />
           </Link>
         </div>
         <div className="description">
           <div className="name">
-            <span>파스텔 푸퍼 (SPJPC4TG01 RE)_SPJPD11G01</span>
+            <span>{name}</span>
             <img className="heart" src="/images/heart.png" alt="heart" />
           </div>
           <p className="price">
-            39,900 <span className="originalPrice">&nbsp;원래 가격</span>&nbsp;
-            <span className="rateDiscount">할인%</span>
+            {disPrice}
+            <span className="originalPrice">&nbsp;{price}</span>&nbsp;
+            <span className="rateDiscount">{`${rate}%`}</span>
           </p>
-          <div className="colors">
-            {colors.map(item => (
-              <span key={item} className={`color ${item}`} />
-            ))}
-          </div>
         </div>
       </div>
     </li>

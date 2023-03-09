@@ -5,34 +5,38 @@ import './BestProduct.scss';
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
 
+  // useEffect(() => {
+  //   fetch('http://10.58.52.163:3010/mainpage/bests/man', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => [setBestPhoto(data.data)]);
+  // }, []);
+
   useEffect(() => {
-    fetch('./data/Best.json', {
+    fetch('/data/Best.json', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [
-        setBestPhoto(data.filter(item => item.type === '베스트')),
-      ]);
+      .then(data => [setBestPhoto(data)]);
   }, []);
 
+  console.log(bestPhoto);
+
   const woman = () => {
-    fetch('./data/Best.json', {
+    fetch('http://10.58.52.163:3010/mainpage/bests/woman', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [
-        setBestPhoto(data.filter(item => item.sex === '여자' && item.id <= 8)),
-      ]);
+      .then(data => [setBestPhoto(data.data)]);
   };
 
   const men = () => {
-    fetch('./data/Best.json', {
+    fetch('http://10.58.52.163:3010/mainpage/bests/man', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [
-        setBestPhoto(data.filter(item => item.sex === '남자' && item.id <= 8)),
-      ]);
+      .then(data => [setBestPhoto(data.data)]);
   };
 
   return (
@@ -52,18 +56,26 @@ const BestProduct = () => {
       </ul>
       <div className="products">
         <ul className="product">
-          {bestPhoto.map(item => (
-            <ProductForm
-              key={item.id}
-              id={item.id}
-              url={item.url}
-              colors={item.colors}
-            />
-          ))}
+          {bestPhoto &&
+            bestPhoto.map(
+              (item, index) =>
+                index > 0 &&
+                index <= 8 && (
+                  <ProductForm
+                    key={index}
+                    id={index}
+                    name={item.name}
+                    image={item.image_url}
+                    price={item.price}
+                    rate={item.discount_rate}
+                    disPrice={item.discounted_price}
+                  />
+                )
+            )}
         </ul>
       </div>
     </div>
   );
 };
-
+// id, disPrice
 export default BestProduct;

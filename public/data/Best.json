@@ -1,114 +1,65 @@
 [
   {
-    "id": 1,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "yellow"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 2,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 3,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 4,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "blue", "yellow", "pink"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 5,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 6,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 7,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow", "blue"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 8,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "신상품",
-    "sex": "남자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   },
   {
-    "id": 9,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "yellow"],
-    "type": "베스트",
-    "sex": "남자"
-  },
-  {
-    "id": 10,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 11,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 12,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "blue", "yellow", "pink"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 13,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 14,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 15,
-    "url": "/images/KakaoTalk_20230303_112109123.jpg",
-    "colors": ["red", "pink", "yellow", "blue"],
-    "type": "베스트",
-    "sex": "여자"
-  },
-  {
-    "id": 16,
-    "url": "/images/KakaoTalk_20230303_112128342.jpg",
-    "colors": ["red", "blue", "yellow"],
-    "type": "베스트",
-    "sex": "여자"
+    "name": "[여성 아우터] A팯딩",
+    "price": "10000.00",
+    "discount_rate": 0,
+    "discounted_price": "10000.0000",
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
   }
 ]

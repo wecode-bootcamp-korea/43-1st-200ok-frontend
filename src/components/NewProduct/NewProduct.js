@@ -6,15 +6,14 @@ const NewProduct = () => {
   const [newPhotoCount, setNewPhotoCount] = useState(0);
 
   useEffect(() => {
-    fetch('./data/best.json', {
+    fetch('http://10.58.52.163:3010/mainpage/news', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => [setNewPhoto(data.filter(item => item.type === '신상품'))]);
+      .then(data => [setNewPhoto(data.data)]);
   }, []);
 
   console.log(newPhoto);
-
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
       setNewPhotoCount(newPhotoCount + 1);
@@ -41,16 +40,22 @@ const NewProduct = () => {
           transition: `1s`,
         }}
       >
-        {newPhoto.map(item => {
-          return (
-            <ProductForm
-              key={item.id}
-              id={item.id}
-              url={item.url}
-              colors={item.colors}
-            />
-          );
-        })}
+        {newPhoto &&
+          newPhoto.map(
+            (item, index) =>
+              index > 0 &&
+              index < 9 && (
+                <ProductForm
+                  key={index}
+                  id={index}
+                  name={item.name}
+                  image={item.image_url}
+                  price={item.price}
+                  rate={item.discount_rate}
+                  disPrice={item.discount_price}
+                />
+              )
+          )}
       </ul>
       <div className="nextButton" onClick={testNext} />
       <div className="preButton" onClick={testPre} />
