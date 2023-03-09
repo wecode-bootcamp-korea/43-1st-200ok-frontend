@@ -8,30 +8,39 @@ const Nav = () => {
     <div className="nav">
       <div className="width">
         <div className="logo">
-          <Link to="/">
-            <img src="/images/logo.png" alt="" />
+          <Link className="logoLink" to="/">
+            <img className="logoPhoto" src="/images/logo.png" alt="logo" />
           </Link>
         </div>
         <div className="topMenu">
-          <ul>
-            {NAVMENU.map(item => (
-              <li key={item.id}>
-                <Link to={`/${item.title}`}>{item.title}</Link>
-                <NavCategory
-                  division={item.division}
-                  category={item.category}
-                  photo={item.photo}
-                />
-              </li>
-            ))}
+          <ul className="topMenuContent">
+            {NAVMENU.map(
+              ({ id, title, division, category, photo, altName }) => (
+                <li className="topMenuContentList" key={id}>
+                  <Link className="topMenuContentLink" to={`/${title}`}>
+                    {title}
+                  </Link>
+                  <NavCategory
+                    division={division}
+                    category={category}
+                    photo={photo}
+                    altName={altName}
+                  />
+                </li>
+              )
+            )}
           </ul>
         </div>
         <div className="topMember">
-          <ul>
-            {NAVMEMBER.map(menubar => (
-              <li key={menubar.id}>
-                <Link to={`/${menubar.title}`}>
-                  <img src={`${menubar.img}`} alt="search" />
+          <ul className="topMemberContent">
+            {NAVMEMBER.map(({ id, title, img, altName }) => (
+              <li className="topMemberContentList" key={id}>
+                <Link to={`/${title}`}>
+                  <img
+                    className="topMemberContentPhoto"
+                    src={`${img}`}
+                    alt={altName}
+                  />
                 </Link>
               </li>
             ))}
@@ -64,6 +73,7 @@ const NAVMENU = [
       '/images/KakaoTalk_20230303_112128342.jpg',
       '/images/KakaoTalk_20230303_112128342.jpg',
     ],
+    altName: ['아우터 사진', '상의 사진', '원피스 사진'],
   },
   {
     id: 3,
@@ -87,8 +97,8 @@ const NAVMENU = [
 ];
 
 const NAVMEMBER = [
-  { id: 1, title: 'login', img: '/images/user.png' },
-  { id: 2, title: 'search', img: '/images/search.png' },
-  { id: 3, title: 'weekly', img: '/images/heart.png' },
-  { id: 4, title: 'cart', img: '/images/cart.png' },
+  { id: 1, title: 'login', img: '/images/user.png', altName: 'loginLogo' },
+  { id: 2, title: 'search', img: '/images/search.png', altName: 'searchLogo' },
+  { id: 3, title: 'weekly', img: '/images/heart.png', altName: 'weeklyLogo' },
+  { id: 4, title: 'cart', img: '/images/cart.png', altName: 'cartLogo' },
 ];
