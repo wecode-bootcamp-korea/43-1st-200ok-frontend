@@ -21,6 +21,7 @@ const AllProductList = () => {
   const duplicationCategoryList = [...new Set(duplicationCategory)];
 
   const onClick = item => {
+    console.log(item);
     fetch('./data/Best.json', {
       method: 'POST',
       headers: {
