@@ -29,35 +29,21 @@ const SignUpTerms = () => {
   const goToSignup = event => {
     event.preventDefault();
     if (checkedState[0]) {
+      fetch('http://10.58.52.165:8007/signUp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          privacyTermEssential: checkedState[0],
+          privacyTermOptional: checkedState[1],
+        }),
+      }).then(response => response.json());
       navigate('/signup');
     } else {
       alert('필수약관에 동의해주셔야 합니다!');
     }
   };
-
-  // const goToMain = event => {
-  //   if (id.includes('@') && pw.length >= 5) {
-  //     fetch('http://10.58.52.56:3000/auth/signin', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json;charset=utf-8',
-  //       },
-  //       body: JSON.stringify({
-  //         email: id,
-  //         password: pw,
-  //       }),
-  //     })
-  //       .then(response => response.json())
-  //       .then(data => {
-  //         if (data.accessToken) {
-  //           localStorage.setItem('token', data.accessToken);
-  //         } else {
-  //           alert('아이디와 비밀번호를 다시 확인해주세요!');
-  //         }
-  //       });
-  //   }
-  // };
-
   // const activeBtn = () => {
   //   return checkedState[0] ? setCheckedState(true) : setCheckedState(false);
   // };
@@ -65,12 +51,7 @@ const SignUpTerms = () => {
   return (
     <div className="signUpTerms">
       <div className="signUpHeader">
-        <p className="signUpTitle">
-          회원가입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👚&nbsp;&nbsp;&nbsp;
-          👕&nbsp;&nbsp;&nbsp; 👖&nbsp;&nbsp;&nbsp; 🩳&nbsp;&nbsp;&nbsp;&nbsp;
-          👗&nbsp;&nbsp;&nbsp; 👔&nbsp;&nbsp;&nbsp;&nbsp; 🎽&nbsp;&nbsp;&nbsp;
-          🧦&nbsp;&nbsp;&nbsp; 🧢{' '}
-        </p>
+        <p className="signUpTitle">회원가입</p>
       </div>
       <div className="termsWrap">
         <div className="allCheck">

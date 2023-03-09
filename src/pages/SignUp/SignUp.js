@@ -18,7 +18,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   //유효성 검사
-  const isValidId = id.length >= 1;
+  const isValidId = id.length >= 5;
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
@@ -48,12 +48,32 @@ const SignUp = () => {
   };
 
   const goToLogin = event => {
-    event.preventDefault();
-    if (activeBtn) {
-      navigate('/login');
-    } else {
-      alert('양식에 맞춰서 다시 입력해주세요.');
-    }
+    fetch('http://10.58.52.165:8007/signUp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: userName,
+        loginId: id,
+        email: email,
+        password: password,
+        passwordCheck: passwordCheck,
+        phoneNumber: phoneNumber,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
+        navigate('/login');
+      });
+
+    // event.preventDefault();
+    // if (activeBtn) {
+    //   navigate('/login');
+    // } else {
+    //   alert('양식에 맞춰서 다시 입력해주세요.');
+    // }
   };
 
   const goToTerms = () => {
