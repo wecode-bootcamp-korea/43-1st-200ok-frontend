@@ -14,10 +14,9 @@ const NewProduct = () => {
   //     .then(data => setNewPhoto(data.data));
   // }, []);
 
+  //연습용
   useEffect(() => {
-    fetch('data/New.json', {
-      method: 'GET',
-    })
+    fetch('data/Man.json')
       .then(res => res.json())
       .then(data => setNewPhoto(data));
   }, []);
@@ -50,25 +49,17 @@ const NewProduct = () => {
           }}
         >
           {newPhoto &&
-            newPhoto.map(
-              ({
-                name,
-                image_url,
-                price,
-                discount_rate,
-                discount_price,
-                index,
-              }) => (
-                <ProductForm
-                  key={index}
-                  name={name}
-                  image={image_url}
-                  price={price}
-                  rate={discount_rate}
-                  disPrice={discount_price}
-                />
-              )
-            )}
+            newPhoto.map((item, index) => (
+              <ProductForm
+                key={index}
+                id={index}
+                name={item.name}
+                image={item.image_url}
+                price={item.price}
+                rate={item.discount_rate}
+                disPrice={item.discounted_price}
+              />
+            ))}
         </ul>
         <div className="nextButton" onClick={testNext} />
         <div className="preButton" onClick={testPre} />

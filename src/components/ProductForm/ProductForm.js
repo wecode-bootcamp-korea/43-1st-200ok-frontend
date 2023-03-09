@@ -4,7 +4,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
   return (
     <li className="productForm">
       <div className="thumb">
-        <span className={id < 5 ? 'num' : 'num new'}>
+        <span className={`num ${!(id < 5) && 'new'}`}>
           {id >= 1 && id < 9 && `${id}`}
         </span>
         <div className="images">
@@ -22,11 +22,17 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
             <span>{name}</span>
             <img className="heart" src="/images/heart.png" alt="heart" />
           </div>
-          <p className="price">
-            {disPrice}
-            <span className="originalPrice">&nbsp;{price}</span>&nbsp;
-            <span className="rateDiscount">{!(rate === 0) && `${rate}%`}</span>
-          </p>
+          {rate ? (
+            <div className="price">
+              {Math.floor(disPrice).toLocaleString()}
+              <span className="originalPrice">
+                {Math.floor(price).toLocaleString()}
+              </span>
+              <span className="rateDiscount">{`${rate}%`}</span>
+            </div>
+          ) : (
+            <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
+          )}
         </div>
       </div>
     </li>
