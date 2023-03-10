@@ -43,6 +43,7 @@
       margin-left: 225px;
       margin-right: 190px;
       padding-top: 55px;
+      color: black;
     }
   }
   .infoFirst {
@@ -56,6 +57,7 @@
     .signUpInfoTitle {
       font-size: 25px;
       margin-left: 5px;
+      color: black;
     }
   }
   .signUpWrap {
@@ -66,11 +68,12 @@
     .infoFirstContent {
       margin-bottom: 50px;
       table {
+        text-align: left;
         @include tableDesign;
         tr {
           th {
             @include thDesign;
-            .infoTitle {
+            .signupInfoTitle {
               padding: 15px 0px 15px 30px;
               font-size: 18px;
               .essentialMark {
@@ -81,22 +84,22 @@
 
           td {
             @include tdDesign;
-            .inputWrap {
+            .signupInputWrap {
               display: flex;
               height: 50px;
               align-items: center;
-              .inputInfo {
+              .signupInputInfo {
                 margin: 0 20px 0 20px;
                 display: inline-block;
                 border-radius: 5px;
               }
             }
 
-            .formCorrect {
+            .signupFormCorrect {
               @include errorMessage;
             }
 
-            .formInCorrect {
+            .signupFormIncorrect {
               @include errorMessage;
               color: #bb2420;
             }
@@ -126,89 +129,3 @@
     }
   }
 }
-
-// th {
-//   color: #333;
-//   background: #f3f3f3;
-//   padding: 10px 0 10px;
-//   border-bottom: 1px solid #ddd;
-//   text-align: left;
-//   width: 300px;
-// }
-
-// td {
-//   border-bottom: 1px solid #ddd;
-//   display: table-cell;
-//   width: 500px;
-// }
-
-// .inputWrap {
-//   display: flex;
-//   height: 50px;
-//   align-items: center;
-// }
-
-// table {
-//   border-collapse: collapse;
-//   border-spacing: 0;
-//   border-top: 1px solid black;
-// }
-
-// .inputInfo {
-//   margin: 0 20px 0 20px;
-//   display: inline-block;
-//   border-radius: 5px;
-// }
-// .idForm {
-//   @include errorMessage;
-//   color: #bb2420;
-// }
-// .idFormCorrect {
-//   @include errorMessage;
-// }
-
-// .signUpYesOrNo {
-//   text-align: center;
-//   margin-top: 30px;
-// }
-
-// .btnCancelSignup {
-//   @include signUpEndButton;
-//   background: #fff;
-// }
-
-// .signUpButtonAction {
-//   @include signUpEndButton;
-//   background: #bb2420;
-//   margin-left: 10px;
-//   color: white;
-// }
-// .signUpButtonInaction {
-//   @include signUpEndButton;
-//   background: #fff;
-//   margin-left: 10px;
-// }
-
-// .signupDoneCheck {
-//   @include errorMessage;
-// }
-
-// .passwordFormCorrect {
-//   @include errorMessage;
-// }
-
-// .passwordForm {
-//   @include errorMessage;
-//   color: #bb2420;
-// }
-
-// .addressForm {
-//   @include errorMessage;
-// }
-// .pwCheckForm {
-//   @include errorMessage;
-//   color: #bb2420;
-// }
-// .pwCheckFormCorrect {
-//   @include errorMessage;
-// }
