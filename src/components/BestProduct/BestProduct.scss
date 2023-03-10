@@ -1,4 +1,4 @@
-.best {
+.bestProduct {
   max-width: 1740px;
   width: 90%;
   overflow: hidden;
@@ -102,6 +102,7 @@
             z-index: 2;
             opacity: 0;
             transition: all 0.4s;
+            height: 613px;
           }
 
           &:hover::after {
@@ -182,42 +183,12 @@
               color: #b9b9b9;
               text-decoration: line-through;
               font-weight: 400;
+              padding: 0 10px;
             }
 
             .rateDiscount {
               font-size: 16px;
               color: #c41e20;
-            }
-          }
-
-          .colors {
-            margin: 15px 0 0;
-            font-size: 0;
-            line-height: normal;
-
-            .color {
-              display: inline-block;
-              width: 14px;
-              height: 14px;
-              margin-right: 3px;
-              border: 1px solid #e6e5e5;
-              box-sizing: border-box;
-
-              &.red {
-                background-color: red;
-              }
-
-              &.blue {
-                background-color: blue;
-              }
-
-              &.yellow {
-                background-color: yellow;
-              }
-
-              &.pink {
-                background-color: pink;
-              }
             }
           }
         }

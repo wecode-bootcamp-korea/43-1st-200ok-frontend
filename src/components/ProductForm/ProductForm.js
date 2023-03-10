@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const ProductForm = ({ id, url, colors }) => {
+const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
+  const [isHeart, setIsHeart] = useState(true);
+
+  const heartColorChange = () => {
+    setIsHeart(!isHeart);
+  };
+
   return (
     <li className="productForm">
       <div className="thumb">
-        <span className={id < 5 ? 'num' : 'num new'}>{`${id}`}</span>
+        <span className={`num ${!(id < 5) && 'new'}`}>
+          {id >= 1 && id < 9 && `${id}`}
+        </span>
         <div className="images">
           <div className="list">
             <img
@@ -15,23 +23,39 @@ const ProductForm = ({ id, url, colors }) => {
             />
           </div>
           <Link href="#!">
-            <img src={`${url}`} alt="" />
+            <img src={image} alt="제품 사진" />
           </Link>
         </div>
         <div className="description">
           <div className="name">
-            <span>파스텔 푸퍼 (SPJPC4TG01 RE)_SPJPD11G01</span>
-            <img className="heart" src="/images/heart.png" alt="heart" />
+            <span>{name}</span>
+            {isHeart ? (
+              <img
+                onClick={heartColorChange}
+                className="heart"
+                src="/images/heart.png"
+                alt="heart"
+              />
+            ) : (
+              <img
+                onClick={heartColorChange}
+                className="heart"
+                src="/images/heartPink.png"
+                alt="heart"
+              />
+            )}
           </div>
-          <p className="price">
-            39,900 <span className="originalPrice">&nbsp;원래 가격</span>&nbsp;
-            <span className="rateDiscount">할인%</span>
-          </p>
-          <div className="colors">
-            {colors.map(item => (
-              <span key={item} className={`color ${item}`} />
-            ))}
-          </div>
+          {rate ? (
+            <div className="price">
+              {Math.floor(disPrice).toLocaleString()}
+              <span className="originalPrice">
+                {Math.floor(price).toLocaleString()}
+              </span>
+              <span className="rateDiscount">{`${rate}%`}</span>
+            </div>
+          ) : (
+            <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
+          )}
         </div>
       </div>
     </li>

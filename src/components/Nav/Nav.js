@@ -1,48 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import NavCategory from '../NavCategory/NavCategory';
-import './Nav.scss';
 
 const Nav = () => {
-  return (
-    <div className="nav">
-      <div className="width">
-        <div className="logo">
-          <Link to="/">
-            <img src="/images/logo.png" alt="" />
-          </Link>
-        </div>
-        <div className="topMenu">
-          <ul>
-            {NAVMENU.map(item => (
-              <li key={item.id}>
-                <Link to={`/${item.title}`}>{item.title}</Link>
-                <NavCategory
-                  division={item.division}
-                  category={item.category}
-                  photo={item.photo}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="topMember">
-          <ul>
-            {NAVMEMBER.map(menubar => (
-              <li key={menubar.id}>
-                <Link to={`/${menubar.title}`}>
-                  <img src={`${menubar.img}`} alt="search" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
+  return <></>;
 };
 
 export default Nav;
+<<<<<<< HEAD
 
 const NAVMENU = [
   { id: 1, title: '베스트' },
@@ -92,3 +55,5 @@ const NAVMEMBER = [
   { id: 3, title: 'weekly', img: '/images/heart.png' },
   { id: 4, title: 'cart', img: '/images/cart.png' },
 ];
+=======
+>>>>>>> a57c69e98c11372e9441eb9210f7c1defd520ce7

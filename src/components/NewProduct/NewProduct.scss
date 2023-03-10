@@ -1,43 +1,35 @@
-.new {
+@mixin Button {
+  position: absolute;
+  top: 52%;
+  width: 50px;
+  height: 50px;
+  margin-top: -30px;
+  background-position: center;
+  background-size: 35px 60px;
+  background-repeat: no-repeat;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.6;
+  z-index: 10;
+}
+
+.newProduct {
   position: relative;
 
   .nextButton {
-    background-image: url('../../../public/images/arrow-right.png');
-    right: 1.1%;
-    top: 46%;
-    background-size: 35px 60px;
-    margin-top: -30px;
-    outline: none;
-    opacity: 0.6;
+    @include Button;
     left: auto;
-    z-index: 10;
-    cursor: pointer;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-position: center;
+    right: 1.1%;
+    background-image: url('../../../public/images/arrow-right.png');
   }
 
   .preButton {
-    background-image: url('../../../public/images/arrow-left.png');
+    @include Button;
     left: 1.1%;
-    top: 46%;
-    background-size: 35px 60px;
-    margin-top: -30px;
-    outline: none;
-    opacity: 0.6;
-    right: auto;
-    z-index: 10;
-    cursor: pointer;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url('../../../public/images/arrow-left.png');
   }
 
-  .newProduct {
+  .newProducts {
     max-width: 1920px;
     width: 90%;
     overflow: hidden;
@@ -169,38 +161,12 @@
                 color: #b9b9b9;
                 text-decoration: line-through;
                 font-weight: 400;
+                padding: 0 10px;
               }
 
               .rateDiscount {
                 font-size: 16px;
                 color: #c41e20;
-              }
-            }
-
-            .colors {
-              margin: 15px 0 0;
-              font-size: 0;
-              line-height: normal;
-
-              .color {
-                display: inline-block;
-                width: 14px;
-                height: 14px;
-                margin-right: 3px;
-                border: 1px solid #e6e5e5;
-                box-sizing: border-box;
-                &.red {
-                  background-color: red;
-                }
-                &.blue {
-                  background-color: blue;
-                }
-                &.yellow {
-                  background-color: yellow;
-                }
-                &.pink {
-                  background-color: pink;
-                }
               }
             }
           }
