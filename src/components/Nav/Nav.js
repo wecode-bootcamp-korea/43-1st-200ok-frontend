@@ -17,7 +17,7 @@ const Nav = () => {
             {NAVMENU.map(
               ({ id, title, division, category, photo, altName }) => (
                 <li className="topMenuContentList" key={id}>
-                  <Link className="topMenuContentLink" to="/AllProductList">
+                  <Link className="topMenuContentLink" to="/allProductList">
                     {title}
                   </Link>
                   <NavCategory

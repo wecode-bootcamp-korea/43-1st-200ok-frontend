@@ -89,6 +89,7 @@
         .images {
           position: relative;
           cursor: pointer;
+          display: block;
 
           &::after {
             content: '';

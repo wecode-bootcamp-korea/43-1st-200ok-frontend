@@ -13,7 +13,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
         <span className={`num ${!(id < 5) && 'new'}`}>
           {id >= 1 && id < 9 && `${id}`}
         </span>
-        <div className="images">
+        <Link to="/detailproduct" className="images">
           <div className="list">
             <img
               onClick={() => console.log('zzz')}
@@ -22,10 +22,8 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
               alt="menu"
             />
           </div>
-          <Link to="/detailproduct">
-            <img src={image} alt="제품 사진" />
-          </Link>
-        </div>
+          <img src={image} alt="제품 사진" />
+        </Link>
         <div className="description">
           <div className="name">
             <span>{name}</span>
@@ -41,7 +39,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
                 onClick={heartColorChange}
                 className="heart"
                 src="/images/heartPink.png"
-                alt="heartPink"
+                alt="heart"
               />
             )}
           </div>
