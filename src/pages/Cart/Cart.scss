@@ -32,6 +32,8 @@
 .cardHeader {
   position: relative;
   padding: 20px;
+  justify-content: space-between;
+  display: flex;
 }
 .cartAllCheckBox {
   transform: scale(1.5);
@@ -40,6 +42,11 @@
 .cartAllCheck {
   font-size: 18px;
   margin-left: 10px;
+}
+.cartAllDelete {
+  font-size: 15px;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
 }
 .cartProductInfo {
 }
@@ -91,7 +98,6 @@
     margin-right: 30px;
   }
   .productDetail {
-    border-right: 1px solid #ddd;
     height: 130px;
     vertical-align: middle;
     display: flex;
@@ -100,7 +106,15 @@
   }
   .productPrice {
     margin-right: 30px;
-    margin-left: 50px;
+    margin-left: 70px;
+    padding-left: 50px;
+    border-left: 1px solid #ddd;
+
+    height: 130px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .productPriceTxt {
       font-family: 'KimjungchulGothic-Bold';
       font-size: 20px;
