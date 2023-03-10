@@ -7,6 +7,7 @@ import SignUp from './pages/SiginUp/SiginUp';
 import LostAccounts from './pages/LostAccounts/LostAccount';
 import AllProductList from './pages/AllProductList/AllProductList';
 import DetailProduct from './pages/DetailProduct/DetailProduct';
+import Cart from './pages/Cart/Cart';
 import Footer from './components/Footer/Footer';
 
 const Router = () => {
@@ -20,6 +21,7 @@ const Router = () => {
         <Route path="/lostAccounts" element={<LostAccounts />} />
         <Route path="/allproductlist" element={<AllProductList />} />
         <Route path="/detailproduct" element={<DetailProduct />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>
