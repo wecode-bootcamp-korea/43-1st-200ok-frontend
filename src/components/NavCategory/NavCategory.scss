@@ -1,12 +1,12 @@
-li:hover .navCateGory {
+.topMenuContentList:hover .navCateGory {
   display: block;
 }
 
-li .navCateGory {
+.topMenuContentList .navCateGory {
   display: none;
 }
 
-li .navCateGoryInner {
+.topMenuContentList .navCateGoryInner {
   position: fixed;
   background-color: white;
   left: 0%;
@@ -17,25 +17,24 @@ li .navCateGoryInner {
   box-shadow: 0 480px 0 rgba(0, 0, 0, 0.5);
   min-height: 480px;
 
-  li:first-child {
+  .topMenuContentList:first-child {
     margin-left: 0;
   }
 
-  ul {
+  .navCateGoryList {
     display: inline-block;
     vertical-align: top;
     font-size: 20px;
 
     &:first-child {
       margin: 60px 90px 80px 295px;
-      // padding-right: 19px;
     }
 
     &:nth-child(2) {
       margin: 56px 90px 80px 5px;
-      border-left: 1px solid #6b6969e3;
+      border-left: 1px solid #6b6969;
       padding-left: 48px;
-      color: #6b6969e3;
+      color: #6b6969;
     }
 
     li {
@@ -43,15 +42,20 @@ li .navCateGoryInner {
     }
   }
 
+<<<<<<< HEAD
   .categoryPhoto {
+=======
+  .navCategoryPhoto {
+>>>>>>> 1278ea023b04f15a782f6e5f92295e9e4e59a468
     display: inline-block;
     vertical-align: top;
     margin: 60px 90px 80px 275px;
     width: 34%;
 
-    li {
+    .photoList {
       display: inline;
-      img {
+
+      .photoImg {
         display: inline;
         width: 31%;
         height: 300px;
