@@ -4,8 +4,6 @@ import './DetailProduct.scss';
 const DetailProduct = () => {
   return (
     <div className="detailProduct">
-      <header />
-      <nav />
       <div className="detailProductArea">
         <section className="productInfo">
           <div>
@@ -57,7 +55,6 @@ const DetailProduct = () => {
           </div>
         </aside>
       </div>
-      <footer />
     </div>
   );
 };

@@ -3,24 +3,29 @@ import { useNavigate, Link } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isActive, setIsActive] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+  });
 
   const navigate = useNavigate();
 
-  const isInputLogin = () => {
-    return email.includes('@', 4 && '.com') && password.length >= 5
-      ? setIsActive(true)
-      : setIsActive(false);
+  const checkUserInfo =
+    userInfo.email.includes(('@', 4) && '.com') &&
+    userInfo.password.length >= 5;
+
+  const handleIdInput = e => {
+    setUserInfo({
+      ...userInfo,
+      email: e.target.value,
+    });
   };
 
-  const handleIdInput = event => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordInput = event => {
-    setPassword(event.target.value);
+  const handlePasswordInput = e => {
+    setUserInfo({
+      ...userInfo,
+      password: e.target.value,
+    });
   };
 
   const login = e => {
@@ -30,23 +35,21 @@ const Login = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email: userInfo.email,
+        password: userInfo.password,
       }),
     }) //요청
       .then(response => response.json())
       .then(data => console.log(data));
     //응답
 
-    if (isActive) {
+    if (checkUserInfo) {
       navigate('/');
     }
   };
 
   return (
     <section className="login">
-      <header />
-      <nav />
       <form className="loginForm">
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
@@ -57,14 +60,14 @@ const Login = () => {
             type="text"
             placeholder="이메일을 입력하세요."
             onChange={handleIdInput}
-            onKeyUp={isInputLogin}
+            onKeyUp={checkUserInfo}
           />
           <input
             className="pwInput"
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={handlePasswordInput}
-            onKeyUp={isInputLogin}
+            onKeyUp={checkUserInfo}
           />
           <div className="saveEmail">
             <input type="checkbox" />
@@ -72,9 +75,9 @@ const Login = () => {
           </div>
           <span>
             <button
-              className={isActive ? 'activeButton' : 'unActiveButton'}
+              className={checkUserInfo ? 'activeButton' : 'unActiveButton'}
               type="button"
-              disabled={email === '' || password === '' ? true : false}
+              disabled={userInfo.email === '' || userInfo.password === ''}
               onClick={login}
             >
               로그인 하기

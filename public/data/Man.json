@@ -39,34 +39,39 @@
     "price": "10000.00",
     "discount_rate": 10,
     "discounted_price": "10000.0000",
-    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "color": ["black", "red"]
   },
   {
     "name": "[남성 아우터] A팯딩",
     "price": "10000.00",
     "discount_rate": 20,
     "discounted_price": "10000.0000",
-    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "color": ["black", "red"]
   },
   {
     "name": "[남성 아우터] A팯딩",
     "price": "10000.00",
     "discount_rate": 0,
     "discounted_price": "10000.0000",
-    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "color": ["black", "red"]
   },
   {
     "name": "[남성 아우터] A팯딩",
     "price": "10000.00",
     "discount_rate": 0,
     "discounted_price": "10000.0000",
-    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "color": ["black", "red"]
   },
   {
     "name": "[남성 아우터] A팯딩",
     "price": "10000.00",
     "discount_rate": 0,
     "discounted_price": "10000.0000",
-    "image_url": "/images/KakaoTalk_20230303_112109123.jpg"
+    "image_url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "color": ["black", "red"]
   }
 ]

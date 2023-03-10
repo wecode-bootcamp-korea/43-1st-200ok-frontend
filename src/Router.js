@@ -5,8 +5,9 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SiginUp/SiginUp';
 import LostAccounts from './pages/LostAccounts/LostAccount';
-import Footer from './components/Footer/Footer';
+import AllProductList from './pages/AllProductList/AllProductList';
 import DetailProduct from './pages/DetailProduct/DetailProduct';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/lostAccounts" element={<LostAccounts />} />
+        <Route path="/allproductlist" element={<AllProductList />} />
         <Route path="/detailproduct" element={<DetailProduct />} />
       </Routes>
       <Footer />

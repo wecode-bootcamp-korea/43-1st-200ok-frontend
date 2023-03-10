@@ -1,8 +1,6 @@
 import React from 'react';
-
 import BestProduct from '../../components/BestProduct/BestProduct';
 import NewProduct from '../../components/NewProduct/NewProduct';
-
 import './Main.scss';
 
 const Main = () => {

@@ -56,6 +56,9 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
           ) : (
             <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
           )}
+          <div className="colors">
+            <span className="color" />
+          </div>
         </div>
       </div>
     </li>
