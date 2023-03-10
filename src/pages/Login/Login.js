@@ -81,7 +81,7 @@ const Login = () => {
             </button>
           </span>
           <div>
-            <a className="signUp" href="/signupterms">
+            <a className="signUp" href="/signup">
               회원가입
             </a>
             <a className="lostAccounts" href="/lostAccounts">

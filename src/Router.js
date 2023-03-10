@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
-import SignUp from './pages/SignUp/SiginUp';
+import SignUp from './pages/SiginUp/SiginUp';
 import LostAccounts from './pages/LostAccounts/LostAccouts';
 import Footer from './components/Footer/Footer';
 
