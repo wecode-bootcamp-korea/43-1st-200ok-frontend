@@ -5,7 +5,6 @@ const Nav = () => {
 };
 
 export default Nav;
-<<<<<<< HEAD
 
 const NAVMENU = [
   { id: 1, title: '베스트' },
@@ -55,5 +54,3 @@ const NAVMEMBER = [
   { id: 3, title: 'weekly', img: '/images/heart.png' },
   { id: 4, title: 'cart', img: '/images/cart.png' },
 ];
-=======
->>>>>>> a57c69e98c11372e9441eb9210f7c1defd520ce7
