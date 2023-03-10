@@ -16,7 +16,10 @@
     padding: 0 5%;
 
     .productRoute {
+<<<<<<< HEAD
       font-size: 14px;
+=======
+>>>>>>> 88abbc44e3386854d2a85d73b335fe93e0e47b03
       margin: 20px auto;
       color: #909090;
       overflow: hidden;
@@ -144,7 +147,11 @@
           .images {
             position: relative;
             cursor: pointer;
+<<<<<<< HEAD
             display: block;
+=======
+            display: flex;
+>>>>>>> 88abbc44e3386854d2a85d73b335fe93e0e47b03
 
             &::after {
               content: '';
