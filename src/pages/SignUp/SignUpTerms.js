@@ -1,8 +1,6 @@
 import React from 'react';
 import './SignUpTerms.scss';
 
-signupterms;
-
 // const activeBtn = () => {
 //   return checkedState[0] ? setCheckedState(true) : setCheckedState(false);
 // };
