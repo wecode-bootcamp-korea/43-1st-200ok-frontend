@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
+  const [count, setCount] = useState(1);
+
+  if (count < 1) {
+    setCount(1);
+  } else if (count >= 9) {
+    setCount(prevnumber => prevnumber + 1);
+  }
+
   return (
     <div className="detailProduct">
       <div className="detailProductArea">
@@ -21,10 +29,32 @@ const DetailProduct = () => {
             [램스울100 라운드넥 스웨터 | C,M_SPKWD23U99]
           </div>
           <div className="priceArea">
-            <div className="productPrice">제품 가격 (50,000 원)</div>
-            <div className="productSalePrice">할인 가격 (10% 할인)</div>
+            <div className="priceArea1">제품 가격 :</div>
+            <div className="priceArea2">50,000 원</div>
+            <div className="priceArea3">할인 가격 :</div>
+            <div className="priceArea4">45,000 원 (10%)</div>
           </div>
-          <div className="productCount">(-) 제품 수량 (+)</div>
+          <div className="countInput">
+            <button
+              className="minusButton"
+              type="button"
+              onClick={() => {
+                setCount(count - 1);
+              }}
+            >
+              -1
+            </button>
+            <div className={`productCount${count}`}>제품 수량 : {count}</div>
+            <button
+              className="plusButton"
+              type="button"
+              onClick={() => {
+                setCount(count + 1);
+              }}
+            >
+              +1
+            </button>
+          </div>
           <div className="productColor">
             <p>[Color]</p>
             <button className="productColor1">red</button>
@@ -40,7 +70,7 @@ const DetailProduct = () => {
             <button className="productSize4">110</button>
           </div>
           <div className="sumPrice">
-            <p>[총 제품금액] (100,000 원)</p>
+            <p>총 제품금액 : (100,000 원)</p>
           </div>
           <div className="buttons">
             <button>
