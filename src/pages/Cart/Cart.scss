@@ -66,6 +66,7 @@
 }
 //
 .countInput {
+  display: flex;
 }
 .minusCount {
   border: 1px solid #ddd;
@@ -75,6 +76,7 @@
 }
 .countInputText {
   margin: 0 10px 0 10px;
+  line-height: 22px;
 }
 .plusCount {
   border: 1px solid #ddd;
@@ -116,6 +118,7 @@
     flex-direction: column;
     justify-content: center;
     .productPriceTxt {
+      text-align: center;
       font-family: 'KimjungchulGothic-Bold';
       font-size: 20px;
     }
