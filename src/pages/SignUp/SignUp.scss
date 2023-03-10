@@ -15,37 +15,39 @@
   position: relative;
   min-width: 1000px;
   margin-bottom: 50px;
-}
+  .signUpHeader {
+    margin: 50px;
+    .signUpTitle {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 35px;
+      border-bottom: 1px solid black;
+      margin-left: 225px;
+      margin-right: 190px;
+      padding-top: 55px;
+    }
+  }
+  .infoFirst {
+    width: 800px;
+    margin: 5px auto;
 
-.signUpHeader {
-  margin: 50px;
-
-  .signUpTitle {
-    font-family: 'KimjungchulGothic-Bold';
-    font-size: 35px;
-    border-bottom: 1px solid black;
-    margin-left: 225px;
-    margin-right: 190px;
-    padding-top: 55px;
+    .signUpCircle {
+      width: 20px;
+    }
+    .signUpInfoTitle {
+      font-size: 25px;
+      margin-left: 5px;
+    }
+  }
+  .signUpWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .infoFirstContent {
+      margin-bottom: 50px;
+    }
   }
 }
 
-.infoFirst {
-  width: 800px;
-  margin: 5px auto;
-
-  .signUpCircle {
-    width: 20px;
-  }
-  .signUpInfoTitle {
-    font-size: 25px;
-    margin-left: 5px;
-  }
-}
-
-.infoFirstContent {
-  margin-bottom: 50px;
-}
 .signUpWrap {
   display: flex;
   flex-direction: column;
