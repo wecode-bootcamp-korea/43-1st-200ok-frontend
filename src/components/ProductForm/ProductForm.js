@@ -22,7 +22,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
               alt="menu"
             />
           </div>
-          <Link href="#!">
+          <Link to="/detailproduct">
             <img src={image} alt="제품 사진" />
           </Link>
         </div>

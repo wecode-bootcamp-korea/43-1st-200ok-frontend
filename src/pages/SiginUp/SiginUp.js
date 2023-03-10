@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpTerms from './SignUpTerms';
-import './SiginUP.scss';
+import './SiginUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
