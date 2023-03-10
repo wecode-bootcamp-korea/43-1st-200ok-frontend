@@ -41,7 +41,7 @@ const AllProductList = () => {
       <div className="allProductListWidth">
         <div className="productRoute">
           <ol>
-            <li>Home</li>
+            <li>HOME</li>
             <li>우먼</li>
             <li>아우터</li>
           </ol>
