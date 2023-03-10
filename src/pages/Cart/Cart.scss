@@ -1,16 +1,19 @@
-
 .cart {
   padding: 100px 0 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 1490px;
+  margin: 0 auto;
   .cartHeader {
+    width: 1300px;
     position: relative;
     margin: 0 auto;
 
     .cartPath {
       float: right;
       color: #909090;
+      margin-top: 30px;
       .pathHome {
         &::after {
           content: ' > ';
@@ -23,12 +26,13 @@
       font-family: 'KimjungchulGothic-Bold';
       font-size: 3em;
       text-align: center;
-      padding: 30px 0 10px 0;
+      padding: 50px 0 10px 0;
       border-bottom: 1px solid #5f5f5f;
-      width: 1000px;
+      width: 100%;
     }
   }
   .cartList {
+    padding-top: 20px;
     .listContent {
       .cardHeader {
         position: relative;
@@ -58,7 +62,7 @@
           box-sizing: content-box;
           box-shadow: 0px 3px 9px rgb(0 0 0 / 10%);
           width: 1000px;
-          .ProductInfo {
+          .cartProductInfo {
             display: flex;
             align-items: center;
             padding-bottom: 40px;
@@ -68,17 +72,18 @@
               margin: 0 35px 0 35px;
               accent-color: #bb2420;
             }
-            .productImg {
+            .cartProductImg {
               margin-right: 30px;
+              width: 100px;
             }
-            .productDetail {
+            .cartProductDetail {
               height: 130px;
               vertical-align: middle;
               display: flex;
               flex-direction: column;
               justify-content: center;
             }
-            .productPrice {
+            .cartProductPrice {
               margin-right: 30px;
               margin-left: 70px;
               padding-left: 50px;
@@ -98,13 +103,13 @@
                 text-align: center;
               }
             }
-            .delivery {
+            .cartDelivery {
               margin: 0 30px 0 30px;
               .deliveryTitle {
                 font-family: 'KimjungchulGothic-Bold';
                 font-size: 20px;
               }
-              .deliveryPrice {
+              .cartDeliveryPrice {
                 font-size: 17px;
                 text-align: center;
               }
@@ -120,110 +125,84 @@
       }
     }
   }
-}
-
-.countInput {
-}
-.minusCount {
-  border: 1px solid #ddd;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-}
-.countInputText {
-  margin: 0 10px 0 10px;
-}
-.plusCount {
-  border: 1px solid #ddd;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  font-size: 18px;
-}
-
-.productImg {
-  width: 100px;
-  height: 100%;
-}
-.cartSumBox {
-  width: 1000px;
-  height: 150px;
-  background-color: #f7f7f7;
-  margin-top: 80px;
-  .sumList {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-    .cartChosenPrice {
-      width: 141px;
-      .chosenPriceTitle {
-        padding-left: 10px;
-        align-items: center;
-        font-size: 18px;
+  .cartSumBox {
+    width: 1000px;
+    height: 150px;
+    background-color: #f7f7f7;
+    margin-top: 80px;
+    .sumList {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      .cartChosenPrice {
+        width: 141px;
+        .chosenPriceTitle {
+          padding-left: 10px;
+          align-items: center;
+          font-size: 18px;
+        }
+        .chosenPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+          align-items: center;
+        }
       }
-      .chosenPrice {
-        font-family: 'KimjungchulGothic-Bold';
-        font-size: 30px;
-        align-items: center;
+      .cartListPlus {
+        width: 25px;
+        height: 100%;
+      }
+      .deliveryInSum {
+        padding: 0 30px 0 30px;
+        .payDeliveryTitle {
+          font-size: 18px;
+          text-align: center;
+        }
+        .payDeliveryPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+        }
+      }
+      .cartListPlus {
+        width: 25px;
+        height: 100%;
+      }
+      .cartSumPrice {
+        width: 141px;
+        padding-left: 30px;
+
+        .sumPriceTitle {
+          font-size: 18px;
+          padding-right: 33px;
+          text-align: center;
+          align-items: center;
+        }
+        .cartsumPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+          align-items: center;
+        }
       }
     }
-    .deliveryInSum {
-      padding: 0 30px 0 30px;
-      .payDeliveryTitle {
-        font-size: 18px;
-        text-align: center;
-      }
-      .payDeliveryPrice {
-        font-family: 'KimjungchulGothic-Bold';
-        font-size: 30px;
-      }
+  }
+  .payYesOrNo {
+    margin-top: 50px;
+    .btnCancelPay {
+      border: 1px solid #ccc;
+      background: #fff;
+      min-width: 150px;
+      max-width: 150px;
+      height: 40px;
+      font-size: 17px;
+    }
+    .payButtonAction {
+      border: 1px solid #ccc;
+      background: #fff;
+      min-width: 150px;
+      max-width: 150px;
+      height: 40px;
+      font-size: 17px;
+      margin-left: 10px;
     }
   }
-}
-
-.cartSumPrice {
-  width: 141px;
-  padding-left: 30px;
-
-  .sumPriceTitle {
-    font-size: 18px;
-    padding-right: 33px;
-    text-align: center;
-    align-items: center;
-  }
-  .sumPrice {
-    font-family: 'KimjungchulGothic-Bold';
-    font-size: 30px;
-    align-items: center;
-  }
-}
-.cartListPlus {
-  width: 25px;
-  height: 100%;
-}
-.cartListEqual {
-  width: 25px;
-  height: 100%;
-}
-
-.payYesOrNo {
-  margin-top: 50px;
-}
-.btnCancelPay {
-  border: 1px solid #ccc;
-  background: #fff;
-  min-width: 150px;
-  max-width: 150px;
-  height: 40px;
-  font-size: 17px;
-}
-.payButtonAction {
-  border: 1px solid #ccc;
-  background: #fff;
-  min-width: 150px;
-  max-width: 150px;
-  height: 40px;
-  font-size: 17px;
-  margin-left: 10px;
 }

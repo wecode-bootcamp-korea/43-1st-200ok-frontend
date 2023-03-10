@@ -75,7 +75,7 @@ const Cart = props => {
           </div>
           <div className="cartProductInfo">
             <div className="cartCard">
-              <div className="ProductInfo">
+              <div className="cartProductInfo">
                 <input
                   type="checkbox"
                   class="cartCheckBox"
@@ -83,55 +83,23 @@ const Cart = props => {
                   onChange={() => handleMonoCheck(1)}
                 />
                 <img
-                  className="productImg"
+                  className="cartProductImg"
                   src="images/cartproduct.png"
                   alt="cart.img"
                 />
-                <div className="productDetail">
+                <div className="cartProductDetail">
                   <strong>포켓 트러커 자켓_SPJKD32G08</strong>
                   <p>[옵션: (10)WHITE/M(90)]</p>
                   <p>옵션변경</p>
                 </div>
-                <div className="productPrice">
+                <div className="cartProductPrice">
                   <p className="productPriceTxt">상품금액</p>
                   <p className="productOnePrice">{price} 원</p>
                 </div>
                 <Count count={count} setCount={setCount} />
-                <div className="delivery">
+                <div className="cartDelivery">
                   <p className="deliveryTitle">배송비</p>
-                  <p className="deliveryPrice">무료</p>
-                </div>
-                <div className="cartOneDelete">
-                  <button className="deleteButton" type="reset">
-                    X
-                  </button>
-                </div>
-              </div>
-              <div className="ProductInfo">
-                <input
-                  type="checkbox"
-                  class="cartCheckBox"
-                  checked={checkedState[2]}
-                  onChange={() => handleMonoCheck(2)}
-                />
-                <img
-                  className="productImg"
-                  src="images/cartproduct.png"
-                  alt="cart.img"
-                />
-                <div className="productDetail">
-                  <strong>포켓 트러커 자켓_SPJKD32G08</strong>
-                  <p>[옵션: (10)WHITE/M(90)]</p>
-                  <p>옵션변경</p>
-                </div>
-                <div className="productPrice">
-                  <p className="productPriceTxt">상품금액</p>
-                  <p className="productOnePrice">{price} 원</p>
-                </div>
-                <Count count={count} setCount={setCount} />
-                <div className="delivery">
-                  <p className="deliveryTitle">배송비</p>
-                  <p className="deliveryPrice">무료</p>
+                  <p className="cartDeliveryPrice">무료</p>
                 </div>
                 <div className="cartOneDelete">
                   <button className="deleteButton" type="reset">
@@ -158,7 +126,7 @@ const Cart = props => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="sumPrice">{totalPrice} 원</p>
+            <p className="cartsumPrice">{totalPrice} 원</p>
           </div>
         </div>
       </div>
