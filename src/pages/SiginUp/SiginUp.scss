@@ -43,6 +43,7 @@
       margin-left: 225px;
       margin-right: 190px;
       padding-top: 55px;
+      color: black;
     }
   }
   .infoFirst {
@@ -56,6 +57,7 @@
     .signUpInfoTitle {
       font-size: 25px;
       margin-left: 5px;
+      color: black;
     }
   }
   .signUpWrap {
@@ -66,11 +68,12 @@
     .infoFirstContent {
       margin-bottom: 50px;
       table {
+        text-align: left;
         @include tableDesign;
         tr {
           th {
             @include thDesign;
-            .infoTitle {
+            .signupInfoTitle {
               padding: 15px 0px 15px 30px;
               font-size: 18px;
               .essentialMark {
@@ -81,22 +84,22 @@
 
           td {
             @include tdDesign;
-            .inputWrap {
+            .signupInputWrap {
               display: flex;
               height: 50px;
               align-items: center;
-              .inputInfo {
+              .signupInputInfo {
                 margin: 0 20px 0 20px;
                 display: inline-block;
                 border-radius: 5px;
               }
             }
 
-            .formCorrect {
+            .signupFormCorrect {
               @include errorMessage;
             }
 
-            .formInCorrect {
+            .signupFormIncorrect {
               @include errorMessage;
               color: #bb2420;
             }
