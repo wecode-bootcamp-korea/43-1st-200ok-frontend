@@ -6,20 +6,20 @@ const NewProduct = () => {
   const [newPhotoCount, setNewPhotoCount] = useState(0);
 
   //백엔드 연동
-  useEffect(() => {
-    fetch('http://10.58.52.72:3010/mainpage/news', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => setNewPhoto(data.data));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://10.58.52.72:3010/mainpage/news', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setNewPhoto(data.data));
+  // }, []);
 
   //연습용
-  // useEffect(() => {
-  //   fetch('data/Man.json')
-  //     .then(res => res.json())
-  //     .then(data => setNewPhoto(data));
-  // }, []);
+  useEffect(() => {
+    fetch('data/Man.json')
+      .then(res => res.json())
+      .then(data => setNewPhoto(data));
+  }, []);
 
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {

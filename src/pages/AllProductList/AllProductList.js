@@ -63,21 +63,17 @@ const AllProductList = () => {
           <div className="products">
             <ul className="product">
               {data1 &&
-                data1.map(
-                  (item, index) =>
-                    index > 0 &&
-                    index <= 8 && (
-                      <ProductForm
-                        key={index}
-                        id={index}
-                        name={item.name}
-                        image={item.image_url}
-                        price={item.price}
-                        rate={item.discount_rate}
-                        disPrice={item.discounted_price}
-                      />
-                    )
-                )}
+                data1.map((item, index) => (
+                  <ProductForm
+                    key={index}
+                    id={index}
+                    name={item.name}
+                    image={item.image_url}
+                    price={item.price}
+                    rate={item.discount_rate}
+                    disPrice={item.discounted_price}
+                  />
+                ))}
             </ul>
           </div>
         </div>

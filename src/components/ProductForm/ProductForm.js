@@ -41,7 +41,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
                 onClick={heartColorChange}
                 className="heart"
                 src="/images/heartPink.png"
-                alt="heart"
+                alt="heartPink"
               />
             )}
           </div>
