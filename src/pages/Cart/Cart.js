@@ -93,13 +93,13 @@ const Cart = props => {
                   <p>옵션변경</p>
                 </div>
                 <div className="productPrice">
-                  <li className="productPriceTxt">상품금액</li>
-                  <li className="productOnePrice">{price} 원</li>
+                  <p className="productPriceTxt">상품금액</p>
+                  <p className="productOnePrice">{price} 원</p>
                 </div>
                 <Count count={count} setCount={setCount} />
                 <div className="delivery">
-                  <li className="deliveryTitle">배송비</li>
-                  <li className="deliveryPrice">무료</li>
+                  <p className="deliveryTitle">배송비</p>
+                  <p className="deliveryPrice">무료</p>
                 </div>
                 <div className="cartOneDelete">
                   <button className="deleteButton" type="reset">
@@ -125,13 +125,13 @@ const Cart = props => {
                   <p>옵션변경</p>
                 </div>
                 <div className="productPrice">
-                  <li className="productPriceTxt">상품금액</li>
-                  <li className="productOnePrice">{price} 원</li>
+                  <p className="productPriceTxt">상품금액</p>
+                  <p className="productOnePrice">{price} 원</p>
                 </div>
                 <Count count={count} setCount={setCount} />
                 <div className="delivery">
-                  <li className="deliveryTitle">배송비</li>
-                  <li className="deliveryPrice">무료</li>
+                  <p className="deliveryTitle">배송비</p>
+                  <p className="deliveryPrice">무료</p>
                 </div>
                 <div className="cartOneDelete">
                   <button className="deleteButton" type="reset">
