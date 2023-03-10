@@ -1,42 +1,55 @@
+@mixin errorMessage {
+  margin-left: 22px;
+  font-size: 13px;
+}
+
+@mixin signUpEndButton {
+  border: 1px solid #ccc;
+  min-width: 150px;
+  max-width: 150px;
+  height: 40px;
+  font-size: 17px;
+}
+
 .signUp {
   position: relative;
   min-width: 1000px;
+  margin-bottom: 50px;
 }
 
 .signUpHeader {
   margin: 50px;
 
-  .signUpLogo {
-    width: 150px;
-    margin-left: 150px;
-    padding-top: 7px;
-  }
   .signUpTitle {
     font-family: 'KimjungchulGothic-Bold';
-    margin-left: 10px;
-    margin-top: 30px;
     font-size: 35px;
-  }
-  .signUpLine {
-    margin: 0 150px 0 150px;
+    border-bottom: 1px solid black;
+    margin-left: 225px;
+    margin-right: 190px;
+    padding-top: 55px;
   }
 }
 
+.infoFirst {
+  width: 800px;
+  margin: 5px auto;
+
+  .signUpCircle {
+    width: 20px;
+  }
+  .signUpInfoTitle {
+    font-size: 25px;
+    margin-left: 5px;
+  }
+}
+
+.infoFirstContent {
+  margin-bottom: 50px;
+}
 .signUpWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .infoFirst {
-    margin-bottom: 5px;
-    .signUpCircle {
-      width: 20px;
-    }
-    .signUpInfoTitle {
-      font-size: 25px;
-      margin-left: 5px;
-    }
-  }
 }
 
 th {
@@ -45,23 +58,23 @@ th {
   padding: 10px 0 10px;
   border-bottom: 1px solid #ddd;
   text-align: left;
-  width: 180px;
+  width: 300px;
 }
 
 td {
   border-bottom: 1px solid #ddd;
   display: table-cell;
-  width: 300px;
+  width: 500px;
 }
 
 .inputWrap {
   display: flex;
-  height: 52px;
+  height: 50px;
   align-items: center;
 }
 
 .infoTitle {
-  padding: 20px;
+  padding: 15px 0px 15px 30px;
   font-size: 18px;
 }
 
@@ -76,18 +89,16 @@ table {
   display: inline-block;
   border-radius: 5px;
 }
-
-.btnIdCheck {
-}
-
-.emailForm {
-  margin-left: 22px;
-  font-size: 13px;
+.idForm {
+  @include errorMessage;
   color: #bb2420;
 }
-.passwordForm {
-  margin-left: 22px;
-  font-size: 13px;
+.idFormCorrect {
+  @include errorMessage;
+}
+.emailForm {
+  @include errorMessage;
+  color: #bb2420;
 }
 
 .ns {
@@ -100,68 +111,50 @@ table {
 }
 
 .btnCancelSignup {
-  border: 1px solid #ccc;
+  @include signUpEndButton;
   background: #fff;
-  min-width: 150px;
-  max-width: 150px;
-  height: 40px;
-  font-size: 17px;
 }
 
 .signUpButtonAction {
-  border: 1px solid #ccc;
+  @include signUpEndButton;
   background: #bb2420;
-  min-width: 150px;
-  max-width: 150px;
-  height: 40px;
-  font-size: 17px;
   margin-left: 10px;
   color: white;
 }
 .signUpButtonInaction {
-  border: 1px solid #ccc;
+  @include signUpEndButton;
   background: #fff;
-  min-width: 150px;
-  max-width: 150px;
-  height: 40px;
-  font-size: 17px;
   margin-left: 10px;
 }
 
 .signupDoneCheck {
-  color: black;
+  @include errorMessage;
 }
 
 .emailFormCorrect {
-  color: black;
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
 }
 
 .passwordFormCorrect {
-  color: black;
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
 }
 
 .passwordForm {
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
   color: #bb2420;
 }
 
 .addressForm {
-  color: black;
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
 }
 .pwCheckForm {
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
   color: #bb2420;
 }
 .pwCheckFormCorrect {
-  color: black;
-  margin-left: 22px;
-  font-size: 13px;
+  @include errorMessage;
+}
+
+.dress {
+  width: 30px;
 }

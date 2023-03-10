@@ -1,6 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+<<<<<<< HEAD
 import Main from './pages/Main/Main';
+=======
+
+import Main from './pages/Main/Main';
+
+>>>>>>> 84f73a44464faa63157c933fa3ab453d1942f3ac
 import Login from './pages/Login/Login';
 <<<<<<< HEAD
 <<<<<<< HEAD

@@ -1,100 +1,123 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
+import SignUpTerms from './SignUpTerms';
 
 const SignUp = () => {
-  const [getIsActive, setGetIsActive] = useState(false);
+  // const [getIsActive, setGetIsActive] = useState(false);
   const [inputValue, setInputValue] = useState({
     userName: '',
+    id: '',
     email: '',
     password: '',
     passwordCheck: '',
     phoneNumber: '',
   });
-  const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
+  const { userName, id, email, password, passwordCheck, phoneNumber } =
+    inputValue;
+
+  const navigate = useNavigate();
+
+  const [isAllChecked, setAllChecked] = useState(false);
+  const [checkedState, setCheckedState] = useState(new Array(2).fill(false));
+
+  const handleAllCheck = () => {
+    setAllChecked(prev => !prev);
+    let array = new Array(2).fill(!isAllChecked);
+    setCheckedState(array);
+  };
+  const handleMonoCheck = position => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+    const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
+      if (currentState === true) {
+        return sum + 1;
+      }
+      return sum;
+    }, 0);
+    setAllChecked(checkedLength === updatedCheckedState.length);
+  };
+
+  //유효성 검사
+  const isValidId = id.length >= 5;
+  const isValidEmail = email.includes('@', 4) && email.includes('.com');
+  const isValidPassWord = new RegExp(
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
+  ).test(password);
+  const isValidPasswordcheck = password === passwordCheck;
+  // 가입하기 버튼 활성화
+  const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
+  const isValidSignUp = (checkedState[0] && checkedState[1]) || checkedState[0];
+  const activeBtn =
+    isValidEmail &&
+    isValidInput &&
+    isValidPassWord &&
+    isValidPasswordcheck &&
+    isValidId &&
+    isValidSignUp;
+
   const handleInput = event => {
     const { name, value } = event.target;
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  //유효성 검사
-  const isValidEmail = email.includes('@', 4) && email.includes('.com');
-  const isValidPassWord = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/;
-
-  // const specialLetter = password.search(/[!@#$%]/gi);
-  // const numberList = password.search(/[0-9]/gi);
-  // const isValidPassword =
-  //   password.length >= 8 && specialLetter.length >= 1 && numberList.length >= 1;
-
-  // 가입하기 버튼 활성화
-  // 이름과 핸드폰번호의 value가 1자 이상이 되어야 한다
-  const isValidInput = userName.length >= 1 && phoneNumber.length >= 11;
-
-  // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동한다. 버튼 클릭 이벤트가 발생할때 넣어줄 함수.
-  // const activeButton = () => {
-  //   if (isValidEmail && isValidInput && isValidPassWord) {
-  //     setGetIsActive(true);
-  //   } else {
-  //     alert('양식에 맞춰서 다시 입력해주세요.');
-  //     setGetIsActive(false);
-  //   }
-  // };
-
-  const navigate = useNavigate();
   const goToLogin = event => {
-    event.preventDefault();
-    if (isValidEmail && isValidInput && isValidPassWord) {
-      navigate('/signupterms');
+    if (activeBtn) {
+      fetch('http://10.58.52.165:8007/signUp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          name: userName,
+          loginId: id,
+          email: email,
+          password: password,
+          passwordCheck: passwordCheck,
+          phoneNumber: phoneNumber,
+          privacyTermEssential: checkedState[0],
+          privacyTermOptional: checkedState[1],
+        }),
+      }).then(response => response.json());
+      alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
+      // navigate('/login');
     } else {
       alert('양식에 맞춰서 다시 입력해주세요.');
     }
+
+    // .then(data => {
+    //   alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
+    //   navigate('/login');
+    // });
+
+    // event.preventDefault();
+    // if (activeBtn) {
+    //   navigate('/login');
+    // } else {
+    //   alert('양식에 맞춰서 다시 입력해주세요.');
+    // }
   };
 
-  const activeBtn = () => {
-    return isValidEmail && isValidInput && isValidPassWord
-      ? setGetIsActive(true)
-      : setGetIsActive(false);
+  const goToMain = () => {
+    navigate('/');
   };
-  // 버튼이 비활성화 될 때 버튼을 클릭하면 아래와 같은 경고창이 뜬다.
-
-  // backend 연결 - activeButton 함수 안에 넣기
-  // fetch(``, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json;charset=utf-8',
-  //   },
-  //   body: JSON.stringify({
-  //     name: userName,
-  //     email: email,
-  //     password: password,
-  //     passwordCheck: passwordCheck,
-  //     phoneNumber: phoneNumber,
-  //   }),
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
-  //     navigate('/login');
-  //   });
 
   return (
     <div className="signUp">
       <div className="signUpHeader">
-        <Link to="/">
-          <img className="signUpLogo" src="images/logo.png" alt="signUpLogo" />
-        </Link>
-        <span className="signUpTitle">회원가입</span>
-        <hr className="signUpLine" />
+        <p className="signUpTitle">회원가입</p>
+      </div>
+      <div className="infoFirst">
+        <img
+          className="signUpCircle"
+          src="images/signup-circle.png"
+          alt="signUpCircle"
+        />
+        <span className="signUpInfoTitle">기본정보</span>
       </div>
       <div className="signUpWrap">
-        <div className="infoFirst">
-          <img
-            className="signUpCircle"
-            src="images/signup-circle.png"
-            alt="signUpCircle"
-          />
-          <span className="signUpInfoTitle">기본정보</span>
-        </div>
         <div className="infoFirstContent">
           <table summary="이름, 이메일, 비밀번호, 비밀번호 재입력, 생년월일, 핸드폰번호">
             <tbody>
@@ -119,6 +142,34 @@ const SignUp = () => {
                       onChange={handleInput}
                     />
                   </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div className="infoTitle">
+                    아이디
+                    <span className="ns" title="필수입력">
+                      {' '}
+                      *
+                    </span>
+                  </div>
+                </th>
+                <td>
+                  <div className="inputWrap">
+                    <input
+                      type="text"
+                      className="inputInfo"
+                      title="아이디 입력"
+                      name="id"
+                      value={id}
+                      onChange={handleInput}
+                    />
+                  </div>
+                  {isValidId ? (
+                    <em className="idFormCorrect">올바른 형식입니다.</em>
+                  ) : (
+                    <em className="idForm">5자리 이상</em>
+                  )}
                 </td>
               </tr>
               <tr>
@@ -172,7 +223,7 @@ const SignUp = () => {
                     />
                   </div>
                   <div id="em_pwdValidMsg" />
-                  {isValidPassWord.test(password) ? (
+                  {isValidPassWord ? (
                     <em className="passwordFormCorrect">올바른 형식입니다.</em>
                   ) : (
                     <em className="passwordForm">
@@ -248,7 +299,6 @@ const SignUp = () => {
                       name="phoneNumber"
                       value={phoneNumber}
                       onChange={handleInput}
-                      onKeyUp={activeBtn}
                     />
                   </div>
                   <div id="em_pwdValidMsg2" />
@@ -269,15 +319,22 @@ const SignUp = () => {
             </tbody>
           </table>
         </div>
+        <SignUpTerms
+          handleAllCheck={handleAllCheck}
+          ß
+          handleMonoCheck={handleMonoCheck}
+          isAllChecked={isAllChecked}
+          checkedState={checkedState}
+        />
         <div className="signUpYesOrNo">
-          <button className="btnCancelSignup">
+          <button className="btnCancelSignup" onClick={goToMain}>
             <span>가입취소</span>
           </button>
           <button
             className={
-              getIsActive ? 'signUpButtonAction' : 'signUpButtonInaction'
+              activeBtn ? 'signUpButtonAction' : 'signUpButtonInaction'
             }
-            disabled={!getIsActive}
+            disabled={!activeBtn}
             onClick={goToLogin}
           >
             가입하기
