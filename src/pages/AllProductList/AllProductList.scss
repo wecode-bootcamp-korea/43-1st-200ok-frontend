@@ -16,7 +16,7 @@
     padding: 0 5%;
 
     .productRoute {
-      font-size: 13px;
+      font-size: 14px;
       margin: 20px auto;
       color: #909090;
       overflow: hidden;
@@ -144,6 +144,7 @@
           .images {
             position: relative;
             cursor: pointer;
+            display: block;
 
             &::after {
               content: '';
