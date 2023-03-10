@@ -1,5 +1,5 @@
 .allProductList {
-  padding-top: 92px;
+  padding-top: 100px;
   width: 100%;
   min-width: 1240px;
   position: relative;
@@ -16,7 +16,6 @@
     padding: 0 5%;
 
     .productRoute {
-      font-size: 13px;
       margin: 20px auto;
       color: #909090;
       overflow: hidden;
@@ -144,6 +143,7 @@
           .images {
             position: relative;
             cursor: pointer;
+            display: block;
 
             &::after {
               content: '';
