@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignUp.scss';
 import SignUpTerms from './SignUpTerms';
+import './SiginUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
@@ -123,7 +123,7 @@ const SignUp = () => {
             <tbody>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     이름
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -132,10 +132,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td>
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="이름 입력"
                       name="userName"
                       value={userName}
@@ -146,7 +146,7 @@ const SignUp = () => {
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     아이디
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -155,10 +155,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td>
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="아이디 입력"
                       name="id"
                       value={id}
@@ -166,15 +166,15 @@ const SignUp = () => {
                     />
                   </div>
                   {isValidId ? (
-                    <em className="formCorrect">올바른 형식입니다.</em>
+                    <em className="signupFormCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="formInCorrect">5자리 이상</em>
+                    <em className="signupFormIncorrect">5자리 이상</em>
                   )}
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     이메일
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -183,10 +183,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td id="td_webId">
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="이메일 입력"
                       name="email"
                       value={email}
@@ -195,15 +195,17 @@ const SignUp = () => {
                     />
                   </div>
                   {isValidEmail ? (
-                    <em className="formCorrect">올바른 형식입니다.</em>
+                    <em className="signupFormCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="formInCorrect">양식에 맞춰 입력해주세요.</em>
+                    <em className="signupFormIncorrect">
+                      양식에 맞춰 입력해주세요.
+                    </em>
                   )}
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     비밀번호
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -212,10 +214,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td id="td_webId">
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="password"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="비밀번호 입력"
                       name="password"
                       value={password}
@@ -224,9 +226,9 @@ const SignUp = () => {
                   </div>
                   <div id="em_pwdValidMsg" />
                   {isValidPassWord ? (
-                    <em className="formCorrect">올바른 형식입니다.</em>
+                    <em className="signupFormCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="formInCorrect">
+                    <em className="signupFormIncorrect">
                       영문/숫자/특수문자 조합으로 8자리 이상
                     </em>
                   )}
@@ -234,7 +236,7 @@ const SignUp = () => {
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     비밀번호 재입력
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -243,10 +245,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td id="td_confirmPassword">
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="password"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="비밀번호 재입력"
                       name="passwordCheck"
                       value={passwordCheck}
@@ -255,21 +257,25 @@ const SignUp = () => {
                   </div>
                   <div id="em_pwdValidMsg2" />
                   {password === passwordCheck ? (
-                    <em className="formCorrect">비밀번호가 일치합니다.</em>
+                    <em className="signupFormCorrect">
+                      비밀번호가 일치합니다.
+                    </em>
                   ) : (
-                    <em className="formInCorrect">동일한 비밀번호를 입력</em>
+                    <em className="signupFormIncorrect">
+                      동일한 비밀번호를 입력
+                    </em>
                   )}
                 </td>
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">생년월일</div>
+                  <div className="signupInfoTitle">생년월일</div>
                 </th>
                 <td id="td_confirmPassword">
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="생년월일"
                       placeholder="   예 : 1900/01/01"
                     />
@@ -279,7 +285,7 @@ const SignUp = () => {
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">
+                  <div className="signupInfoTitle">
                     핸드폰번호
                     <span className="essentialMark" title="필수입력">
                       {' '}
@@ -288,10 +294,10 @@ const SignUp = () => {
                   </div>
                 </th>
                 <td id="td_confirmPassword">
-                  <div className="inputWrap">
+                  <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="inputInfo"
+                      className="signupInputInfo"
                       title="핸드폰번호"
                       placeholder="   예 : 01012345678"
                       name="phoneNumber"
@@ -304,14 +310,20 @@ const SignUp = () => {
               </tr>
               <tr>
                 <th scope="row">
-                  <div className="infoTitle">주소</div>
+                  <div className="signupInfoTitle">주소</div>
                 </th>
                 <td id="td_confirmPassword">
-                  <div className="inputWrap">
-                    <input type="text" className="inputInfo" title="주소" />
+                  <div className="signupInputWrap">
+                    <input
+                      type="text"
+                      className="signupInputInfo"
+                      title="주소"
+                    />
                   </div>
                   <div id="em_pwdValidMsg" />
-                  <em className="formCorrect">도로명 주소를 입력해주세요.</em>
+                  <em className="signupFormCorrect">
+                    도로명 주소를 입력해주세요.
+                  </em>
                 </td>
               </tr>
             </tbody>
