@@ -125,7 +125,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     이름
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -148,7 +148,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     아이디
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -166,9 +166,9 @@ const SignUp = () => {
                     />
                   </div>
                   {isValidId ? (
-                    <em className="idFormCorrect">올바른 형식입니다.</em>
+                    <em className="formCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="idForm">5자리 이상</em>
+                    <em className="formInCorrect">5자리 이상</em>
                   )}
                 </td>
               </tr>
@@ -176,7 +176,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     이메일
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -195,9 +195,9 @@ const SignUp = () => {
                     />
                   </div>
                   {isValidEmail ? (
-                    <em className="emailFormCorrect">올바른 형식입니다.</em>
+                    <em className="formCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="emailForm">양식에 맞춰 입력해주세요.</em>
+                    <em className="formInCorrect">양식에 맞춰 입력해주세요.</em>
                   )}
                 </td>
               </tr>
@@ -205,7 +205,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     비밀번호
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -224,9 +224,9 @@ const SignUp = () => {
                   </div>
                   <div id="em_pwdValidMsg" />
                   {isValidPassWord ? (
-                    <em className="passwordFormCorrect">올바른 형식입니다.</em>
+                    <em className="formCorrect">올바른 형식입니다.</em>
                   ) : (
-                    <em className="passwordForm">
+                    <em className="formInCorrect">
                       영문/숫자/특수문자 조합으로 8자리 이상
                     </em>
                   )}
@@ -236,7 +236,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     비밀번호 재입력
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -255,11 +255,9 @@ const SignUp = () => {
                   </div>
                   <div id="em_pwdValidMsg2" />
                   {password === passwordCheck ? (
-                    <em className="pwCheckFormCorrect">
-                      비밀번호가 일치합니다.
-                    </em>
+                    <em className="formCorrect">비밀번호가 일치합니다.</em>
                   ) : (
-                    <em className="pwCheckForm">동일한 비밀번호를 입력</em>
+                    <em className="formInCorrect">동일한 비밀번호를 입력</em>
                   )}
                 </td>
               </tr>
@@ -283,7 +281,7 @@ const SignUp = () => {
                 <th scope="row">
                   <div className="infoTitle">
                     핸드폰번호
-                    <span className="ns" title="필수입력">
+                    <span className="essentialMark" title="필수입력">
                       {' '}
                       *
                     </span>
@@ -313,7 +311,7 @@ const SignUp = () => {
                     <input type="text" className="inputInfo" title="주소" />
                   </div>
                   <div id="em_pwdValidMsg" />
-                  <em className="addressForm">도로명 주소를 입력해주세요.</em>
+                  <em className="formCorrect">도로명 주소를 입력해주세요.</em>
                 </td>
               </tr>
             </tbody>
