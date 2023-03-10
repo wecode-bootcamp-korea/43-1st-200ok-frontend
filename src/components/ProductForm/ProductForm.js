@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
+  const [isHeart, setIsHeart] = useState(true);
+
+  const heartColorChange = () => {
+    setIsHeart(!isHeart);
+  };
+
   return (
     <li className="productForm">
       <div className="thumb">
@@ -20,7 +26,21 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
         <div className="description">
           <div className="name">
             <span>{name}</span>
-            <img className="heart" src="/images/heart.png" alt="heart" />
+            {isHeart ? (
+              <img
+                onClick={heartColorChange}
+                className="heart"
+                src="/images/heart.png"
+                alt="heart"
+              />
+            ) : (
+              <img
+                onClick={heartColorChange}
+                className="heart"
+                src="/images/heartPink.png"
+                alt="heart"
+              />
+            )}
           </div>
           {rate ? (
             <div className="price">

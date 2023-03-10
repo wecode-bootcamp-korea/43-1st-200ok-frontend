@@ -7,7 +7,7 @@ const NewProduct = () => {
 
   //백엔드 연동
   // useEffect(() => {
-  //   fetch('http://10.58.52.163:3010/mainpage/news', {
+  //   fetch('http://10.58.52.72:3010/mainpage/news', {
   //     method: 'GET',
   //   })
   //     .then(res => res.json())
