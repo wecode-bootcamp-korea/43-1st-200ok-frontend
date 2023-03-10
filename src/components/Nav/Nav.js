@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import NavCategory from '../NavCategory/NavCategory';
+import './Nav.scss';
 
 const Nav = () => {
   return (
