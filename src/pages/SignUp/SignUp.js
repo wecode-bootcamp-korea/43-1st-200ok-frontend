@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpTerms from './SignUpTerms';
-import './SiginUp.scss';
+import './SignUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
@@ -65,7 +65,7 @@ const SignUp = () => {
 
   const goToLogin = event => {
     if (activeBtn) {
-      fetch('http://10.58.52.165:8007/signUp', {
+      fetch('http://10.58.52.124:8007/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
