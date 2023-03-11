@@ -8,9 +8,7 @@ const BestProduct = () => {
 
   //백앤드 주소
   // useEffect(() => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/man', {
-  //     method: 'GET',
-  //   })
+  //   fetch('http://10.58.52.72:3010/mainpage/bests/man')
   //     .then(res => res.json())
   //     .then(data => [setBestPhoto(data.data)]);
   // }, []);
@@ -29,13 +27,13 @@ const BestProduct = () => {
 
   // 연습용
   useEffect(() => {
-    fetch('./data/man.json')
+    fetch('./data/Man.json')
       .then(res => res.json())
       .then(data => setBestPhoto(data));
   }, []);
 
   const woman = () => {
-    fetch('data/Woman.json')
+    fetch('data/Man.json')
       .then(res => res.json())
       .then(data => setBestPhoto(data));
   };

@@ -13,7 +13,7 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
         <span className={`num ${!(id < 5) && 'new'}`}>
           {id >= 1 && id < 9 && `${id}`}
         </span>
-        <Link to="/detailproduct" className="images">
+        <Link key={id} to={`/detailproduct/${id}`} className="images">
           <div className="list">
             <img
               onClick={() => console.log('zzz')}

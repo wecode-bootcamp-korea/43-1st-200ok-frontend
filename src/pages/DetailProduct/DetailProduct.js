@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
   const [count, setCount] = useState(1);
-
+  const [user, setUser] = useState();
   // if (count < 1) {
   //   setCount(1);
   // } else if (count >= 9) {
   //   setCount(prevnumber => prevnumber + 1);
   // }
+
+  const params = useParams();
+
+  useEffect(() => {
+    fetch(`./data/Man.json/${params.index}`)
+      .then(res => res.json())
+      .then(data => setUser(data));
+  }, [params.index]);
+  console.log(params.index);
+  console.log(user);
 
   return (
     <div className="detailProduct">
