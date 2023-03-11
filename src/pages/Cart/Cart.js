@@ -1,33 +1,20 @@
-import React, { useState } from 'react';
-import './Cart.scss';
-import Count from '../../components/Count/Count';
+import React, { useEffect, useState } from 'react';
 import CartList from '../../components/CartList/CartList';
+import './Cart.scss';
 
-const Cart = props => {
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState('5000');
-  const totalPrice = price * count;
+const Cart = x => {
+  useEffect(() => {
+    fetch('/data/Cart.json')
+      .then(res => res.json())
+      .then(data => setCart(data));
+  }, []);
+  const [cart, setCart] = useState([]);
   const [isAllChecked, setAllChecked] = useState(false);
-  const [checkedState, setCheckedState] = useState(new Array(2).fill(false));
-  const [saveOrder, setSaveOrder] = useState([]);
-  const [productList, setProductList] = useState([]);
+  const [checkedState, setCheckedState] = useState(
+    new Array(cart.length).fill(false)
+  );
 
-  const handleDeleteSelected = () => {
-    const selectedProductIds = isAllChecked;
-    setProductList(prevProducts =>
-      prevProducts.filter(
-        product => !selectedProductIds.includes(product.cartId)
-      )
-    );
-    setAllChecked([]);
-  };
-
-  const handleAllCheck = () => {
-    setAllChecked(prev => !prev);
-    let array = new Array(2).fill(!isAllChecked);
-    setCheckedState(array);
-  };
-
+  // console.log(x);
   const handleMonoCheck = position => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -42,12 +29,10 @@ const Cart = props => {
     setAllChecked(checkedLength === updatedCheckedState.length);
   };
 
-  const deleteProduct = item => {
-    setSaveOrder(
-      saveOrder.filter(item => {
-        return item.id !== item.id;
-      })
-    );
+  const handleAllCheck = () => {
+    setAllChecked(prev => !prev);
+    let array = new Array(cart.length).fill(!isAllChecked);
+    setCheckedState(array);
   };
   return (
     <div className="cart">
@@ -75,38 +60,17 @@ const Cart = props => {
           </div>
           <div className="cartProductInfo">
             <div className="cartCard">
-              <div className="cartProductInfo">
-                <input
-                  type="checkbox"
-                  class="cartCheckBox"
-                  checked={checkedState[1]}
-                  onChange={() => handleMonoCheck(1)}
+              {cart.map(({ price, id, title }) => (
+                <CartList
+                  key={id}
+                  price={price}
+                  id={id}
+                  title={title}
+                  cart={Cart}
+                  checkedState={checkedState}
+                  handleMonoCheck={handleMonoCheck}
                 />
-                <img
-                  className="cartProductImg"
-                  src="images/cartproduct.png"
-                  alt="cart.img"
-                />
-                <div className="cartProductDetail">
-                  <strong>포켓 트러커 자켓_SPJKD32G08</strong>
-                  <p>[옵션: (10)WHITE/M(90)]</p>
-                  <p>옵션변경</p>
-                </div>
-                <div className="cartProductPrice">
-                  <p className="productPriceTxt">상품금액</p>
-                  <p className="productOnePrice">{price} 원</p>
-                </div>
-                <Count count={count} setCount={setCount} />
-                <div className="cartDelivery">
-                  <p className="deliveryTitle">배송비</p>
-                  <p className="cartDeliveryPrice">무료</p>
-                </div>
-                <div className="cartOneDelete">
-                  <button className="deleteButton" type="reset">
-                    X
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -116,7 +80,7 @@ const Cart = props => {
         <div className="sumList">
           <div className="cartChosenPrice">
             <p className="chosenPriceTitle">총 상품금액</p>
-            <p className="chosenPrice">{totalPrice} 원</p>
+            <p className="chosenPrice">원</p>
           </div>
           <img className="cartListPlus" src="images/plus.png" alt="plus" />
           <div className="deliveryInSum">
@@ -126,7 +90,7 @@ const Cart = props => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartsumPrice">{totalPrice} 원</p>
+            <p className="cartsumPrice"> 원</p>
           </div>
         </div>
       </div>
@@ -166,26 +130,3 @@ export default Cart;
 //   setNumberComments(numberComments - 1);
 //   return item.up === true ? setNumberLike(numberlike - 1) : '';
 // };
-
-const PRODUCT_LIST = [
-  {
-    id: 1,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 2,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 3,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 4,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-];
