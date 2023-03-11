@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CartList from '../../components/CartList/CartList';
+import Count from '../../components/Count/Count';
 import './Cart.scss';
 
 const Cart = x => {
@@ -13,7 +14,6 @@ const Cart = x => {
   const [checkedState, setCheckedState] = useState(
     new Array(cart.length).fill(false)
   );
-
   // console.log(x);
   const handleMonoCheck = position => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -34,6 +34,17 @@ const Cart = x => {
     let array = new Array(cart.length).fill(!isAllChecked);
     setCheckedState(array);
   };
+
+  //선택된 상품 총 결제금액
+  const selectedItems = [];
+  cart.forEach((item, index) => {
+    if (checkedState[index]) {
+      selectedItems.push(item.price);
+    }
+  });
+
+  const totalPrice = selectedItems.reduce((acc, curr) => acc + curr, 0);
+
   return (
     <div className="cart">
       <div className="cartHeader">
@@ -80,7 +91,7 @@ const Cart = x => {
         <div className="sumList">
           <div className="cartChosenPrice">
             <p className="chosenPriceTitle">총 상품금액</p>
-            <p className="chosenPrice">원</p>
+            <p className="chosenPrice">{totalPrice.toLocaleString()}원</p>
           </div>
           <img className="cartListPlus" src="images/plus.png" alt="plus" />
           <div className="deliveryInSum">
@@ -90,7 +101,7 @@ const Cart = x => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartsumPrice"> 원</p>
+            <p className="cartSumPrice"> {totalPrice.toLocaleString()} 원</p>
           </div>
         </div>
       </div>
