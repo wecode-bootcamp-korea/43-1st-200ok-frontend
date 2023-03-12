@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useNavigate } from 'react';
 import CartList from '../../components/CartList/CartList';
 import Count from '../../components/Count/Count';
 import './Cart.scss';
 
 const Cart = x => {
-  useEffect(() => {
-    fetch('/data/Cart.json')
-      .then(res => res.json())
-      .then(data => setCart(data));
-  }, []);
-  const [cart, setCart] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [isAllChecked, setAllChecked] = useState(false);
   const [checkedState, setCheckedState] = useState(
-    new Array(cart.length).fill(false)
+    new Array(productList.length).fill(false)
   );
-  // console.log(x);
+
+  const isCheckedBtnAll = productList.length === isAllChecked.length;
+  useEffect(() => {
+    fetch('/data/Cart.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => setProductList(...productList, data.cartData.cartItems));
+  }, []);
+
+  const navigate = useNavigate();
+  const deleteProduct = 
+
   const handleMonoCheck = position => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -43,7 +54,10 @@ const Cart = x => {
     }
   });
 
-  const totalPrice = selectedItems.reduce((acc, curr) => acc + curr, 0);
+  const totalPrice = cart.reduce(
+    (acc, curr) => acc + curr.quantity * curr.productTotalPrice,
+    0
+  );
 
   return (
     <div className="cart">
