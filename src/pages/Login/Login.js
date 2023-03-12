@@ -10,9 +10,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const checkUserInfo =
-    userInfo.email.includes(('@', 4) && '.com') &&
-    userInfo.password.length >= 5;
+  const idCondition = userInfo.email.includes(('@', 4) && '.com');
+  const pwCondition = userInfo.password.length >= 5;
 
   const handleIdInput = e => {
     setUserInfo({
@@ -30,28 +29,28 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
-
-    fetch('', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({
-        email: userInfo.email,
-        password: userInfo.password,
-      }),
-    }) //요청
-      .then(response => response.json())
-      .then(data => console.log(data));
-    //응답
-
-    if (checkUserInfo) {
-      navigate('/');
+    if (idCondition && pwCondition) {
+      fetch('http://10.58.52.159:8007/users/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({
+          email: userInfo.email,
+          password: userInfo.password,
+        }),
+      })
+        .then(response => response.json())
+        .then(data =>
+          data.message
+            ? alert(data.message)
+            : (localStorage.setItem('token', data.accessToken),
+              alert('로그인 성공'),
+              navigate('/'))
+        );
     }
   };
 
   return (
     <section className="login">
-      <header />
-      <nav />
       <form className="loginForm">
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
@@ -62,14 +61,12 @@ const Login = () => {
             type="text"
             placeholder="이메일을 입력하세요."
             onChange={handleIdInput}
-            onKeyUp={checkUserInfo}
           />
           <input
             className="pwInput"
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={handlePasswordInput}
-            onKeyUp={checkUserInfo}
           />
           <div className="saveEmail">
             <input type="checkbox" />
@@ -77,7 +74,9 @@ const Login = () => {
           </div>
           <span>
             <button
-              className={checkUserInfo ? 'activeButton' : 'unActiveButton'}
+              className={
+                idCondition && pwCondition ? 'activeButton' : 'unActiveButton'
+              }
               type="button"
               disabled={userInfo.email === '' || userInfo.password === ''}
               onClick={login}
