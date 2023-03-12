@@ -12,11 +12,11 @@
     .mainImg {
       display: flex;
       overflow: hidden;
-      margin-bottom: 70px;
 
       img {
-        height: 845px;
+        height: 1000px;
         min-width: 100%;
+        object-fit: contain;
       }
     }
   }

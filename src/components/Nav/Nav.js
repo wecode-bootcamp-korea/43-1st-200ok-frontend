@@ -44,6 +44,13 @@ const Nav = () => {
                 </Link>
               </li>
             ))}
+            <button
+              onClick={() => (
+                localStorage.removeItem('token'), alert('로그아웃 되셨습니다.')
+              )}
+            >
+              로그아웃
+            </button>
           </ul>
         </div>
       </div>

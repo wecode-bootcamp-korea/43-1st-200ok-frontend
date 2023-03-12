@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
   const [count, setCount] = useState(1);
   const [user, setUser] = useState();
+
   // if (count < 1) {
   //   setCount(1);
   // } else if (count >= 9) {
@@ -13,14 +14,19 @@ const DetailProduct = () => {
   // }
 
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`./data/Man.json/${params.index}`)
       .then(res => res.json())
       .then(data => setUser(data));
   }, [params.index]);
-  console.log(params.index);
-  console.log(user);
+
+  const token = localStorage.getItem('token');
+
+  const oderValidation = () => {
+    token ? alert('구매완료') : navigate('/login');
+  };
 
   return (
     <div className="detailProduct">
@@ -93,7 +99,9 @@ const DetailProduct = () => {
             />
           </button>
           <button className="cartButton">장바구니 담기</button>
-          <button className="orderButton">주문하기</button>
+          <button className="orderButton" onClick={oderValidation}>
+            주문하기
+          </button>
         </div>
       </aside>
     </div>

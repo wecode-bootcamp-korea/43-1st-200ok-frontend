@@ -30,21 +30,21 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
-
-    fetch('', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({
-        email: userInfo.email,
-        password: userInfo.password,
-      }),
-    }) //요청
-      .then(response => response.json())
-      .then(data => console.log(data));
-    //응답
-
     if (checkUserInfo) {
-      navigate('/');
+      fetch('http://10.58.52.159:8007/users/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({
+          email: userInfo.email,
+          password: userInfo.password,
+        }),
+      })
+        .then(response => response.json())
+        .then(data =>
+          data.message
+            ? alert(data.message)
+            : (localStorage.setItem('token', data.accessToken), navigate('/'))
+        );
     }
   };
 

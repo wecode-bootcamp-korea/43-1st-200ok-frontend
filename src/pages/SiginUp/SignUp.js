@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpTerms from './SignUpTerms';
-import './SiginUp.scss';
+import './SignUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
@@ -46,7 +46,7 @@ const SignUp = () => {
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
   ).test(password);
-  const isValidPasswordcheck = password === passwordCheck;
+  const isValidPasswordCheck = password === passwordCheck;
   // 가입하기 버튼 활성화
   const isValidInput = userName.length >= 1 && phoneNumber.length >= 9;
   const isValidSignUp = (checkedState[0] && checkedState[1]) || checkedState[0];
@@ -54,7 +54,7 @@ const SignUp = () => {
     isValidEmail &&
     isValidInput &&
     isValidPassWord &&
-    isValidPasswordcheck &&
+    isValidPasswordCheck &&
     isValidId &&
     isValidSignUp;
 
@@ -65,7 +65,7 @@ const SignUp = () => {
 
   const goToLogin = event => {
     if (activeBtn) {
-      fetch('http://10.58.52.165:8007/signUp', {
+      fetch('http://10.58.52.159:8007/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -82,7 +82,7 @@ const SignUp = () => {
         }),
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
-      // navigate('/login');
+      navigate('/login');
     } else {
       alert('양식에 맞춰서 다시 입력해주세요.');
     }
