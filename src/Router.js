@@ -4,7 +4,6 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import LostAccounts from './pages/LostAccounts/LostAccounts';
-import DetailProduct from './pages/DetailProduct/DetailProduct';
 
 const Router = () => {
   return (
@@ -14,7 +13,6 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/lostAccounts" element={<LostAccounts />} />
-        <Route path="/detailProduct" element={<DetailProduct />} />
       </Routes>
     </BrowserRouter>
   );
