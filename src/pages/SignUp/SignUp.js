@@ -82,7 +82,7 @@ const SignUp = () => {
         }),
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
-      // navigate('/login');
+      navigate('/login');
     } else {
       alert('양식에 맞춰서 다시 입력해주세요.');
     }
