@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
   const [count, setCount] = useState(1);
   const [user, setUser] = useState();
+  const [isImages, setIsImages] = useState(true);
 
   const params = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`./data/Man.json/${params.index}`)
-      .then(res => res.json())
-      .then(data => setUser(data));
-  }, [params.index]);
-
   const token = localStorage.getItem('token');
+  const colorHeart = 'images/colorheart.png';
 
   const oderValidation = () => {
     if (token) {
@@ -27,17 +22,32 @@ const DetailProduct = () => {
     }
   };
 
+  const onClickWishImg = () => {
+    setTimeout(() => {
+      alert('wish 리스트에 추가하였습니다.');
+    }, 100);
+    return setIsImages(false);
+  };
+
+  const onClickAddCart = () => {
+    if (token) {
+      alert('장바구니에 추가하였습니다.');
+    } else {
+      alert('로그인 해주세요');
+    }
+  };
+
+  useEffect(() => {
+    fetch(`./data/Man.json/${params.index}`)
+      .then(res => res.json())
+      .then(data => setUser(data));
+  }, [params.index]);
+
   return (
     <div className="detailProduct">
       <section className="productInfo">
-        <div>
-          <span>
-            <img
-              className="productImg"
-              src="/images/ziozia_sample.jpg"
-              alt="제품 이미지"
-            />
-          </span>
+        <div className="imgWrapper">
+          <img src="/images/ziozia_sample.jpg" alt="제품 이미지" />
         </div>
       </section>
       <aside className="infoArea">
@@ -61,7 +71,7 @@ const DetailProduct = () => {
             -1
           </button> */}
           {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
-          <Count count={count} setCount={setCount} />
+          {/* <Count count={count} setCount={setCount} /> */}
           {/* <button
             className="plusButton"
             type="button"
@@ -93,11 +103,14 @@ const DetailProduct = () => {
           <button>
             <img
               className="wishImg"
-              src="/images/heart.png"
+              src={isImages ? 'images/heart.png' : `${colorHeart}`}
               alt="wish 이미지"
+              onClick={onClickWishImg}
             />
           </button>
-          <button className="cartButton">장바구니 담기</button>
+          <button className="cartButton" onClick={onClickAddCart}>
+            장바구니 담기
+          </button>
           <button className="orderButton" onClick={oderValidation}>
             주문하기
           </button>
