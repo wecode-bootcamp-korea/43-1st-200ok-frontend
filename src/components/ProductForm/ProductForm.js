@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
+const ProductForm = ({
+  name,
+  id,
+  image,
+  price,
+  rate,
+  disPrice,
+  gender,
+  status,
+}) => {
   const [isHeart, setIsHeart] = useState(true);
 
   const heartColorChange = () => {
     setIsHeart(!isHeart);
   };
-
   return (
     <li className="productForm">
       <div className="thumb">
         <span className={`num ${!(id < 5) && 'new'}`}>
           {id >= 1 && id < 9 && `${id}`}
         </span>
-        <Link key={id} to={`/detailproduct/${id}`} className="images">
+        <Link
+          key={id}
+          to={`/detailproduct/${id}`}
+          state={{ gender: gender, status: status }}
+          className="images"
+        >
           <div className="list">
             <img
               onClick={() => console.log('zzz')}

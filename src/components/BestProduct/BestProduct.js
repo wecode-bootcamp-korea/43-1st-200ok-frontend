@@ -4,44 +4,34 @@ import './BestProduct.scss';
 
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
-  console.log(bestPhoto);
+  const [gender, setGender] = useState('male');
+  const status = 'best';
 
-  //백앤드 주소
-  // useEffect(() => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/man')
-  //     .then(res => res.json())
-  //     .then(data => [setBestPhoto(data.data)]);
-  // }, []);
-
-  // const woman = () => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/woman')
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data.data));
-  // };
-
-  // const men = () => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/man')
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data.data));
-  // };
-
-  // 연습용
+  //백 연동 용
   useEffect(() => {
-    fetch('./data/Man.json')
+    fetch(
+      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
+    )
       .then(res => res.json())
       .then(data => setBestPhoto(data));
   }, []);
 
   const woman = () => {
-    fetch('data/Man.json')
+    fetch(
+      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
+    )
       .then(res => res.json())
       .then(data => setBestPhoto(data));
+    setGender('male');
   };
 
-  const men = () => {
-    fetch('data/Man.json')
+  const man = () => {
+    fetch(
+      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
+    )
       .then(res => res.json())
       .then(data => setBestPhoto(data));
+    setGender('female');
   };
 
   return (
@@ -54,7 +44,7 @@ const BestProduct = () => {
           </button>
         </li>
         <li>
-          <button type="button" onClick={men}>
+          <button type="button" onClick={man}>
             맨
           </button>
         </li>
@@ -74,6 +64,8 @@ const BestProduct = () => {
                     price={item.price}
                     rate={item.discount_rate}
                     disPrice={item.discounted_price}
+                    gender={gender}
+                    status={status}
                   />
                 )
             )}

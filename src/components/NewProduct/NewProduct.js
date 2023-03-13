@@ -4,11 +4,15 @@ import './NewProduct.scss';
 const NewProduct = () => {
   const [newPhoto, setNewPhoto] = useState([]);
   const [newPhotoCount, setNewPhotoCount] = useState(0);
+  const gender = 'male&&man';
+  const status = 'new';
 
   //백엔드 연동
   // useEffect(() => {
-  //   fetch('http://10.58.52.72:3010/mainpage/news')
-  //     .then(res => res.json())
+  //   fetch(
+  //     `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
+  //   )
+  //     .then(response => response.json())
   //     .then(data => setNewPhoto(data.data));
   // }, []);
 
@@ -56,6 +60,8 @@ const NewProduct = () => {
                 price={item.price}
                 rate={item.discount_rate}
                 disPrice={item.discounted_price}
+                gender={gender}
+                status={status}
               />
             ))}
         </ul>

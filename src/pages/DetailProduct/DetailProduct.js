@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { useNavigate, useParams } from 'react-router-dom';
 import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
@@ -8,9 +9,16 @@ const DetailProduct = () => {
   const [user, setUser] = useState();
   const params = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    fetch(`./data/Man.json/${params.index}`)
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    fetch(
+      `http://10.58.52.75:3010/products/status?gender=${location.state.gender}&status=${location.state.status}${params.index}`
+    )
       .then(res => res.json())
       .then(data => setUser(data));
   }, [params.index]);
