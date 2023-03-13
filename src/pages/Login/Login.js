@@ -27,6 +27,12 @@ const Login = () => {
     });
   };
 
+  const handleOnKeyPress = e => {
+    if (e.key === 'Enter') {
+      navigate('/main');
+    }
+  };
+
   const login = e => {
     e.preventDefault();
     if (idCondition && pwCondition) {
@@ -67,6 +73,7 @@ const Login = () => {
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={handlePasswordInput}
+            onKeyPress={handleOnKeyPress}
           />
           <div className="saveEmail">
             <input type="checkbox" />
