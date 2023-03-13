@@ -4,63 +4,43 @@ import './BestProduct.scss';
 
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
+  const [gender, setGender] = useState('female');
+  const status = 'best';
 
-  //백앤드 주소
-  // useEffect(() => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/man', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => [setBestPhoto(data.data)]);
-  // }, []);
-
-  // const woman = () => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/woman')
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data.data));
-  // };
-
-  // const men = () => {
-  //   fetch('http://10.58.52.72:3010/mainpage/bests/man')
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data.data));
-  // };
-
-  // 연습용
+  //백 연동 용
   useEffect(() => {
-    fetch('./data/Woman.json')
+    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
       .then(res => res.json())
-      .then(data => setBestPhoto(data));
-  }, []);
+      .then(data => setBestPhoto(data.data));
+  }, [gender]);
 
   const woman = () => {
-    fetch('data/Woman.json')
-      .then(res => res.json())
-      .then(data => setBestPhoto(data));
+    setGender('female');
   };
 
-  const men = () => {
-    fetch('data/Man.json')
-      .then(res => res.json())
-      .then(data => setBestPhoto(data));
+  const man = () => {
+    setGender('male');
   };
 
-  //setBestPhoto에서 인덱스 번호를 쓰면서 구조 분해 할당을 하고 싶은데 어떻게 해야될지 모르겠습니다.
-  // bestPhoto.map(
-  //   (index,{name,image_url,price,discount_rate,discounted_price}) =>
-  //     index > 0 &&
-  //     index <= 8 && (
-  //       <ProductForm
-  //         key={index}
-  //         id={index}
-  //         name={name}
-  //         image={image_url}
-  //         price={price}
-  //         rate={discount_rate}
-  //         disPrice={discounted_price}
-  //       />
-  //     )
-  // )
+  // useEffect(() => {
+  //   fetch(`/data/Man.json`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  // }, [setGender]);
+
+  // const woman = () => {
+  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  //   setGender('male');
+  // };
+
+  // const man = () => {
+  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  //   setGender('female');
+  // };
 
   return (
     <div className="bestProduct">
@@ -72,7 +52,7 @@ const BestProduct = () => {
           </button>
         </li>
         <li>
-          <button type="button" onClick={men}>
+          <button type="button" onClick={man}>
             맨
           </button>
         </li>
@@ -85,13 +65,15 @@ const BestProduct = () => {
                 index > 0 &&
                 index <= 8 && (
                   <ProductForm
-                    key={index}
-                    id={index}
+                    key={item.id}
+                    id={item.id}
                     name={item.name}
                     image={item.image_url}
                     price={item.price}
                     rate={item.discount_rate}
                     disPrice={item.discounted_price}
+                    gender={gender}
+                    status={status}
                   />
                 )
             )}

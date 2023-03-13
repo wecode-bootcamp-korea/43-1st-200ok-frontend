@@ -1,28 +1,42 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
+const ProductForm = ({
+  name,
+  id,
+  image,
+  price,
+  rate,
+  disPrice,
+  gender,
+  status,
+}) => {
   const [isHeart, setIsHeart] = useState(true);
 
   const heartColorChange = () => {
     setIsHeart(!isHeart);
   };
-
   return (
     <li className="productForm">
       <div className="thumb">
         <span className={`num ${!(id < 5) && 'new'}`}>
           {id >= 1 && id < 9 && `${id}`}
         </span>
-        <div className="images">
+        <Link
+          key={id}
+          to={`/detailproduct/${id}`}
+          state={{ gender: gender, status: status }}
+          className="images"
+        >
           <div className="list">
-            <Link>
-              <img className="menu" src="/images/menu.png" alt="menu" />
-            </Link>
+            <img
+              onClick={() => console.log('zzz')}
+              className="menu"
+              src="/images/menu.png"
+              alt="menu"
+            />
           </div>
-          <Link href="#!">
-            <img src={image} alt="제품 사진" />
-          </Link>
-        </div>
+          <img src={image} alt="제품 사진" />
+        </Link>
         <div className="description">
           <div className="name">
             <span>{name}</span>
@@ -53,6 +67,9 @@ const ProductForm = ({ name, id, image, price, rate, disPrice }) => {
           ) : (
             <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
           )}
+          <div className="colors">
+            <span className="color" />
+          </div>
         </div>
       </div>
     </li>
