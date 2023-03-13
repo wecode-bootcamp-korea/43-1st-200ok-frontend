@@ -92,5 +92,5 @@ const TEAMPHONE = [
   { id: 1, content: '추후 들어갈 예정' },
   { id: 2, content: '추후 들어갈 예정' },
   { id: 3, content: '추후 들어갈 예정' },
-  { id: 3, content: '추후 들어갈 예정' },
+  { id: 4, content: '추후 들어갈 예정' },
 ];

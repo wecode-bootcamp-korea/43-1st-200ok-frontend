@@ -14,15 +14,15 @@ const DetailProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-
+  console.log(params.id);
   useEffect(() => {
     fetch(
-      `http://10.58.52.75:3010/products/status?gender=${location.state.gender}&status=${location.state.status}${params.index}`
+      `http://10.58.52.75:3010/products?gender=${location.state.gender}&status=${location.state.status}&id=${params.id}`
     )
       .then(res => res.json())
-      .then(data => setUser(data));
-  }, [params.index]);
-
+      .then(data => setUser(data.data));
+  }, [params.id]);
+  console.log(user);
   const token = localStorage.getItem('token');
 
   const oderValidation = () => {
@@ -48,9 +48,7 @@ const DetailProduct = () => {
         </div>
       </section>
       <aside className="infoArea">
-        <div className="productName">
-          [램스울100 라운드넥 스웨터 | C,M_SPKWD23U99]
-        </div>
+        <div className="productName">{user && user.name}</div>
         <div className="priceArea">
           <div className="priceArea1">제품 가격 :</div>
           <div className="priceArea2">50,000 원</div>

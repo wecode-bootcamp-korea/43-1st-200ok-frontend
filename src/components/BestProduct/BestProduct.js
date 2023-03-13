@@ -4,41 +4,29 @@ import './BestProduct.scss';
 
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
-  let gender = 'male';
+  const [gender, setGender] = useState('female');
   const status = 'best';
 
   //백 연동 용
   useEffect(() => {
-    fetch(
-      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
-    )
+    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
       .then(res => res.json())
-      .then(data => setBestPhoto(data));
-  }, []);
+      .then(data => setBestPhoto(data.data));
+  }, [setGender]);
 
   const woman = () => {
-    gender = 'male';
-    fetch(
-      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
-    )
-      .then(res => res.json())
-      .then(data => setBestPhoto(data));
+    setGender('female');
   };
 
   const man = () => {
-    gender = 'female';
-    fetch(
-      `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
-    )
-      .then(res => res.json())
-      .then(data => setBestPhoto(data));
+    setGender('male');
   };
 
   // useEffect(() => {
-  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //   fetch(`/data/Man.json`)
   //     .then(res => res.json())
   //     .then(data => setBestPhoto(data));
-  // }, []);
+  // }, [setGender]);
 
   // const woman = () => {
   //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
@@ -77,8 +65,8 @@ const BestProduct = () => {
                 index > 0 &&
                 index <= 8 && (
                   <ProductForm
-                    key={index}
-                    id={index}
+                    key={item.id}
+                    id={item.id}
                     name={item.name}
                     image={item.image_url}
                     price={item.price}

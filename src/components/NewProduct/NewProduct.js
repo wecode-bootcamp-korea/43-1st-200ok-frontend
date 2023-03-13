@@ -4,24 +4,22 @@ import './NewProduct.scss';
 const NewProduct = () => {
   const [newPhoto, setNewPhoto] = useState([]);
   const [newPhotoCount, setNewPhotoCount] = useState(0);
-  const gender = 'male&&man';
+  const gender = 'malefemale';
   const status = 'new';
 
   //백엔드 연동
-  // useEffect(() => {
-  //   fetch(
-  //     `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
-  //   )
-  //     .then(response => response.json())
-  //     .then(data => setNewPhoto(data.data));
-  // }, []);
-
-  //연습용
   useEffect(() => {
-    fetch(`data/Man.json/gender=${gender}&status=${status}`)
-      .then(res => res.json())
-      .then(data => setNewPhoto(data));
+    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
+      .then(response => response.json())
+      .then(data => setNewPhoto(data.data));
   }, []);
+  console.log(newPhoto);
+  //연습용
+  // useEffect(() => {
+  //   fetch('/data/Man.json')
+  //     .then(res => res.json())
+  //     .then(data => setNewPhoto(data));
+  // }, []);
 
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
@@ -53,8 +51,8 @@ const NewProduct = () => {
           {newPhoto &&
             newPhoto.map((item, index) => (
               <ProductForm
-                key={index}
-                id={index}
+                key={item.id}
+                id={item.id}
                 name={item.name}
                 image={item.image_url}
                 price={item.price}
