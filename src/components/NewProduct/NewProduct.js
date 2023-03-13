@@ -49,19 +49,28 @@ const NewProduct = () => {
           }}
         >
           {newPhoto &&
-            newPhoto.map((item, index) => (
-              <ProductForm
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                image={item.image_url}
-                price={item.price}
-                rate={item.discount_rate}
-                disPrice={item.discounted_price}
-                gender={gender}
-                status={status}
-              />
-            ))}
+            newPhoto.map(
+              ({
+                id,
+                name,
+                image_url,
+                price,
+                discount_rate,
+                discounted_price,
+              }) => (
+                <ProductForm
+                  key={id}
+                  id={id}
+                  name={name}
+                  image={image_url}
+                  price={price}
+                  rate={discount_rate}
+                  disPrice={discounted_price}
+                  gender={gender}
+                  status={status}
+                />
+              )
+            )}
         </ul>
         <div className="nextButton" onClick={testNext} />
         <div className="preButton" onClick={testPre} />
@@ -69,3 +78,5 @@ const NewProduct = () => {
     </div>
   );
 };
+
+export default NewProduct;
