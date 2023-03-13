@@ -6,13 +6,6 @@ import './DetailProduct.scss';
 const DetailProduct = () => {
   const [count, setCount] = useState(1);
   const [user, setUser] = useState();
-
-  // if (count < 1) {
-  //   setCount(1);
-  // } else if (count >= 9) {
-  //   setCount(prevnumber => prevnumber + 1);
-  // }
-
   const params = useParams();
   const navigate = useNavigate();
 
