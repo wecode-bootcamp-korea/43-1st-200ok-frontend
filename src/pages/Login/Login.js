@@ -1,4 +1,3 @@
-import { COMPARISON_BINARY_OPERATORS } from '@babel/types';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.scss';
@@ -13,26 +12,23 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const idCondition = userInfo.email.includes(('@', 4) && '.com');
-  const pwCondition = userInfo.password.length >= 5;
+  const idCondition = email.includes(('@', 4) && '.com');
+  const pwCondition = password.length >= 5;
 
   const updateUserInfo = e => {
-    const { name, value } = e.target;
+    const { value, name } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
 
   const goToMain = () => {
-    alert('submitted');
     navigate('/main');
   };
 
   const enterKeyUp = event => {
-    if (idCondition) {
-      if (event.keyCode === 13) {
+    if (idCondition && pwCondition) {
+      if (event.key === 'Enter') {
         goToMain();
       }
-    } else {
-      // alert('이메일 또는 암호를 확인해주세요.');
     }
   };
 
@@ -42,26 +38,17 @@ const Login = () => {
       fetch('http://10.58.52.159:8007/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        body: JSON.stringify(userInfo),
       })
         .then(response => response.json())
         .then(data => {
-          if (!data.message) {
+          if (data.message) {
             alert(data.message);
           } else {
             localStorage.setItem('token', data.accessToken);
             alert('로그인 성공');
             navigate('/');
           }
-
-          // data.message
-          //   ? alert(data.message)
-          //   : (localStorage.setItem('token', data.accessToken),
-          //     alert('로그인 성공'),
-          //     navigate('/'))
         });
     }
   };
@@ -78,6 +65,7 @@ const Login = () => {
             type="text"
             placeholder="이메일을 입력하세요."
             onChange={updateUserInfo}
+            name="email"
           />
           <input
             className="pwInput"
@@ -85,6 +73,7 @@ const Login = () => {
             placeholder="비밀번호를 입력하세요."
             onChange={updateUserInfo}
             onKeyUp={enterKeyUp}
+            name="password"
           />
           <div className="saveEmail">
             <input type="checkbox" />
