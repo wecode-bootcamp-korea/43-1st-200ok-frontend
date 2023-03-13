@@ -5,7 +5,8 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigator = useNavigate();
-  const aaa = () => {
+
+  const logOut = () => {
     const token = localStorage.getItem('token');
     if (token) {
       localStorage.removeItem('token');
@@ -57,7 +58,7 @@ const Nav = () => {
                 </Link>
               </li>
             ))}
-            <button onClick={aaa}>로그아웃</button>
+            <button onClick={logOut}>로그아웃</button>
           </ul>
         </div>
       </div>
