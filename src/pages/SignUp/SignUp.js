@@ -5,7 +5,7 @@ import './SignUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
-  const [emailcheck, setEmailcheck] = useState('');
+  const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
     email: '',
@@ -73,12 +73,12 @@ const SignUp = () => {
     })
       .then(response => response.json())
       .then(data => {
-        setEmailcheck(data.result);
+        setEmailCheck(data.result);
         alert(data.result);
       });
   };
 
-  const emailduplication = emailcheck === '가입가능한 이메일 입니다.';
+  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
 
   const goToLogin = event => {
     if (activeBtn && emailduplication) {
