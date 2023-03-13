@@ -49,7 +49,7 @@ const NewProduct = () => {
           }}
         >
           {newPhoto &&
-            newPhoto.map((item, index) => (
+            newPhoto.map(item => (
               <ProductForm
                 key={item.id}
                 id={item.id}

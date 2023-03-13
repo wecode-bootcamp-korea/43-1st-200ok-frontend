@@ -10,19 +10,19 @@ const ProductForm = ({
   gender,
   status,
   category,
-  index,
+  num,
 }) => {
   const [isHeart, setIsHeart] = useState(true);
 
   const heartColorChange = () => {
     setIsHeart(!isHeart);
   };
-  console.log(index);
+  console.log(num);
   return (
     <li className="productForm">
       <div className="thumb">
-        <span className={`num ${!(index < 5) && 'new'}`}>
-          {index >= 1 && index < 9 && `${id}`}
+        <span className={`num ${!(num < 5) && 'new'}`}>
+          {num >= 1 && num < 9 && `${num}`}
         </span>
         <Link
           key={id}

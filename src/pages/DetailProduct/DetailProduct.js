@@ -47,7 +47,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
+      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));

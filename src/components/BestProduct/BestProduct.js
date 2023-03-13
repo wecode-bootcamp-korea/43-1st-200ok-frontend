@@ -67,7 +67,7 @@ const BestProduct = () => {
                   <ProductForm
                     key={item.id}
                     id={item.id}
-                    index={index}
+                    num={index}
                     name={item.name}
                     image={item.image_url}
                     price={item.price}
