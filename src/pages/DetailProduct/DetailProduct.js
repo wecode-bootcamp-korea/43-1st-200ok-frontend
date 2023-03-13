@@ -16,16 +16,11 @@ const DetailProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+  const [isImages, setIsImages] = useState(true);
 
-  useEffect(() => {
-    fetch(
-      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
-    )
-      .then(res => res.json())
-      .then(data => setUser(data.data));
-  }, [id]);
   const token = localStorage.getItem('token');
-
+  const colorHeart = '/images/colorheart.png';
+  console.log(colorHeart);
   const oderValidation = () => {
     if (token) {
       alert('구매완료');
@@ -34,6 +29,30 @@ const DetailProduct = () => {
       navigate('/login');
     }
   };
+
+  const onClickWishImg = () => {
+    setTimeout(() => {
+      alert('wish 리스트에 추가하였습니다.');
+    }, 100);
+    return setIsImages(false);
+  };
+
+  const onClickAddCart = () => {
+    if (token) {
+      alert('장바구니에 추가하였습니다.');
+    } else {
+      alert('로그인 해주세요');
+    }
+  };
+
+  useEffect(() => {
+    fetch(
+      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
+    )
+      .then(res => res.json())
+      .then(data => setUser(data.data));
+  }, [id]);
+
   console.log(user);
   return (
     <div className="detailProduct">
@@ -78,7 +97,7 @@ const DetailProduct = () => {
             -1
           </button> */}
           {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
-          <Count count={count} setCount={setCount} />
+          {/* <Count count={count} setCount={setCount} /> */}
           {/* <button
             className="plusButton"
             type="button"
@@ -110,11 +129,14 @@ const DetailProduct = () => {
           <button>
             <img
               className="wishImg"
-              src="/images/heart.png"
+              src={isImages ? '/images/heart.png' : `${colorHeart}`}
               alt="wish 이미지"
+              onClick={onClickWishImg}
             />
           </button>
-          <button className="cartButton">장바구니 담기</button>
+          <button className="cartButton" onClick={onClickAddCart}>
+            장바구니 담기
+          </button>
           <button className="orderButton" onClick={oderValidation}>
             주문하기
           </button>
