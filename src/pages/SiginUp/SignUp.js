@@ -65,7 +65,7 @@ const SignUp = () => {
 
   const goToLogin = event => {
     if (activeBtn) {
-      fetch('http://10.58.52.159:8007/users/signup', {
+      fetch('http://10.58.52.227:8007/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
