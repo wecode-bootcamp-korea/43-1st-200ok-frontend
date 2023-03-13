@@ -1,31 +1,22 @@
-import React, { useEffect, useState, useNavigate } from 'react';
-import CartList from '../../components/CartList/CartList';
-import Count from '../../components/Count/Count';
+import React, { useEffect, useState } from 'react';
+import { CartList } from '../../components/CartList/CartList';
 import './Cart.scss';
 
-const Cart = x => {
+const Cart = () => {
   const [productList, setProductList] = useState([]);
   const [isAllChecked, setAllChecked] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [checkedState, setCheckedState] = useState(
     new Array(productList.length).fill(false)
   );
 
-  const isCheckedBtnAll = productList.length === isAllChecked.length;
   useEffect(() => {
-    fetch('/data/Cart.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('token'),
-      },
-    })
+    fetch('/data/Cart.json')
       .then(res => res.json())
-      .then(data => setProductList(...productList, data.cartData.cartItems));
+      .then(data => setProductList(data));
   }, []);
 
-  const navigate = useNavigate();
-  const deleteProduct = 
-
+  //체크박스
   const handleMonoCheck = position => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -42,22 +33,17 @@ const Cart = x => {
 
   const handleAllCheck = () => {
     setAllChecked(prev => !prev);
-    let array = new Array(cart.length).fill(!isAllChecked);
+    let array = new Array(productList.length).fill(!isAllChecked);
     setCheckedState(array);
   };
 
   //선택된 상품 총 결제금액
-  const selectedItems = [];
-  cart.forEach((item, index) => {
-    if (checkedState[index]) {
-      selectedItems.push(item.price);
-    }
-  });
-
-  const totalPrice = cart.reduce(
-    (acc, curr) => acc + curr.quantity * curr.productTotalPrice,
-    0
-  );
+  // const selectedItems = [];
+  // productList.forEach((item, index) => {
+  //   if (checkedState[index]) {
+  //     selectedItems.push(item.price);
+  //   }
+  // });
 
   return (
     <div className="cart">
@@ -85,15 +71,17 @@ const Cart = x => {
           </div>
           <div className="cartProductInfo">
             <div className="cartCard">
-              {cart.map(({ price, id, title }) => (
+              {productList.map(({ price, id, title, stock }) => (
                 <CartList
                   key={id}
-                  price={price}
                   id={id}
                   title={title}
-                  cart={Cart}
+                  price={price}
+                  totalPrice={totalPrice}
+                  setTotalPrice={setTotalPrice}
                   checkedState={checkedState}
                   handleMonoCheck={handleMonoCheck}
+                  stock={stock}
                 />
               ))}
             </div>
@@ -105,7 +93,7 @@ const Cart = x => {
         <div className="sumList">
           <div className="cartChosenPrice">
             <p className="chosenPriceTitle">총 상품금액</p>
-            <p className="chosenPrice">{totalPrice.toLocaleString()}원</p>
+            <p className="chosenPrice">{totalPrice}원</p>
           </div>
           <img className="cartListPlus" src="images/plus.png" alt="plus" />
           <div className="deliveryInSum">
@@ -115,7 +103,7 @@ const Cart = x => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartSumPrice"> {totalPrice.toLocaleString()} 원</p>
+            <p className="cartSumPrice">{productList.productPrice} 원</p>
           </div>
         </div>
       </div>

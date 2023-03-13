@@ -84,9 +84,9 @@
               justify-content: center;
             }
             .cartProductPrice {
-              margin-right: 30px;
-              margin-left: 70px;
-              padding-left: 50px;
+              margin-right: 20px;
+              margin-left: 60px;
+              padding-left: 40px;
               border-left: 1px solid #ddd;
 
               height: 130px;
@@ -104,12 +104,23 @@
               }
             }
             .cartDelivery {
-              margin: 0 30px 0 30px;
+              margin: 0 20px 0 20px;
               .deliveryTitle {
                 font-family: 'KimjungchulGothic-Bold';
                 font-size: 20px;
               }
               .cartDeliveryPrice {
+                font-size: 17px;
+                text-align: center;
+              }
+            }
+            .oneProductSumPrice {
+              margin: 0 20px 0 20px;
+              .oneProductSumPriceTxt {
+                font-family: 'KimjungchulGothic-Bold';
+                font-size: 20px;
+              }
+              .onePrice {
                 font-size: 17px;
                 text-align: center;
               }
