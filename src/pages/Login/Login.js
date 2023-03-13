@@ -8,23 +8,28 @@ const Login = () => {
     password: '',
   });
 
+  const { email, password } = userInfo;
+
   const navigate = useNavigate();
 
-  const idCondition = userInfo.email.includes(('@', 4) && '.com');
-  const pwCondition = userInfo.password.length >= 5;
+  const idCondition = email.includes(('@', 4) && '.com');
+  const pwCondition = password.length >= 5;
 
-  const handleIdInput = e => {
-    setUserInfo({
-      ...userInfo,
-      email: e.target.value,
-    });
+  const updateUserInfo = e => {
+    const { value, name } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const handlePasswordInput = e => {
-    setUserInfo({
-      ...userInfo,
-      password: e.target.value,
-    });
+  const goToMain = () => {
+    navigate('/main');
+  };
+
+  const enterKeyUp = event => {
+    if (idCondition && pwCondition) {
+      if (event.key === 'Enter') {
+        goToMain();
+      }
+    }
   };
 
   const login = e => {
@@ -33,19 +38,18 @@ const Login = () => {
       fetch('http://10.58.52.227:8007/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify({
-          email: userInfo.email,
-          password: userInfo.password,
-        }),
+        body: JSON.stringify(userInfo),
       })
         .then(response => response.json())
-        .then(data =>
-          data.message
-            ? alert(data.message)
-            : (localStorage.setItem('token', data.accessToken),
-              alert('로그인 성공'),
-              navigate('/'))
-        );
+        .then(data => {
+          if (data.message) {
+            alert(data.message);
+          } else {
+            localStorage.setItem('token', data.accessToken);
+            alert('로그인 성공');
+            navigate('/');
+          }
+        });
     }
   };
 
@@ -60,13 +64,16 @@ const Login = () => {
             className="idInput"
             type="text"
             placeholder="이메일을 입력하세요."
-            onChange={handleIdInput}
+            onChange={updateUserInfo}
+            name="email"
           />
           <input
             className="pwInput"
             type="password"
             placeholder="비밀번호를 입력하세요."
-            onChange={handlePasswordInput}
+            onChange={updateUserInfo}
+            onKeyUp={enterKeyUp}
+            name="password"
           />
           <div className="saveEmail">
             <input type="checkbox" />
@@ -78,7 +85,7 @@ const Login = () => {
                 idCondition && pwCondition ? 'activeButton' : 'unActiveButton'
               }
               type="button"
-              disabled={userInfo.email === '' || userInfo.password === ''}
+              disabled={email === '' || password === ''}
               onClick={login}
             >
               로그인 하기
