@@ -4,7 +4,7 @@ import './BestProduct.scss';
 
 const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
-  const [gender, setGender] = useState('male');
+  let gender = 'male';
   const status = 'best';
 
   //백 연동 용
@@ -17,22 +17,42 @@ const BestProduct = () => {
   }, []);
 
   const woman = () => {
+    gender = 'male';
     fetch(
       `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
     )
       .then(res => res.json())
       .then(data => setBestPhoto(data));
-    setGender('male');
   };
 
   const man = () => {
+    gender = 'female';
     fetch(
       `http://10.58.52.75:3010/products/status?gender=${gender}&status=${status}`
     )
       .then(res => res.json())
       .then(data => setBestPhoto(data));
-    setGender('female');
   };
+
+  // useEffect(() => {
+  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  // }, []);
+
+  // const woman = () => {
+  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  //   setGender('male');
+  // };
+
+  // const man = () => {
+  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
+  //     .then(res => res.json())
+  //     .then(data => setBestPhoto(data));
+  //   setGender('female');
+  // };
 
   return (
     <div className="bestProduct">

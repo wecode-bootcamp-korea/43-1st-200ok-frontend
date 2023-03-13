@@ -18,7 +18,7 @@ const NewProduct = () => {
 
   //연습용
   useEffect(() => {
-    fetch('data/Man.json')
+    fetch(`data/Man.json/gender=${gender}&status=${status}`)
       .then(res => res.json())
       .then(data => setNewPhoto(data));
   }, []);
