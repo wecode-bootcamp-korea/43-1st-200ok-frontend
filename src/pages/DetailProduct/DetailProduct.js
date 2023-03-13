@@ -42,6 +42,7 @@ const DetailProduct = () => {
       alert('장바구니에 추가하였습니다.');
     } else {
       alert('로그인 해주세요');
+      navigate('/login');
     }
   };
 
