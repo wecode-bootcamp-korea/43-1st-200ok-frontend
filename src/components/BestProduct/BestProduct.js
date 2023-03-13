@@ -12,7 +12,7 @@ const BestProduct = () => {
     fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));
-  }, [setGender]);
+  }, [gender]);
 
   const woman = () => {
     setGender('female');
