@@ -5,6 +5,7 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigator = useNavigate();
+
   const aaa = () => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -34,10 +35,12 @@ const Nav = () => {
                     {title}
                   </Link>
                   <NavCategory
+                    key={id}
                     division={division}
                     category={category}
                     photo={photo}
                     altName={altName}
+                    title={title}
                   />
                 </li>
               )
@@ -73,15 +76,7 @@ const NAVMENU = [
     id: 2,
     title: '우먼',
     division: ['신상', '베스트', '전체보기'],
-    category: [
-      '아우터',
-      '상의',
-      '하의',
-      '원피스',
-      '액세서리',
-      '이너/언더웨어',
-      '홈웨어/잠옷',
-    ],
+    category: ['아우터', '상의', '하의'],
     photo: [
       '/images/KakaoTalk_20230303_112128342.jpg',
       '/images/KakaoTalk_20230303_112109123.jpg',
@@ -93,14 +88,11 @@ const NAVMENU = [
     id: 3,
     title: '맨',
     division: ['신상', '베스트', '전체보기'],
-    category: [
-      '아우터',
-      '상의',
-      '하의',
-      '원피스',
-      '액세서리',
-      '이너/언더웨어',
-      '홈웨어/잠옷',
+    category: ['아우터', '상의', '하의'],
+    photo: [
+      '/images/KakaoTalk_20230303_112128342.jpg',
+      '/images/KakaoTalk_20230303_112109123.jpg',
+      '/images/KakaoTalk_20230303_112042004.jpg',
     ],
   },
   { id: 4, title: '컬러버레이션' },

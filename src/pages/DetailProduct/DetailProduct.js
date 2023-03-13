@@ -11,7 +11,7 @@ const DetailProduct = () => {
   const params = useParams();
   const { id } = params;
   const location = useLocation();
-  const { gender, status } = location.state;
+  const { gender, status, category } = location.state;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,7 +24,6 @@ const DetailProduct = () => {
       .then(res => res.json())
       .then(data => setUser(data.data));
   }, [id]);
-
   const token = localStorage.getItem('token');
 
   const oderValidation = () => {
@@ -35,7 +34,7 @@ const DetailProduct = () => {
       navigate('/login');
     }
   };
-
+  console.log(user);
   return (
     <div className="detailProduct">
       <section className="productInfo">
@@ -43,19 +42,30 @@ const DetailProduct = () => {
           <span>
             <img
               className="productImg"
-              src="/images/ziozia_sample.jpg"
+              src={user && user[0].image_url}
               alt="제품 이미지"
             />
           </span>
         </div>
       </section>
       <aside className="infoArea">
-        <div className="productName">{user.name}</div>
+        <div className="productName">{user && user[0].name}</div>
         <div className="priceArea">
-          <div className="priceArea1">제품 가격 :</div>
-          <div className="priceArea2">50,000 원</div>
-          <div className="priceArea3">할인 가격 :</div>
-          <div className="priceArea4">45,000 원 (10%)</div>
+          {user && user[0].discount_rate ? (
+            <>
+              <div className="priceArea1">제품 가격 :</div>
+              <div className="priceArea2">
+                {Math.floor(user[0].price).toLocaleString()} 원
+              </div>
+              <div className="priceArea3">할인 가격 :</div>
+              <div className="priceArea4">
+                {Math.floor(user[0].discounted_price).toLocaleString()} 원 (
+                {user && user[0].discount_rate}%)
+              </div>
+            </>
+          ) : (
+            ''
+          )}
         </div>
         <div className="countInput">
           {/* <button

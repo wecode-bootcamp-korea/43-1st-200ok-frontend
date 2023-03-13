@@ -41,7 +41,7 @@ const BestProduct = () => {
   //     .then(data => setBestPhoto(data));
   //   setGender('female');
   // };
-
+  console.log(bestPhoto);
   return (
     <div className="bestProduct">
       <p className="header">위클리 베스트</p>
@@ -67,6 +67,7 @@ const BestProduct = () => {
                   <ProductForm
                     key={item.id}
                     id={item.id}
+                    index={index}
                     name={item.name}
                     image={item.image_url}
                     price={item.price}

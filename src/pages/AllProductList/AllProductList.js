@@ -5,10 +5,14 @@ import './AllProductList.scss';
 const AllProductList = () => {
   const [data1, setData1] = useState([]);
 
+  // useEffect(() => {
+  //   fetch('http://10.58.52.75:3010/products?gender=male&category=top')
+  //     .then(res => res.json())
+  //     .then(data => [setData1(data)]);
+  // }, [data1]);
+
   useEffect(() => {
-    fetch('./data/Man.json', {
-      method: 'GET',
-    })
+    fetch('/data/Man.json')
       .then(res => res.json())
       .then(data => [setData1(data)]);
   }, []);
