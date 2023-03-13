@@ -47,7 +47,11 @@ const DetailProduct = () => {
     <div className="detailProduct">
       <section className="productInfo">
         <div className="imgWrapper">
-          <img src="/images/ziozia_sample.jpg" alt="제품 이미지" />
+          <img
+            className="productImg"
+            src="/images/ziozia_sample.jpg"
+            alt="제품 이미지"
+          />
         </div>
       </section>
       <aside className="infoArea">
