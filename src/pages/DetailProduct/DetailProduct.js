@@ -47,7 +47,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
+      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
@@ -57,14 +57,12 @@ const DetailProduct = () => {
   return (
     <div className="detailProduct">
       <section className="productInfo">
-        <div>
-          <span>
-            <img
-              className="productImg"
-              src={user && user[0].image_url}
-              alt="제품 이미지"
-            />
-          </span>
+        <div className="imgWrapper">
+          <img
+            className="productImg"
+            src={user && user[0].image_url}
+            alt="제품 이미지"
+          />
         </div>
       </section>
       <aside className="infoArea">
