@@ -5,16 +5,15 @@ import './SignUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
+  const [emailcheck, setEmailcheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
-    id: '',
     email: '',
     password: '',
     passwordCheck: '',
     phoneNumber: '',
   });
-  const { userName, id, email, password, passwordCheck, phoneNumber } =
-    inputValue;
+  const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
 
   const navigate = useNavigate();
 
@@ -63,7 +62,7 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch('http://10.58.52.159:8007/users/signup', {
+    fetch('http://10.58.52.227:8007/invalidEmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -73,20 +72,23 @@ const SignUp = () => {
       }),
     })
       .then(response => response.json())
-      .then(data => console.log(data));
-    alert('중복된 아이디 입니다.');
+      .then(data => {
+        setEmailcheck(data.result);
+        alert(data.result);
+      });
   };
 
+  const emailduplication = emailcheck === '가입가능한 이메일 입니다.';
+
   const goToLogin = event => {
-    if (activeBtn) {
-      fetch('http://10.58.52.159:8007/users/signup', {
+    if (activeBtn && emailduplication) {
+      fetch('http://10.58.52.227:8007/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify({
           name: userName,
-          loginId: id,
           email: email,
           password: password,
           passwordCheck: passwordCheck,
@@ -97,8 +99,8 @@ const SignUp = () => {
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
       navigate('/login');
-    } else {
-      alert('양식에 맞춰서 다시 입력해주세요.');
+    } else if (activeBtn && !emailduplication) {
+      alert('아이디 중복을 확인해 주세요');
     }
 
     // .then(data => {
