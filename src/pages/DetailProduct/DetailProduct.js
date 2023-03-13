@@ -25,7 +25,12 @@ const DetailProduct = () => {
   const token = localStorage.getItem('token');
 
   const oderValidation = () => {
-    token ? alert('구매완료') : navigate('/login');
+    if (token) {
+      alert('구매완료');
+    } else {
+      alert('로그인 해주세요');
+      navigate('/login');
+    }
   };
 
   return (

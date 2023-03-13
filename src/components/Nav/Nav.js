@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavCategory from '../NavCategory/NavCategory';
 import './Nav.scss';
 
 const Nav = () => {
+  const navigator = useNavigate();
+  const aaa = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      localStorage.removeItem('token');
+      alert('로그아웃 되었습니다.');
+      navigator('/');
+    } else if (!token) {
+      alert('로그인 해주세요');
+      navigator('/login');
+    }
+  };
+
   return (
     <div className="nav">
       <div className="width">
@@ -44,13 +57,7 @@ const Nav = () => {
                 </Link>
               </li>
             ))}
-            <button
-              onClick={() => (
-                localStorage.removeItem('token'), alert('로그아웃 되셨습니다.')
-              )}
-            >
-              로그아웃
-            </button>
+            <button onClick={aaa}>로그아웃</button>
           </ul>
         </div>
       </div>

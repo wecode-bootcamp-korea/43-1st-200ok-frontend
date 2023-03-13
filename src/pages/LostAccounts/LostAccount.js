@@ -6,7 +6,7 @@ const LostAccounts = () => {
     <section className="LostAccounts">
       <form className="lostAccountsForm">
         <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
-        <div className="emailInput">
+        <div className="idInput">
           <input type="text" placeholder="이메일을 입력하세요." />
         </div>
         <button className="submit" type="button" disabled>
