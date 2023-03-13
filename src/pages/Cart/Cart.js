@@ -2,40 +2,54 @@ import React, { useEffect, useState } from 'react';
 import { CartList } from '../../components/CartList/CartList';
 import './Cart.scss';
 
-const Cart = () => {
+const Cart = x => {
   const [productList, setProductList] = useState([]);
-  const [isAllChecked, setAllChecked] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [checkedState, setCheckedState] = useState(
-    new Array(productList.length).fill(false)
-  );
 
-  useEffect(() => {
-    fetch('/data/Cart.json')
-      .then(res => res.json())
-      .then(data => setProductList(data));
-  }, []);
-
-  //체크박스
-  const handleMonoCheck = position => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
-    const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
-      if (currentState === true) {
-        return sum + 1;
+  // const initData = productList.map(raw=>(raw, checkedState: false));
+  // const [isAllChecked, setAllChecked] = useState(false);
+  // const [checkedState, setCheckedState] = useState(
+  //   new Array(productList.length).fill(false)
+  // );
+  const toggleSelected = e => {
+    const { name } = e.target;
+    const next = productList.map(product => {
+      if (product.id.toString() === name) {
+        return { ...product, checkedState: !product.checkedState };
       }
-      return sum;
-    }, 0);
-    setAllChecked(checkedLength === updatedCheckedState.length);
+      return product;
+    });
+    setProductList(next);
   };
 
-  const handleAllCheck = () => {
-    setAllChecked(prev => !prev);
-    let array = new Array(productList.length).fill(!isAllChecked);
-    setCheckedState(array);
+  const onClickAllToggleBtn = () => {
+    const isAllChecked = productList.every(({ checkedState }) => checkedState);
+    const next = productList.map(product => ({
+      ...product,
+      checkedState: isAllChecked ? false : true,
+    }));
+    setProductList(next);
   };
+  //체크박스
+  // const handleMonoCheck = position => {
+  //   const updatedCheckedState = checkedState.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setCheckedState(updatedCheckedState);
+  //   const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
+  //     if (currentState === true) {
+  //       return sum + 1;
+  //     }
+  //     return sum;
+  //   }, 0);
+  //   setAllChecked(checkedLength === updatedCheckedState.length);
+  // };
+
+  // const handleAllCheck = () => {
+  //   setAllChecked(prev => !prev);
+  //   let array = new Array(productList.length).fill(!isAllChecked);
+  //   setCheckedState(array);
+  // };
 
   //선택된 상품 총 결제금액
   // const selectedItems = [];
@@ -44,6 +58,14 @@ const Cart = () => {
   //     selectedItems.push(item.price);
   //   }
   // });
+
+  useEffect(() => {
+    fetch('/data/Cart.json')
+      .then(res => res.json())
+      .then(data =>
+        setProductList(data.map(item => ({ ...item, checkedState: false })))
+      );
+  }, []);
 
   return (
     <div className="cart">
@@ -61,8 +83,7 @@ const Cart = () => {
               <input
                 className="cartAllCheckBox"
                 type="checkbox"
-                checked={isAllChecked}
-                onChange={() => handleAllCheck()}
+                onChange={onClickAllToggleBtn}
               />
               <label className="cartAllCheck">전체선택</label>
             </div>
@@ -71,7 +92,7 @@ const Cart = () => {
           </div>
           <div className="cartProductInfo">
             <div className="cartCard">
-              {productList.map(({ price, id, title, stock }) => (
+              {productList.map(({ price, id, title, stock, checkedState }) => (
                 <CartList
                   key={id}
                   id={id}
@@ -79,9 +100,11 @@ const Cart = () => {
                   price={price}
                   totalPrice={totalPrice}
                   setTotalPrice={setTotalPrice}
-                  checkedState={checkedState}
-                  handleMonoCheck={handleMonoCheck}
                   stock={stock}
+                  productList={productList}
+                  setProductList={setProductList}
+                  toggleSelected={toggleSelected}
+                  checkedState={checkedState}
                 />
               ))}
             </div>
@@ -103,7 +126,7 @@ const Cart = () => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartSumPrice">{productList.productPrice} 원</p>
+            <p className="cartFinalSumPrice">{totalPrice}원</p>
           </div>
         </div>
       </div>
@@ -123,12 +146,6 @@ const Cart = () => {
         </button> */}
       </div>
     </div>
-
-    //               {PRODUCT_LIST.map(info => (
-    //                 <div key={info.id} className="ProductList">
-    //                   <div className="cartProductList">
-    //                     <div className="productName">이름 : {info.title}</div>
-    //                     <div className="productPrice">가격 : {info.price}</div>
   );
 };
 

@@ -1,5 +1,5 @@
 .count {
-  margin: 0 20px 0 20px;
+  margin: 0 25px 0 25px;
   .countInput {
     .countButton {
       border: 1px solid #ddd;
@@ -7,11 +7,13 @@
       height: 22px;
       display: inline-block;
       color: black;
-      margin: 0 10px 0 10px;
-      .countInputText {
-        margin: 0 10px 0 10px;
-        font-size: 17px;
-      }
+      margin: 0 5px;
+    }
+    .countInputText {
+      margin: 0 5px;
+      display: inline-block;
+      width: 15px;
+      text-align: center;
     }
   }
 }

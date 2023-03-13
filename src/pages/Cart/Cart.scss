@@ -88,7 +88,6 @@
               margin-left: 60px;
               padding-left: 40px;
               border-left: 1px solid #ddd;
-
               height: 130px;
               vertical-align: middle;
               display: flex;
@@ -96,10 +95,10 @@
               justify-content: center;
               .productPriceTxt {
                 font-family: 'KimjungchulGothic-Bold';
-                font-size: 20px;
+                font-size: 18px;
               }
               .productOnePrice {
-                font-size: 17px;
+                font-size: 16px;
                 text-align: center;
               }
             }
@@ -107,21 +106,21 @@
               margin: 0 20px 0 20px;
               .deliveryTitle {
                 font-family: 'KimjungchulGothic-Bold';
-                font-size: 20px;
+                font-size: 18px;
               }
               .cartDeliveryPrice {
-                font-size: 17px;
+                font-size: 16px;
                 text-align: center;
               }
             }
             .oneProductSumPrice {
-              margin: 0 20px 0 20px;
+              margin: 0 20px 0 30px;
               .oneProductSumPriceTxt {
                 font-family: 'KimjungchulGothic-Bold';
-                font-size: 20px;
+                font-size: 18px;
               }
               .onePrice {
-                font-size: 17px;
+                font-size: 16px;
                 text-align: center;
               }
             }
@@ -149,7 +148,7 @@
       .cartChosenPrice {
         width: 141px;
         .chosenPriceTitle {
-          padding-left: 10px;
+          padding-left: 5px;
           align-items: center;
           font-size: 18px;
         }
@@ -188,7 +187,7 @@
           text-align: center;
           align-items: center;
         }
-        .cartSumPrice {
+        .cartFinalSumPrice {
           font-family: 'KimjungchulGothic-Bold';
           font-size: 30px;
           align-items: center;

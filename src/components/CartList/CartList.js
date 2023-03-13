@@ -5,15 +5,18 @@ export const CartList = ({
   id,
   title,
   price,
-  Cart,
   setTotalPrice,
   productList,
   setProductList,
   checkedState,
-  handleMonoCheck,
+  toggleSelected,
   stock,
 }) => {
   const [count, setCount] = useState(stock);
+
+  const handleDeleteItem = () => {
+    setProductList(productList.filter(item => item.id !== id));
+  };
 
   useEffect(() => {
     setTotalPrice(prev => (prev += price * count));
@@ -22,27 +25,23 @@ export const CartList = ({
   const handlePrice = e => {
     const { name } = e.target;
 
-    if (name === 'plus') {
+    if (name === 'plus' && count < 10) {
       setCount(count + 1);
       setTotalPrice(prev => prev + price);
-    } else {
+    } else if (name === 'minus' && count > 1) {
       setCount(count - 1);
-      if (count > 1) {
-        setTotalPrice(prev => prev - price);
-      }
+      setTotalPrice(prev => prev - price);
     }
   };
 
-  const handleRemoveProduct = () => {
-    setProductList(productList.filter(item => item.id !== id));
-  };
   return (
     <div key={id} className="cartProductInfo">
       <input
         type="checkbox"
         className="cartCheckBox"
-        checked={checkedState[id]}
-        onChange={() => handleMonoCheck[id]}
+        name={id}
+        checked={checkedState}
+        onChange={toggleSelected}
       />
 
       <img
@@ -76,13 +75,13 @@ export const CartList = ({
       </div>
       <div className="oneProductSumPrice">
         <p className="oneProductSumPriceTxt">총 상품금액</p>
-        <p className="onePrice">{price}원</p>
+        <p className="onePrice">{price * count}원</p>
       </div>
       <div className="cartOneDelete">
         <button
           className="deleteButton"
           type="reset"
-          onClick={handleRemoveProduct}
+          onClick={handleDeleteItem}
         >
           X
         </button>
