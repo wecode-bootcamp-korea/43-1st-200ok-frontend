@@ -1,3 +1,4 @@
+import { COMPARISON_BINARY_OPERATORS } from '@babel/types';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.scss';
@@ -8,33 +9,30 @@ const Login = () => {
     password: '',
   });
 
+  const { email, password } = userInfo;
+
   const navigate = useNavigate();
 
   const idCondition = userInfo.email.includes(('@', 4) && '.com');
   const pwCondition = userInfo.password.length >= 5;
 
-  const handleIdInput = e => {
-    setUserInfo({
-      ...userInfo,
-      email: e.target.value,
-    });
+  const updateUserInfo = e => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const handlePasswordInput = e => {
-    setUserInfo({
-      ...userInfo,
-      password: e.target.value,
-    });
-  };
-
-  const onSubmit = () => {
+  const goToMain = () => {
     alert('submitted');
     navigate('/main');
   };
 
-  const onKeyUp = event => {
-    if (event.keyCode === 13) {
-      onSubmit();
+  const enterKeyUp = event => {
+    if (idCondition) {
+      if (event.keyCode === 13) {
+        goToMain();
+      }
+    } else {
+      // alert('이메일 또는 암호를 확인해주세요.');
     }
   };
 
@@ -45,18 +43,26 @@ const Login = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify({
-          email: userInfo.email,
-          password: userInfo.password,
+          email,
+          password,
         }),
       })
         .then(response => response.json())
-        .then(data =>
-          data.message
-            ? alert(data.message)
-            : (localStorage.setItem('token', data.accessToken),
-              alert('로그인 성공'),
-              navigate('/'))
-        );
+        .then(data => {
+          if (!data.message) {
+            alert(data.message);
+          } else {
+            localStorage.setItem('token', data.accessToken);
+            alert('로그인 성공');
+            navigate('/');
+          }
+
+          // data.message
+          //   ? alert(data.message)
+          //   : (localStorage.setItem('token', data.accessToken),
+          //     alert('로그인 성공'),
+          //     navigate('/'))
+        });
     }
   };
 
@@ -71,14 +77,14 @@ const Login = () => {
             className="idInput"
             type="text"
             placeholder="이메일을 입력하세요."
-            onChange={handleIdInput}
+            onChange={updateUserInfo}
           />
           <input
             className="pwInput"
             type="password"
             placeholder="비밀번호를 입력하세요."
-            onChange={handlePasswordInput}
-            onKeyUp={onKeyUp}
+            onChange={updateUserInfo}
+            onKeyUp={enterKeyUp}
           />
           <div className="saveEmail">
             <input type="checkbox" />
@@ -90,7 +96,7 @@ const Login = () => {
                 idCondition && pwCondition ? 'activeButton' : 'unActiveButton'
               }
               type="button"
-              disabled={userInfo.email === '' || userInfo.password === ''}
+              disabled={email === '' || password === ''}
               onClick={login}
             >
               로그인 하기
