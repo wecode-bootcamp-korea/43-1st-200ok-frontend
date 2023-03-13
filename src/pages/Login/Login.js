@@ -27,9 +27,14 @@ const Login = () => {
     });
   };
 
-  const handleOnKeyPress = e => {
-    if (e.key === 'Enter') {
-      navigate('/main');
+  const onSubmit = () => {
+    alert('submitted');
+    navigate('/main');
+  };
+
+  const onKeyUp = event => {
+    if (event.keyCode === 13) {
+      onSubmit();
     }
   };
 
@@ -73,7 +78,7 @@ const Login = () => {
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={handlePasswordInput}
-            onKeyPress={handleOnKeyPress}
+            onKeyUp={onKeyUp}
           />
           <div className="saveEmail">
             <input type="checkbox" />
