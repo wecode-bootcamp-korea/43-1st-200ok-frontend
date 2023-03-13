@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavCategory from '../NavCategory/NavCategory';
 import './Nav.scss';
 
 const Nav = () => {
+  const navigator = useNavigate();
+  const aaa = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      localStorage.removeItem('token');
+      alert('로그아웃 되었습니다.');
+      navigator('/');
+    } else if (!token) {
+      alert('로그인 해주세요');
+      navigator('/login');
+    }
+  };
+
   return (
     <div className="nav">
       <div className="width">
@@ -17,7 +30,7 @@ const Nav = () => {
             {NAVMENU.map(
               ({ id, title, division, category, photo, altName }) => (
                 <li className="topMenuContentList" key={id}>
-                  <Link className="topMenuContentLink" to={`/${title}`}>
+                  <Link className="topMenuContentLink" to="/allProductList">
                     {title}
                   </Link>
                   <NavCategory
@@ -44,6 +57,7 @@ const Nav = () => {
                 </Link>
               </li>
             ))}
+            <button onClick={aaa}>로그아웃</button>
           </ul>
         </div>
       </div>
@@ -70,8 +84,8 @@ const NAVMENU = [
     ],
     photo: [
       '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112128342.jpg',
+      '/images/KakaoTalk_20230303_112109123.jpg',
+      '/images/KakaoTalk_20230303_112042004.jpg',
     ],
     altName: ['아우터 사진', '상의 사진', '원피스 사진'],
   },
@@ -95,7 +109,6 @@ const NAVMENU = [
   { id: 7, title: '런칭 캘린더' },
   { id: 8, title: '리뷰랩' },
 ];
-
 const NAVMEMBER = [
   { id: 1, title: 'login', img: '/images/user.png', altName: 'loginLogo' },
   { id: 2, title: 'search', img: '/images/search.png', altName: 'searchLogo' },
