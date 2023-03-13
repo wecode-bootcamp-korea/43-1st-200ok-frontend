@@ -5,24 +5,26 @@ import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
+  const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const [user, setUser] = useState();
   const params = useParams();
-  const navigate = useNavigate();
+  const { id } = params;
   const location = useLocation();
+  const { gender, status } = location.state;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  console.log(params.id);
+
   useEffect(() => {
     fetch(
-      `http://10.58.52.75:3010/products?gender=${location.state.gender}&status=${location.state.status}&id=${params.id}`
+      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
-  }, [params.id]);
-  console.log(user);
+  }, [id]);
+
   const token = localStorage.getItem('token');
 
   const oderValidation = () => {
@@ -48,7 +50,7 @@ const DetailProduct = () => {
         </div>
       </section>
       <aside className="infoArea">
-        <div className="productName">{user && user.name}</div>
+        <div className="productName">{user.name}</div>
         <div className="priceArea">
           <div className="priceArea1">제품 가격 :</div>
           <div className="priceArea2">50,000 원</div>
