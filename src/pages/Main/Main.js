@@ -7,7 +7,7 @@ const Main = () => {
   const [mainImg, setMainImg] = useState(0);
   const bbb = () => {
     if (mainImg < MAINIMAGES.length - 1 && mainImg >= 0) {
-      setMainImg(mainImg + 1);
+      setMainImg(mainImg => mainImg + 1);
     } else if (mainImg === MAINIMAGES.length - 1) {
       setMainImg(0);
     }
