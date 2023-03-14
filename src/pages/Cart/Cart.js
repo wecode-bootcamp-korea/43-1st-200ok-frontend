@@ -4,15 +4,10 @@ import { CartList } from '../../components/CartList/CartList';
 import EmptyCart from '../../components/CartList/EmptyCart';
 import './Cart.scss';
 
-const Cart = x => {
+const Cart = () => {
   const [productList, setProductList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // const initData = productList.map(raw=>(raw, checkedState: false));
-  // const [isAllChecked, setAllChecked] = useState(false);
-  // const [checkedState, setCheckedState] = useState(
-  //   new Array(productList.length).fill(false)
-  // );
+  const navigate = useNavigate();
 
   const toggleSelected = e => {
     const { name } = e.target;
@@ -22,10 +17,9 @@ const Cart = x => {
       }
       return product;
     });
+    setTotalPrice(totalPrice);
     setProductList(selectedChkBox);
-    console.log(productList.map(item => item.checkedState));
   };
-  productList.map(item => item.checkedState);
 
   const onClickAllToggleBtn = () => {
     const isAllChecked = productList.every(({ checkedState }) => checkedState);
@@ -34,17 +28,22 @@ const Cart = x => {
       checkedState: isAllChecked ? false : true,
     }));
     setProductList(selectedChkBox);
-
-    console.log(selectedChkBox);
   };
 
-  const navigate = useNavigate();
+  const handleAllDelete = () => {
+    const isAllDelete = productList.map(item => item.id);
+    setTotalPrice(0);
+    setProductList(productList.filter(item => item.id === isAllDelete));
+  };
+
   const goToShopping = () => {
     navigate('/');
   };
+
   const goToPay = () => {
     alert('결제완료!!! 고객님의 상품을 안전하게 배송해드리겠습니다♡');
   };
+
   useEffect(() => {
     fetch('/data/Cart.json')
       .then(res => res.json())
@@ -66,15 +65,14 @@ const Cart = x => {
         <div className="listContent">
           <div className="cardHeader">
             <div className="allCheckBox">
-              <input
-                className="cartAllCheckBox"
-                type="checkbox"
-                onChange={onClickAllToggleBtn}
-              />
-              <label className="cartAllCheck">전체선택</label>
+              <button className="cartAllCheckBox" onClick={onClickAllToggleBtn}>
+                전체 선택
+              </button>
             </div>
 
-            <button className="cartAllDelete">선택상품 삭제</button>
+            <button className="cartAllDelete" onClick={handleAllDelete}>
+              전체 삭제
+            </button>
           </div>
           <div className="cartProductInfo">
             {productList.length === 0 ? (
@@ -95,6 +93,7 @@ const Cart = x => {
                       setProductList={setProductList}
                       toggleSelected={toggleSelected}
                       checkedState={checkedState}
+                      cart={Cart}
                     />
                   )
                 )}
