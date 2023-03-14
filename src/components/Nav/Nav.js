@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import NavCategory from '../NavCategory/NavCategory';
 import './Nav.scss';
 
 const Nav = () => {
@@ -37,14 +36,6 @@ const Nav = () => {
                 >
                   {title}
                 </Link>
-                {/* <NavCategory
-                    key={id}
-                    division={division}
-                    category={category}
-                    photo={photo}
-                    altName={altName}
-                    title={title}
-                  /> */}
               </li>
             ))}
           </ul>
@@ -74,14 +65,8 @@ export default Nav;
 
 const NAVMENU = [
   { id: 1, title: '베스트' },
-  {
-    id: 2,
-    title: 'male',
-  },
-  {
-    id: 3,
-    title: 'female',
-  },
+  { id: 2, title: 'male' },
+  { id: 3, title: 'female' },
   { id: 4, title: '컬러버레이션' },
   { id: 5, title: '키즈' },
   { id: 6, title: '커뮤니티' },
