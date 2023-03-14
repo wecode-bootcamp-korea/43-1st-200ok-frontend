@@ -20,14 +20,10 @@ const Login = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const goToMain = () => {
-    navigate('/main');
-  };
-
   const enterKeyUp = event => {
     if (idCondition && pwCondition) {
       if (event.key === 'Enter') {
-        goToMain();
+        login();
       }
     }
   };
@@ -35,10 +31,12 @@ const Login = () => {
   const login = e => {
     e.preventDefault();
     if (idCondition && pwCondition) {
-      fetch('http://10.58.52.159:8007/users/signin', {
+      fetch('http://10.58.52.248:8007/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify(userInfo),
+        email,
+        password,
       })
         .then(response => response.json())
         .then(data => {
