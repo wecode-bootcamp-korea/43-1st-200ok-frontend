@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import NavCategory from '../NavCategory/NavCategory';
+// import NavCategory from '../NavCategory/NavCategory';
 import './Nav.scss';
 
 const Nav = () => {
@@ -28,23 +28,25 @@ const Nav = () => {
         </div>
         <div className="topMenu">
           <ul className="topMenuContent">
-            {NAVMENU.map(
-              ({ id, title, division, category, photo, altName }) => (
-                <li className="topMenuContentList" key={id}>
-                  <Link className="topMenuContentLink" to="/allProductList">
-                    {title}
-                  </Link>
-                  <NavCategory
+            {NAVMENU.map(({ id, title }) => (
+              <li className="topMenuContentList" key={id}>
+                <Link
+                  className="topMenuContentLink"
+                  to="/allProductList"
+                  state={{ gender: title }}
+                >
+                  {title}
+                </Link>
+                {/* <NavCategory
                     key={id}
                     division={division}
                     category={category}
                     photo={photo}
                     altName={altName}
                     title={title}
-                  />
-                </li>
-              )
-            )}
+                  /> */}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="topMember">
@@ -74,26 +76,11 @@ const NAVMENU = [
   { id: 1, title: '베스트' },
   {
     id: 2,
-    title: '우먼',
-    division: ['신상', '베스트', '전체보기'],
-    category: ['아우터', '상의', '하의'],
-    photo: [
-      '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112109123.jpg',
-      '/images/KakaoTalk_20230303_112042004.jpg',
-    ],
-    altName: ['아우터 사진', '상의 사진', '원피스 사진'],
+    title: 'male',
   },
   {
     id: 3,
-    title: '맨',
-    division: ['신상', '베스트', '전체보기'],
-    category: ['아우터', '상의', '하의'],
-    photo: [
-      '/images/KakaoTalk_20230303_112128342.jpg',
-      '/images/KakaoTalk_20230303_112109123.jpg',
-      '/images/KakaoTalk_20230303_112042004.jpg',
-    ],
+    title: 'female',
   },
   { id: 4, title: '컬러버레이션' },
   { id: 5, title: '키즈' },

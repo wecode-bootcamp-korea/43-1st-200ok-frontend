@@ -6,21 +6,15 @@ import './DetailProduct.scss';
 
 const DetailProduct = () => {
   const navigate = useNavigate();
+  const params = useParams();
+  const location = useLocation();
+  const { id } = params;
+  const { gender, status, category } = location.state;
   const [count, setCount] = useState(1);
   const [user, setUser] = useState();
-  const params = useParams();
-  const { id } = params;
-  const location = useLocation();
-  const { gender, status, category } = location.state;
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-  const [isImages, setIsImages] = useState(true);
-
   const token = localStorage.getItem('token');
   const colorHeart = '/images/colorheart.png';
-  console.log(colorHeart);
+
   const oderValidation = () => {
     if (token) {
       alert('구매완료');
@@ -48,13 +42,18 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.75:3010/products?gender=${gender}&status=${status}&id=${id}`
+      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  const [isImages, setIsImages] = useState(true);
   console.log(user);
+
   return (
     <div className="detailProduct">
       <section className="productInfo">
@@ -69,21 +68,20 @@ const DetailProduct = () => {
       <aside className="infoArea">
         <div className="productName">{user && user[0].name}</div>
         <div className="priceArea">
-          {user && user[0].discount_rate ? (
-            <>
-              <div className="priceArea1">제품 가격 :</div>
-              <div className="priceArea2">
-                {Math.floor(user[0].price).toLocaleString()} 원
-              </div>
-              <div className="priceArea3">할인 가격 :</div>
-              <div className="priceArea4">
-                {Math.floor(user[0].discounted_price).toLocaleString()} 원 (
-                {user && user[0].discount_rate}%)
-              </div>
-            </>
-          ) : (
-            ''
-          )}
+          {/* {user &&
+            user[0].discount_rate(
+              <>
+                <div className="priceArea1">제품 가격 :</div>
+                <div className="priceArea2">
+                  {Math.floor(user[0].price).toLocaleString()} 원
+                </div>
+                <div className="priceArea3">할인 가격 :</div>
+                <div className="priceArea4">
+                  {Math.floor(user[0].discounted_price).toLocaleString()} 원 (
+                  {user && user[0].discount_rate}%)
+                </div>
+              </>
+            )} */}
         </div>
         <div className="countInput">
           {/* <button

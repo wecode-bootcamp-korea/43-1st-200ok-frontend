@@ -9,7 +9,7 @@ const BestProduct = () => {
 
   //백 연동 용
   useEffect(() => {
-    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
+    fetch(`http://10.58.52.184:3010/products?gender=${gender}&status=${status}`)
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));
   }, [gender]);
@@ -22,26 +22,6 @@ const BestProduct = () => {
     setGender('male');
   };
 
-  // useEffect(() => {
-  //   fetch(`/data/Man.json`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  // }, [setGender]);
-
-  // const woman = () => {
-  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  //   setGender('male');
-  // };
-
-  // const man = () => {
-  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  //   setGender('female');
-  // };
-  console.log(bestPhoto);
   return (
     <div className="bestProduct">
       <p className="header">위클리 베스트</p>

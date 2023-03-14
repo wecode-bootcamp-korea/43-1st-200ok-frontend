@@ -5,16 +5,15 @@ import './SignUp.scss';
 
 const SignUp = () => {
   // const [getIsActive, setGetIsActive] = useState(false);
+  const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
-    id: '',
     email: '',
     password: '',
     passwordCheck: '',
     phoneNumber: '',
   });
-  const { userName, id, email, password, passwordCheck, phoneNumber } =
-    inputValue;
+  const { userName, email, password, passwordCheck, phoneNumber } = inputValue;
 
   const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ const SignUp = () => {
   };
 
   //유효성 검사
-  const isValidId = id.length >= 5;
+
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
@@ -55,7 +54,6 @@ const SignUp = () => {
     isValidInput &&
     isValidPassWord &&
     isValidPasswordCheck &&
-    isValidId &&
     isValidSignUp;
 
   const handleInput = event => {
@@ -63,8 +61,27 @@ const SignUp = () => {
     setInputValue({ ...inputValue, [name]: value });
   };
 
+  const goToCheck = () => {
+    fetch('http://10.58.52.227:8007/invalidEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setEmailCheck(data.result);
+        alert(data.result);
+      });
+  };
+
+  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
+
   const goToLogin = event => {
-    if (activeBtn) {
+    if (activeBtn && emailduplication) {
       fetch('http://10.58.52.227:8007/users/signup', {
         method: 'POST',
         headers: {
@@ -72,7 +89,6 @@ const SignUp = () => {
         },
         body: JSON.stringify({
           name: userName,
-          loginId: id,
           email: email,
           password: password,
           passwordCheck: passwordCheck,
@@ -83,8 +99,8 @@ const SignUp = () => {
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
       navigate('/login');
-    } else {
-      alert('양식에 맞춰서 다시 입력해주세요.');
+    } else if (activeBtn && !emailduplication) {
+      alert('아이디 중복을 확인해 주세요');
     }
 
     // .then(data => {
@@ -144,34 +160,7 @@ const SignUp = () => {
                   </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <div className="signupInfoTitle">
-                    아이디
-                    <span className="essentialMark" title="필수입력">
-                      {' '}
-                      *
-                    </span>
-                  </div>
-                </th>
-                <td>
-                  <div className="signupInputWrap">
-                    <input
-                      type="text"
-                      className="signupInputInfo"
-                      title="아이디 입력"
-                      name="id"
-                      value={id}
-                      onChange={handleInput}
-                    />
-                  </div>
-                  {isValidId ? (
-                    <em className="signupFormCorrect">올바른 형식입니다.</em>
-                  ) : (
-                    <em className="signupFormIncorrect">5자리 이상</em>
-                  )}
-                </td>
-              </tr>
+
               <tr>
                 <th scope="row">
                   <div className="signupInfoTitle">
@@ -186,13 +175,16 @@ const SignUp = () => {
                   <div className="signupInputWrap">
                     <input
                       type="text"
-                      className="signupInputInfo"
+                      className="signupEmailInput"
                       title="이메일 입력"
                       name="email"
                       value={email}
                       placeholder="   예 : 200OKKK@spao.com"
                       onChange={handleInput}
                     />
+                    <button className="emailCheckBtn" onClick={goToCheck}>
+                      중복확인
+                    </button>
                   </div>
                   {isValidEmail ? (
                     <em className="signupFormCorrect">올바른 형식입니다.</em>
