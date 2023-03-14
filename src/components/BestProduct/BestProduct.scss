@@ -191,6 +191,20 @@
               color: #c41e20;
             }
           }
+          .colors {
+            margin: 15px 0 0;
+            font-size: 0;
+            line-height: normal;
+
+            .color {
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              margin-right: 3px;
+              border: 1px solid #e6e5e5;
+              box-sizing: border-box;
+            }
+          }
         }
       }
     }
