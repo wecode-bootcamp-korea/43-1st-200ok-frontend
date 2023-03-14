@@ -7,14 +7,6 @@ const NewProduct = () => {
   const gender = 'malefemale';
   const status = 'new';
 
-  //백엔드 연동
-  useEffect(() => {
-    fetch(`http://10.58.52.184:3010/products?gender=${gender}&status=${status}`)
-      .then(response => response.json())
-      .then(data => setNewPhoto(data.data));
-  }, []);
-
-  console.log(newPhoto);
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
       setNewPhotoCount(newPhotoCount => newPhotoCount + 1);
@@ -30,6 +22,12 @@ const NewProduct = () => {
       setNewPhotoCount(newPhoto.length - 4);
     }
   };
+
+  useEffect(() => {
+    fetch(`http://10.58.52.184:3010/products?gender=${gender}&status=${status}`)
+      .then(response => response.json())
+      .then(data => setNewPhoto(data.data));
+  }, []);
 
   return (
     <div className="newProduct">

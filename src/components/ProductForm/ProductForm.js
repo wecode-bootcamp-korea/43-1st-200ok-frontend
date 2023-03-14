@@ -17,7 +17,7 @@ const ProductForm = ({
   const heartColorChange = () => {
     setIsHeart(!isHeart);
   };
-  console.log(num);
+
   return (
     <li className="productForm">
       <div className="thumb">

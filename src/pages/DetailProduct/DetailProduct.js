@@ -52,7 +52,6 @@ const DetailProduct = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   const [isImages, setIsImages] = useState(true);
-  console.log(user);
 
   return (
     <div className="detailProduct">
