@@ -7,24 +7,34 @@ const ProductForm = ({
   price,
   rate,
   disPrice,
+  colors,
   gender,
   status,
+  category,
+  num,
+  productid,
 }) => {
   const [isHeart, setIsHeart] = useState(true);
 
   const heartColorChange = () => {
     setIsHeart(!isHeart);
   };
+
   return (
     <li className="productForm">
       <div className="thumb">
-        <span className={`num ${!(id < 5) && 'new'}`}>
-          {id >= 1 && id < 9 && `${id}`}
+        <span className={`num ${!(num < 5) && 'new'}`}>
+          {num >= 1 && num < 9 && `${num}`}
         </span>
         <Link
           key={id}
           to={`/detailproduct/${id}`}
-          state={{ gender: gender, status: status }}
+          state={{
+            gender: gender,
+            status: status,
+            category: category,
+            productid: productid,
+          }}
           className="images"
         >
           <div className="list">
@@ -68,7 +78,13 @@ const ProductForm = ({
             <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
           )}
           <div className="colors">
-            <span className="color" />
+            {colors.map(item => (
+              <span
+                key={item}
+                className="color"
+                style={{ backgroundColor: `${item}` }}
+              />
+            ))}
           </div>
         </div>
       </div>

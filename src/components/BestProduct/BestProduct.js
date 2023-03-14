@@ -6,53 +6,39 @@ const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
   const [gender, setGender] = useState('female');
   const status = 'best';
+  const category = 'blank';
+  const productid = 'blank';
 
   //백 연동 용
   useEffect(() => {
-    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
+    fetch(
+      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+    )
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));
   }, [gender]);
-
-  const woman = () => {
-    setGender('female');
-  };
-
-  const man = () => {
-    setGender('male');
-  };
-
-  // useEffect(() => {
-  //   fetch(`/data/Man.json`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  // }, [setGender]);
-
-  // const woman = () => {
-  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  //   setGender('male');
-  // };
-
-  // const man = () => {
-  //   fetch(`/data/Man.json/gender=${gender}&status=${status}`)
-  //     .then(res => res.json())
-  //     .then(data => setBestPhoto(data));
-  //   setGender('female');
-  // };
 
   return (
     <div className="bestProduct">
       <p className="header">위클리 베스트</p>
       <ul className="tab">
         <li>
-          <button type="button" onClick={woman}>
+          <button
+            type="button"
+            onClick={() => {
+              setGender('female');
+            }}
+          >
             우먼
           </button>
         </li>
         <li>
-          <button type="button" onClick={man}>
+          <button
+            type="button"
+            onClick={() => {
+              setGender('male');
+            }}
+          >
             맨
           </button>
         </li>
@@ -67,13 +53,17 @@ const BestProduct = () => {
                   <ProductForm
                     key={item.id}
                     id={item.id}
+                    num={index}
                     name={item.name}
                     image={item.image_url}
                     price={item.price}
                     rate={item.discount_rate}
                     disPrice={item.discounted_price}
+                    colors={item.colors}
                     gender={gender}
                     status={status}
+                    category={category}
+                    productid={productid}
                   />
                 )
             )}

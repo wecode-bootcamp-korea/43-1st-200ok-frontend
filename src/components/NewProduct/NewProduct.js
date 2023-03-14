@@ -6,20 +6,8 @@ const NewProduct = () => {
   const [newPhotoCount, setNewPhotoCount] = useState(0);
   const gender = 'malefemale';
   const status = 'new';
-
-  //백엔드 연동
-  useEffect(() => {
-    fetch(`http://10.58.52.75:3010/products?gender=${gender}&status=${status}`)
-      .then(response => response.json())
-      .then(data => setNewPhoto(data.data));
-  }, []);
-  console.log(newPhoto);
-  //연습용
-  // useEffect(() => {
-  //   fetch('/data/Man.json')
-  //     .then(res => res.json())
-  //     .then(data => setNewPhoto(data));
-  // }, []);
+  const category = 'blank';
+  const productid = 'blank';
 
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
@@ -37,6 +25,14 @@ const NewProduct = () => {
     }
   };
 
+  useEffect(() => {
+    fetch(
+      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+    )
+      .then(response => response.json())
+      .then(data => setNewPhoto(data.data));
+  }, []);
+
   return (
     <div className="newProduct">
       <div className="newProducts">
@@ -49,28 +45,22 @@ const NewProduct = () => {
           }}
         >
           {newPhoto &&
-            newPhoto.map(
-              ({
-                id,
-                name,
-                image_url,
-                price,
-                discount_rate,
-                discounted_price,
-              }) => (
-                <ProductForm
-                  key={id}
-                  id={id}
-                  name={name}
-                  image={image_url}
-                  price={price}
-                  rate={discount_rate}
-                  disPrice={discounted_price}
-                  gender={gender}
-                  status={status}
-                />
-              )
-            )}
+            newPhoto.map(item => (
+              <ProductForm
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image_url}
+                price={item.price}
+                rate={item.discount_rate}
+                disPrice={item.discounted_price}
+                colors={item.colors}
+                gender={gender}
+                status={status}
+                category={category}
+                productid={productid}
+              />
+            ))}
         </ul>
         <div className="nextButton" onClick={testNext} />
         <div className="preButton" onClick={testPre} />
