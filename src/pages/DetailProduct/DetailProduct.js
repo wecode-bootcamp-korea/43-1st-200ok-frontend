@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate, useParams } from 'react-router-dom';
-import Count from '../../components/Count/Count';
+// import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
@@ -10,7 +10,6 @@ const DetailProduct = () => {
   const location = useLocation();
   const { id } = params;
   const { gender, status, category } = location.state;
-  const [count, setCount] = useState(1);
   const [user, setUser] = useState();
   const token = localStorage.getItem('token');
   const colorHeart = '/images/colorheart.png';

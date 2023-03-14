@@ -8,10 +8,12 @@ const AllProductList = () => {
   const { gender } = location.state;
   const [data1, setData1] = useState([]);
   const [category, setCategory] = useState('outer');
+  const status = 'blank';
+  const productid = 'blank';
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.184:3010/products?gender=${gender}&category=${category}`
+      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
     )
       .then(res => res.json())
       .then(data => setData1(data.data));
@@ -58,7 +60,9 @@ const AllProductList = () => {
                     rate={item.discount_rate}
                     disPrice={item.discounted_price}
                     gender={gender}
+                    status={status}
                     category={category}
+                    productid={productid}
                   />
                 ))}
             </ul>
@@ -74,5 +78,5 @@ export default AllProductList;
 const PRODUCTCATEGORY = [
   { id: 1, allCategory: 'outer' },
   { id: 2, allCategory: 'top' },
-  { id: 3, allCategory: 'pants' },
+  { id: 3, allCategory: 'bottom' },
 ];

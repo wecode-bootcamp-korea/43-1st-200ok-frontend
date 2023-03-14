@@ -11,6 +11,7 @@ const ProductForm = ({
   status,
   category,
   num,
+  productid,
 }) => {
   const [isHeart, setIsHeart] = useState(true);
 
@@ -27,7 +28,12 @@ const ProductForm = ({
         <Link
           key={id}
           to={`/detailproduct/${id}`}
-          state={{ gender: gender, status: status, category: category }}
+          state={{
+            gender: gender,
+            status: status,
+            category: category,
+            productid: productid,
+          }}
           className="images"
         >
           <div className="list">

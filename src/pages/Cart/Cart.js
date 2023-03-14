@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Cart.scss';
-import Count from '../../components/Count/Count';
+// import Count from '../../components/Count/Count';
 import CartList from '../../components/CartList/CartList';
 
 const Cart = props => {
@@ -97,7 +97,7 @@ const Cart = props => {
                   <p className="productPriceTxt">상품금액</p>
                   <p className="productOnePrice">{price} 원</p>
                 </div>
-                <Count count={count} setCount={setCount} />
+                {/* <Count count={count} setCount={setCount} /> */}
                 <div className="cartDelivery">
                   <p className="deliveryTitle">배송비</p>
                   <p className="cartDeliveryPrice">무료</p>
