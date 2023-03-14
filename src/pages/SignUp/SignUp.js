@@ -4,7 +4,6 @@ import SignUpTerms from './SignUpTerms';
 import './SignUp.scss';
 
 const SignUp = () => {
-  // const [getIsActive, setGetIsActive] = useState(false);
   const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
@@ -96,9 +95,12 @@ const SignUp = () => {
           privacyTermEssential: checkedState[0],
           privacyTermOptional: checkedState[1],
         }),
-      }).then(response => response.json());
-      alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
-      navigate('/login');
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
+          navigate('/login');
+        });
     } else if (activeBtn && !emailduplication) {
       alert('아이디 중복을 확인해 주세요');
     }

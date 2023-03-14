@@ -29,8 +29,10 @@
   position: relative;
   min-width: 1000px;
   margin-bottom: 50px;
+
   .signUpHeader {
     margin: 50px;
+
     .signUpTitle {
       text-align: left;
       font-family: 'KimjungchulGothic-Bold';
@@ -63,9 +65,11 @@
 
     .infoFirstContent {
       margin-bottom: 50px;
+
       table {
         text-align: left;
         @include tableDesign;
+
         tr {
           th {
             @include thDesign;
@@ -80,15 +84,18 @@
           td {
             border-bottom: 1px solid #ddd;
             width: 500px;
+
             .signupInputWrap {
               display: flex;
               height: 50px;
               align-items: center;
+
               .signupInputInfo {
                 margin: 0 20px 0 20px;
                 display: inline-block;
                 border-radius: 5px;
               }
+
               .signupEmailInput {
                 width: 350px;
                 margin-left: 20px;
@@ -122,16 +129,19 @@
     .signUpYesOrNo {
       text-align: center;
       margin-top: 30px;
+
       .btnCancelSignup {
         @include signUpEndButton;
         background: #fff;
       }
+
       .signUpButtonAction {
         @include signUpEndButton;
         background: #bb2420;
         margin-left: 10px;
         color: white;
       }
+
       .signUpButtonInaction {
         @include signUpEndButton;
         background: #fff;
