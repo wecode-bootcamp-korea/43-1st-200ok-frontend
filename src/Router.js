@@ -6,6 +6,8 @@ import Login from './pages/Login/Login';
 import LostAccounts from './pages/LostAccounts/LostAccounts';
 import DetailProduct from './pages/DetailProduct/DetailProduct';
 import AllProductList from './pages/AllProductList/AllProductList';
+import SignUp from './pages/SignUp/SiginUp';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   return (

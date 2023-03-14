@@ -6,13 +6,13 @@
   background-color: #f7f7f7;
   min-width: 1380px;
 
-  .padding {
+  .footerWrap {
     max-width: 1440px;
     min-width: 1240px;
     margin: 0 auto;
     padding: 0 5%;
 
-    .footerSection01 {
+    .footerInfo {
       margin: 0 0 30px 0;
       float: left;
 
@@ -31,20 +31,14 @@
           font-weight: 400;
           color: #909090;
         }
-
-        p {
-          font-size: 13px;
-          color: #1a1a1a;
-          line-height: 23px;
-        }
       }
+    }
 
-      .subInformation {
-        font-size: 13px;
-        color: #909090;
-        line-height: 25px;
-        margin-bottom: 40px;
-      }
+    .subInformation {
+      font-size: 13px;
+      color: #909090;
+      line-height: 25px;
+      margin-bottom: 40px;
     }
 
     .icon {
@@ -55,23 +49,27 @@
         align-items: center;
         margin-right: 20px;
       }
-      a {
+
+      .iconPhotoLink {
         margin-right: 15px;
       }
     }
 
-    .footerSection02 {
+    .footerPolicy {
       float: right;
-      ul:first-child {
+
+      .policyList:first-child {
         float: left;
         text-align: right;
       }
-      ul {
+
+      .policyList {
         float: left;
         text-align: right;
         margin: 0 0 0 50px;
       }
-      a {
+
+      .policyLink {
         line-height: 30px;
         font-size: 13px;
         color: #606060;
