@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
-import SignUpTerms from './pages/SignUp/SignUpTerms';
 import Cart from './pages/Cart/Cart';
 import Footer from './components/Footer/Footer';
 
@@ -14,7 +13,7 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/signupterms" element={<SignUpTerms />} />
+
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />

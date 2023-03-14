@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../components/CartList/CartList';
+import EmptyCart from '../../components/CartList/EmptyCart';
 import './Cart.scss';
 
 const Cart = x => {
@@ -14,26 +16,35 @@ const Cart = x => {
 
   const toggleSelected = e => {
     const { name } = e.target;
-    const next = productList.map(product => {
+    const selectedChkBox = productList.map(product => {
       if (product.id.toString() === name) {
         return { ...product, checkedState: !product.checkedState };
       }
       return product;
     });
-    setProductList(next);
+    setProductList(selectedChkBox);
+    console.log(productList.map(item => item.checkedState));
   };
+  productList.map(item => item.checkedState);
 
   const onClickAllToggleBtn = () => {
     const isAllChecked = productList.every(({ checkedState }) => checkedState);
-    const next = productList.map(product => ({
+    const selectedChkBox = productList.map(product => ({
       ...product,
       checkedState: isAllChecked ? false : true,
     }));
-    setProductList(next);
+    setProductList(selectedChkBox);
+
+    console.log(selectedChkBox);
   };
 
-  //선택된 상품 총 결제금액
-
+  const navigate = useNavigate();
+  const goToShopping = () => {
+    navigate('/');
+  };
+  const goToPay = () => {
+    alert('결제완료!!! 고객님의 상품을 안전하게 배송해드리겠습니다♡');
+  };
   useEffect(() => {
     fetch('/data/Cart.json')
       .then(res => res.json())
@@ -66,31 +77,29 @@ const Cart = x => {
             <button className="cartAllDelete">선택상품 삭제</button>
           </div>
           <div className="cartProductInfo">
-            <div className="cartCard">
-              {productList.map(({ price, id, title, amount, checkedState }) => (
-                <CartList
-                  key={id}
-                  id={id}
-                  title={title}
-                  price={price}
-                  totalPrice={totalPrice}
-                  setTotalPrice={setTotalPrice}
-                  amount={amount}
-                  productList={productList}
-                  setProductList={setProductList}
-                  toggleSelected={toggleSelected}
-                  checkedState={checkedState}
-                />
-              ))}
-            </div>
-            <div className="emptyCartCard">
-              <img
-                className="emptyCartImg"
-                src="images/emptyCart.png"
-                alt="emptyimg"
-              />
-              <div className="emptyMent">장바구니가 비어 있습니다.</div>
-            </div>
+            {productList.length === 0 ? (
+              <EmptyCart />
+            ) : (
+              <div className="cartCard">
+                {productList.map(
+                  ({ price, id, title, amount, checkedState }) => (
+                    <CartList
+                      key={id}
+                      id={id}
+                      title={title}
+                      price={price}
+                      totalPrice={totalPrice}
+                      setTotalPrice={setTotalPrice}
+                      amount={amount}
+                      productList={productList}
+                      setProductList={setProductList}
+                      toggleSelected={toggleSelected}
+                      checkedState={checkedState}
+                    />
+                  )
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -114,19 +123,12 @@ const Cart = x => {
         </div>
       </div>
       <div className="payYesOrNo">
-        <button className="btnCancelPay">
+        <button className="btnCancelPay" onClick={goToShopping}>
           <span>쇼핑계속하기</span>
         </button>
-        <button className="payButtonAction">
+        <button className="payButtonAction" onClick={goToPay}>
           <span>결제하기</span>
         </button>
-        {/* <button
-          className={payIsActive ? 'payButtonAction' : 'payButtonInaction'}
-          disabled={!payIsActive}
-          onClick={goToPay}
-        >
-          결제하기
-        </button> */}
       </div>
     </div>
   );

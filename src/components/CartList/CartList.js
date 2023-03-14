@@ -5,6 +5,7 @@ export const CartList = ({
   id,
   title,
   price,
+  totalPrice,
   setTotalPrice,
   productList,
   setProductList,
@@ -15,6 +16,7 @@ export const CartList = ({
   const [count, setCount] = useState(amount);
 
   const handleDeleteItem = () => {
+    setTotalPrice(prev => (prev -= price * count));
     setProductList(productList.filter(item => item.id !== id));
   };
 
@@ -27,10 +29,10 @@ export const CartList = ({
 
     if (name === 'plus' && count < 10) {
       setCount(count + 1);
-      setTotalPrice(prev => prev + price);
+      setTotalPrice(prev => (prev += price));
     } else if (name === 'minus' && count > 1) {
       setCount(count - 1);
-      setTotalPrice(prev => prev - price);
+      setTotalPrice(prev => (prev -= price));
     }
   };
 
@@ -50,9 +52,9 @@ export const CartList = ({
         alt="cart.img"
       />
       <div className="cartProductDetail">
-        <strong>{title}</strong>
+        <strong className="cartProductTitle">{title}</strong>
         <p>[옵션: (10)WHITE/M(90)]</p>
-        <p>옵션변경</p>
+        {/* <p>옵션변경</p> */}
       </div>
       <div className="cartProductPrice">
         <p className="productPriceTxt">상품금액</p>
