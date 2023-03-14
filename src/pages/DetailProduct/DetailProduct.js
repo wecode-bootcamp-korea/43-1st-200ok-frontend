@@ -117,7 +117,9 @@ const DetailProduct = () => {
               <div className="productSize">
                 <p>[Size]</p>
                 {sizes.map(item => (
-                  <button className="productSize1">{item.toUpperCase()}</button>
+                  <button key={item} className="productSize1">
+                    {item.toUpperCase()}
+                  </button>
                 ))}
               </div>
               <div className="sumPrice">
