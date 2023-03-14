@@ -4,11 +4,11 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SiginUp/SiginUp';
 import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

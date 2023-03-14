@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+=======
+.footer {
+  height: 300px;
+  width: 100%;
+  margin: 50px auto 0;
+  padding: 50px 0;
+  background-color: #f7f7f7;
+  min-width: 1380px;
+
+  .footerWrap {
+    max-width: 1440px;
+    min-width: 1240px;
+    margin: 0 auto;
+    padding: 0 5%;
+
+    .footerInfo {
+      margin: 0 0 30px 0;
+      float: left;
+
+      .information {
+        margin-bottom: 40px;
+
+        .phone {
+          font-size: 22px;
+          font-weight: 700;
+          color: #1a1a1a;
+          margin-bottom: 10px;
+        }
+
+        .email {
+          font-size: 13px;
+          font-weight: 400;
+          color: #909090;
+        }
+      }
+    }
+
+    .subInformation {
+      font-size: 13px;
+      color: #909090;
+      line-height: 25px;
+      margin-bottom: 40px;
+    }
+
+    .icon {
+      display: flex;
+
+      .iconPhoto {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+      }
+
+      .iconPhotoLink {
+        margin-right: 15px;
+      }
+    }
+
+    .footerPolicy {
+      float: right;
+
+      .policyList:first-child {
+        float: left;
+        text-align: right;
+      }
+
+      .policyList {
+        float: left;
+        text-align: right;
+        margin: 0 0 0 50px;
+      }
+
+      .policyLink {
+        line-height: 30px;
+        font-size: 13px;
+        color: #606060;
+      }
+    }
+  }
+}
+>>>>>>> main
