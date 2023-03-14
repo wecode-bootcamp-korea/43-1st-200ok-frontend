@@ -48,13 +48,7 @@ const NewProduct = () => {
             newPhoto.map(item => (
               <ProductForm
                 key={item.id}
-                id={item.id}
-                name={item.name}
-                image={item.image_url}
-                price={item.price}
-                rate={item.discount_rate}
-                disPrice={item.discounted_price}
-                colors={item.colors}
+                item={item}
                 gender={gender}
                 status={status}
                 category={category}

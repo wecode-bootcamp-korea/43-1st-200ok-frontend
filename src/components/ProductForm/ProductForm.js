@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const ProductForm = ({
-  name,
-  id,
-  image,
-  price,
-  rate,
-  disPrice,
-  colors,
-  gender,
-  status,
-  category,
-  num,
-  productid,
-}) => {
+const ProductForm = ({ num, gender, status, category, productid, item }) => {
   const [isHeart, setIsHeart] = useState(true);
 
   const heartColorChange = () => {
-    setIsHeart(!isHeart);
+    setIsHeart(isHeart => !isHeart);
   };
+
+  const floorPrice = price => {
+    return Math.floor(price).toLocaleString();
+  };
+
+  const {
+    id,
+    name,
+    image_url,
+    price,
+    discount_rate,
+    discounted_price,
+    colors,
+  } = item;
 
   return (
     <li className="productForm">
@@ -38,44 +39,28 @@ const ProductForm = ({
           className="images"
         >
           <div className="list">
-            <img
-              onClick={() => console.log('zzz')}
-              className="menu"
-              src="/images/menu.png"
-              alt="menu"
-            />
+            <img className="menu" src="/images/menu.png" alt="menu" />
           </div>
-          <img src={image} alt="제품 사진" />
+          <img src={image_url} alt="제품 사진" />
         </Link>
         <div className="description">
           <div className="name">
             <span>{name}</span>
-            {isHeart ? (
-              <img
-                onClick={heartColorChange}
-                className="heart"
-                src="/images/heart.png"
-                alt="heart"
-              />
-            ) : (
-              <img
-                onClick={heartColorChange}
-                className="heart"
-                src="/images/heartPink.png"
-                alt="heart"
-              />
-            )}
+            <img
+              onClick={heartColorChange}
+              className="heart"
+              src={isHeart ? '/images/heart.png' : '/images/heart.png'}
+              alt="heart"
+            />
           </div>
-          {rate ? (
+          {discount_rate ? (
             <div className="price">
-              {Math.floor(disPrice).toLocaleString()}
-              <span className="originalPrice">
-                {Math.floor(price).toLocaleString()}
-              </span>
-              <span className="rateDiscount">{`${rate}%`}</span>
+              {floorPrice(discounted_price)}
+              <span className="originalPrice">{floorPrice(price)}</span>
+              <span className="rateDiscount">{`${discount_rate}%`}</span>
             </div>
           ) : (
-            <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
+            <div className="price">{floorPrice(discounted_price)}</div>
           )}
           <div className="colors">
             {colors.map(item => (
