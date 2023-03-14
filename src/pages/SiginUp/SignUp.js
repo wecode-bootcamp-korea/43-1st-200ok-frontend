@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch('http://10.58.52.227:8007/invalidEmail', {
+    fetch('http://10.58.52.248:8007/invalidEmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -78,11 +78,11 @@ const SignUp = () => {
       });
   };
 
-  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
+  // const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
 
   const goToLogin = event => {
-    if (activeBtn && emailduplication) {
-      fetch('http://10.58.52.227:8007/users/signup', {
+    if (activeBtn) {
+      fetch('http://10.58.52.248:8007/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -99,7 +99,7 @@ const SignUp = () => {
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
       navigate('/login');
-    } else if (activeBtn && !emailduplication) {
+    } else if (activeBtn) {
       alert('아이디 중복을 확인해 주세요');
     }
 

@@ -86,25 +86,25 @@ const DetailProduct = () => {
               </div>
               <div className="countInput">
                 {/* <button
-            className="minusButton"
-            type="button"
-            onClick={() => {
-              setCount(count - 1);
-            }}
-          >
-            -1
-          </button> */}
-                {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
-                {/* <Count count={count} setCount={setCount} /> */}
-                {/* <button
-            className="plusButton"
-            type="button"
-            onClick={() => {
-              setCount(count + 1);
-            }}
-          >
-            +1
-          </button> */}
+                  className="minusButton"
+                  type="button"
+                  onClick={() => {
+                    setCount(count - 1);
+                  }}
+                >
+                  -1
+                </button>
+                <div className={`productCount${count}`}>수량 : {count}</div>
+                <Count count={count} setCount={setCount} />
+                <button
+                  className="plusButton"
+                  type="button"
+                  onClick={() => {
+                    setCount(count + 1);
+                  }}
+                >
+                  +1
+                </button> */}
               </div>
               <div className="productColor">
                 <p>[Color]</p>
