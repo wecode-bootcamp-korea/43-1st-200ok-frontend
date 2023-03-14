@@ -11,6 +11,7 @@ const Cart = x => {
   // const [checkedState, setCheckedState] = useState(
   //   new Array(productList.length).fill(false)
   // );
+
   const toggleSelected = e => {
     const { name } = e.target;
     const next = productList.map(product => {
@@ -30,34 +31,8 @@ const Cart = x => {
     }));
     setProductList(next);
   };
-  //체크박스
-  // const handleMonoCheck = position => {
-  //   const updatedCheckedState = checkedState.map((item, index) =>
-  //     index === position ? !item : item
-  //   );
-  //   setCheckedState(updatedCheckedState);
-  //   const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
-  //     if (currentState === true) {
-  //       return sum + 1;
-  //     }
-  //     return sum;
-  //   }, 0);
-  //   setAllChecked(checkedLength === updatedCheckedState.length);
-  // };
-
-  // const handleAllCheck = () => {
-  //   setAllChecked(prev => !prev);
-  //   let array = new Array(productList.length).fill(!isAllChecked);
-  //   setCheckedState(array);
-  // };
 
   //선택된 상품 총 결제금액
-  // const selectedItems = [];
-  // productList.forEach((item, index) => {
-  //   if (checkedState[index]) {
-  //     selectedItems.push(item.price);
-  //   }
-  // });
 
   useEffect(() => {
     fetch('/data/Cart.json')
@@ -92,7 +67,7 @@ const Cart = x => {
           </div>
           <div className="cartProductInfo">
             <div className="cartCard">
-              {productList.map(({ price, id, title, stock, checkedState }) => (
+              {productList.map(({ price, id, title, amount, checkedState }) => (
                 <CartList
                   key={id}
                   id={id}
@@ -100,13 +75,21 @@ const Cart = x => {
                   price={price}
                   totalPrice={totalPrice}
                   setTotalPrice={setTotalPrice}
-                  stock={stock}
+                  amount={amount}
                   productList={productList}
                   setProductList={setProductList}
                   toggleSelected={toggleSelected}
                   checkedState={checkedState}
                 />
               ))}
+            </div>
+            <div className="emptyCartCard">
+              <img
+                className="emptyCartImg"
+                src="images/emptyCart.png"
+                alt="emptyimg"
+              />
+              <div className="emptyMent">장바구니가 비어 있습니다.</div>
             </div>
           </div>
         </div>

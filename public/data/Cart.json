@@ -1,19 +1,19 @@
 [
   {
     "id": 0,
-    "stock": 1,
+    "amount": 1,
     "title": "[남성 하의] D바지",
     "price": 500
   },
   {
     "id": 1,
-    "stock": 2,
-    "title": "[여성 하의] A바지",
+    "amount": 2,
+    "title": "[여성 하의] A치마",
     "price": 300
   },
   {
     "id": 2,
-    "stock": 1,
+    "amount": 1,
     "title": "[남성 상의] C반팔",
     "price": 400
   }

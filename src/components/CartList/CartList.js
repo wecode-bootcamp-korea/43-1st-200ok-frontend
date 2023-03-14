@@ -10,9 +10,9 @@ export const CartList = ({
   setProductList,
   checkedState,
   toggleSelected,
-  stock,
+  amount,
 }) => {
-  const [count, setCount] = useState(stock);
+  const [count, setCount] = useState(amount);
 
   const handleDeleteItem = () => {
     setProductList(productList.filter(item => item.id !== id));
