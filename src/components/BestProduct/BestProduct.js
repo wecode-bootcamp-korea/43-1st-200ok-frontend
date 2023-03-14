@@ -59,6 +59,7 @@ const BestProduct = () => {
                     price={item.price}
                     rate={item.discount_rate}
                     disPrice={item.discounted_price}
+                    colors={item.colors}
                     gender={gender}
                     status={status}
                     category={category}

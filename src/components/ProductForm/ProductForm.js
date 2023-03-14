@@ -7,6 +7,7 @@ const ProductForm = ({
   price,
   rate,
   disPrice,
+  colors,
   gender,
   status,
   category,
@@ -77,7 +78,13 @@ const ProductForm = ({
             <div className="price">{Math.floor(disPrice).toLocaleString()}</div>
           )}
           <div className="colors">
-            <span className="color" />
+            {colors.map(item => (
+              <span
+                key={item}
+                className="color"
+                style={{ backgroundColor: `${item}` }}
+              />
+            ))}
           </div>
         </div>
       </div>

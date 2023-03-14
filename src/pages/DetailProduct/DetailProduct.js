@@ -10,7 +10,8 @@ const DetailProduct = () => {
   const location = useLocation();
   const { id } = params;
   const { gender, status, category } = location.state;
-  const [user, setUser] = useState();
+  const [user, setUser] = useState([]);
+  const [isImages, setIsImages] = useState(true);
   const token = localStorage.getItem('token');
   const colorHeart = '/images/colorheart.png';
 
@@ -50,39 +51,41 @@ const DetailProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  const [isImages, setIsImages] = useState(true);
 
   return (
-    <div className="detailProduct">
-      <section className="productInfo">
-        <div className="imgWrapper">
-          <img
-            className="productImg"
-            src={user && user[0].image_url}
-            alt="제품 이미지"
-          />
-        </div>
-      </section>
-      <aside className="infoArea">
-        <div className="productName">{user && user[0].name}</div>
-        <div className="priceArea">
-          {/* {user &&
-            user[0].discount_rate(
-              <>
+    <>
+      {user.map(
+        ({
+          id,
+          image_url,
+          colors,
+          discount_rate,
+          discounted_price,
+          name,
+          price,
+          sizes,
+        }) => (
+          <div key={id} className="detailProduct">
+            <section className="productInfo">
+              <div className="imgWrapper">
+                <img className="productImg" src={image_url} alt="제품 이미지" />
+              </div>
+            </section>
+            <aside className="infoArea">
+              <div className="productName">{name}</div>
+              <div className="priceArea">
                 <div className="priceArea1">제품 가격 :</div>
                 <div className="priceArea2">
-                  {Math.floor(user[0].price).toLocaleString()} 원
+                  {Math.floor(price).toLocaleString()} 원
                 </div>
                 <div className="priceArea3">할인 가격 :</div>
                 <div className="priceArea4">
-                  {Math.floor(user[0].discounted_price).toLocaleString()} 원 (
-                  {user && user[0].discount_rate}%)
+                  {Math.floor(discounted_price).toLocaleString()} 원 (
+                  {discount_rate}%)
                 </div>
-              </>
-            )} */}
-        </div>
-        <div className="countInput">
-          {/* <button
+              </div>
+              <div className="countInput">
+                {/* <button
             className="minusButton"
             type="button"
             onClick={() => {
@@ -91,9 +94,9 @@ const DetailProduct = () => {
           >
             -1
           </button> */}
-          {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
-          {/* <Count count={count} setCount={setCount} /> */}
-          {/* <button
+                {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
+                {/* <Count count={count} setCount={setCount} /> */}
+                {/* <button
             className="plusButton"
             type="button"
             onClick={() => {
@@ -102,42 +105,45 @@ const DetailProduct = () => {
           >
             +1
           </button> */}
-        </div>
-        <div className="productColor">
-          <p>[Color]</p>
-          <button className="productColor1">red</button>
-          <button className="productColor2">blue</button>
-          <button className="productColor3">green</button>
-          <button className="productColor4">purple</button>
-        </div>
-        <div className="productSize">
-          <p>[Size]</p>
-          <button className="productSize1">95</button>
-          <button className="productSize2">100</button>
-          <button className="productSize3">105</button>
-          <button className="productSize4">110</button>
-        </div>
-        <div className="sumPrice">
-          <p>총 제품금액 : (100,000 원)</p>
-        </div>
-        <div className="buttons">
-          <button>
-            <img
-              className="wishImg"
-              src={isImages ? '/images/heart.png' : `${colorHeart}`}
-              alt="wish 이미지"
-              onClick={onClickWishImg}
-            />
-          </button>
-          <button className="cartButton" onClick={onClickAddCart}>
-            장바구니 담기
-          </button>
-          <button className="orderButton" onClick={oderValidation}>
-            주문하기
-          </button>
-        </div>
-      </aside>
-    </div>
+              </div>
+              <div className="productColor">
+                <p>[Color]</p>
+                {colors.map(item => (
+                  <button key={item} className="productColor1">
+                    {item.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <div className="productSize">
+                <p>[Size]</p>
+                {sizes.map(item => (
+                  <button className="productSize1">{item.toUpperCase()}</button>
+                ))}
+              </div>
+              <div className="sumPrice">
+                <p>총 제품금액 : (100,000 원)</p>
+              </div>
+              <div className="buttons">
+                <button>
+                  <img
+                    className="wishImg"
+                    src={isImages ? '/images/heart.png' : `${colorHeart}`}
+                    alt="wish 이미지"
+                    onClick={onClickWishImg}
+                  />
+                </button>
+                <button className="cartButton" onClick={onClickAddCart}>
+                  장바구니 담기
+                </button>
+                <button className="orderButton" onClick={oderValidation}>
+                  주문하기
+                </button>
+              </div>
+            </aside>
+          </div>
+        )
+      )}
+    </>
   );
 };
 
