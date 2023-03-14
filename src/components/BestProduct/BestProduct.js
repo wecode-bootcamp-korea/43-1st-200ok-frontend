@@ -9,6 +9,14 @@ const BestProduct = () => {
   const category = 'blank';
   const productid = 'blank';
 
+  const clickWoman = () => {
+    setGender('female');
+  };
+
+  const clickMan = () => {
+    setGender('male');
+  };
+
   //백 연동 용
   useEffect(() => {
     fetch(
@@ -23,22 +31,12 @@ const BestProduct = () => {
       <p className="header">위클리 베스트</p>
       <ul className="tab">
         <li>
-          <button
-            type="button"
-            onClick={() => {
-              setGender('female');
-            }}
-          >
+          <button type="button" onClick={clickWoman}>
             우먼
           </button>
         </li>
         <li>
-          <button
-            type="button"
-            onClick={() => {
-              setGender('male');
-            }}
-          >
+          <button type="button" onClick={clickMan}>
             맨
           </button>
         </li>
@@ -52,14 +50,8 @@ const BestProduct = () => {
                 index <= 8 && (
                   <ProductForm
                     key={item.id}
-                    id={item.id}
+                    item={item}
                     num={index}
-                    name={item.name}
-                    image={item.image_url}
-                    price={item.price}
-                    rate={item.discount_rate}
-                    disPrice={item.discounted_price}
-                    colors={item.colors}
                     gender={gender}
                     status={status}
                     category={category}
