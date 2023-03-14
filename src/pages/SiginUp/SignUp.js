@@ -78,10 +78,10 @@ const SignUp = () => {
       });
   };
 
-  // const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
+  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
 
   const goToLogin = event => {
-    if (activeBtn) {
+    if (activeBtn && emailduplication) {
       fetch('http://10.58.52.248:8007/users/signup', {
         method: 'POST',
         headers: {
