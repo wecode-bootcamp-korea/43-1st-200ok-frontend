@@ -8,9 +8,9 @@ const Main = () => {
     <div className="main">
       <div className="wrap">
         <div className="mainImg">
-          <img src="/images/mainSlide1.jpg" alt="노을 사진" />
-          <img src="/images/mainSlide2.jpg" alt="노을 사진" />
-          <img src="/images/KakaoTalk_20230309_080951888.jpg" alt="나무 사진" />
+          <img src="/images/mainSlide1.jpg" alt="반팔 사진" />
+          <img src="/images/mainSlide2.jpg" alt="청바지 사진" />
+          <img src="/images/mainSlide3,jpg" alt="랩퍼 사진" />
         </div>
         <BestProduct />
         <NewProduct />
