@@ -1,0 +1,29 @@
+.lostAccountsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+  text-align: left;
+
+  .mainLogo {
+    width: 300px;
+    margin-bottom: 15px;
+
+    .idInput {
+      width: 100%;
+      padding: 25px 0px 25px 25px;
+      border-radius: 4px 4px 0px 0px;
+    }
+  }
+
+  .submit {
+    width: 300px;
+    height: 50px;
+    margin: 15px 0px 15px 0px;
+    color: white;
+    background-color: #ffcbcb;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+  }
+}
