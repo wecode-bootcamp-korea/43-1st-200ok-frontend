@@ -4,13 +4,12 @@ import NewProduct from '../../components/NewProduct/NewProduct';
 import './Main.scss';
 
 const Main = () => {
-  const [aaa, setAaa] = useState(0);
+  const [mainImg, setMainImg] = useState(0);
   const bbb = () => {
-    if (aaa < MAINIMAGES.length - 1 && aaa >= 0) {
-      setAaa(aaa + 1);
-      console.log(aaa);
-    } else if (aaa === MAINIMAGES.length - 1) {
-      setAaa(0);
+    if (mainImg < MAINIMAGES.length - 1 && mainImg >= 0) {
+      setMainImg(mainImg + 1);
+    } else if (mainImg === MAINIMAGES.length - 1) {
+      setMainImg(0);
     }
   };
 
@@ -26,7 +25,7 @@ const Main = () => {
               src={img}
               alt={infor}
               style={{
-                transform: `translate(${aaa * -1920}px)`,
+                transform: `translate(${mainImg * -1920}px)`,
                 transition: `2s`,
               }}
             />
