@@ -1,4 +1,3 @@
-import { check } from 'prettier';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../components/CartList/CartList';
@@ -7,7 +6,7 @@ import './Cart.scss';
 
 const Cart = () => {
   const [productList, setProductList] = useState([]);
-  console.log(productList);
+
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
@@ -20,7 +19,7 @@ const Cart = () => {
       }
       return product;
     });
-    // setTotalPrice(totalPrice);
+
     setProductList(selectedChkBox);
   };
 
@@ -47,7 +46,13 @@ const Cart = () => {
   };
 
   const goToPay = () => {
-    alert('결제완료!!! 고객님의 상품을 안전하게 배송해드리겠습니다♡');
+    const payToSelect = productList.some(({ checkedState }) => checkedState);
+
+    if (payToSelect) {
+      alert('결제완료!!! 고객님의 상품을 안전하게 배송해드리겠습니다♡');
+    } else {
+      alert('상품을 선택해주세요!');
+    }
   };
 
   useEffect(() => {
@@ -96,14 +101,13 @@ const Cart = () => {
                       id={id}
                       title={title}
                       price={price}
+                      amount={amount}
                       totalPrice={totalPrice}
                       setTotalPrice={setTotalPrice}
-                      amount={amount}
                       productList={productList}
                       setProductList={setProductList}
                       toggleSelected={toggleSelected}
                       checkedState={checkedState}
-                      cart={Cart}
                     />
                   )
                 )}
