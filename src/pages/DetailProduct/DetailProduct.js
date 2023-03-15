@@ -6,6 +6,7 @@ const DetailProduct = () => {
   const [count, setCount] = useState(1);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
+  const [price, setPrice] = useState([]);
   const [isImages, setIsImages] = useState(true);
 
   const params = useParams();
@@ -14,9 +15,24 @@ const DetailProduct = () => {
   const token = localStorage.getItem('token');
   const colorHeart = 'images/colorheart.png';
 
-  const handleSelector = () => {
-    // console.log(color);
-    console.log(setColor);
+  const minusCounter = () => {
+    if (count === 1) {
+      setCount(1);
+    } else {
+      setCount(count - 1);
+    }
+  };
+
+  const plusCounter = () => {
+    if (count === 10) {
+      setCount(10);
+    } else {
+      setCount(count + 1);
+    }
+  };
+
+  const handleSelector = event => {
+    console.log(event.target.value);
   };
 
   const onClickWishImg = () => {
@@ -43,6 +59,14 @@ const DetailProduct = () => {
       navigate('/login');
     }
   };
+
+  useEffect(() => {
+    fetch('/data/productPrice.json')
+      .then(res => res.json())
+      .then(data => {
+        setPrice(data);
+      });
+  }, [params.index]);
 
   useEffect(() => {
     fetch('/data/colorList.json')
@@ -75,28 +99,16 @@ const DetailProduct = () => {
         <div className="productName">[남성 아우터 패딩]</div>
         <div className="priceArea">
           <div className="priceArea1">제품 가격 :</div>
-          <div className="priceArea2">50,000 원</div>
+          <div className="priceArea2">{Math.floor(price).toLocaleString()}</div>
           <div className="priceArea3">할인 가격 :</div>
           <div className="priceArea4">45,000 원 (10%)</div>
         </div>
         <div className="countInput">
-          <button
-            className="minusButton"
-            type="button"
-            onClick={() => {
-              setCount(count - 1);
-            }}
-          >
+          <button className="minusButton" type="button" onClick={minusCounter}>
             -1
           </button>
           <div className={`productCount${count}`}>수량 : {count}</div>
-          <button
-            className="plusButton"
-            type="button"
-            onClick={() => {
-              setCount(count + 1);
-            }}
-          >
+          <button className="plusButton" type="button" onClick={plusCounter}>
             +1
           </button>
         </div>
@@ -109,6 +121,7 @@ const DetailProduct = () => {
                 key={productColors.id}
                 onClick={handleSelector}
                 value={productColors}
+                style={{ backgroundColor: `${productColors.color}` }}
               >
                 {productColors.color}
               </button>
@@ -126,7 +139,7 @@ const DetailProduct = () => {
           })}
         </div>
         <div className="sumPrice">
-          <p>총 제품금액 : (100,000 원)</p>
+          <p>총 제품금액 : {count}</p>
         </div>
         <div className="buttons">
           <button>
