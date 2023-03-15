@@ -1,9 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-const Footer = () => {
-  return <></>;
-=======
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
@@ -80,7 +75,6 @@ const Footer = () => {
       </div>
     </div>
   );
->>>>>>> main
 };
 
 export default Footer;
