@@ -34,7 +34,7 @@ const Nav = () => {
                   to="/allProductList"
                   state={{ gender: title }}
                 >
-                  {title}
+                  {title.toUpperCase()}
                 </Link>
               </li>
             ))}
