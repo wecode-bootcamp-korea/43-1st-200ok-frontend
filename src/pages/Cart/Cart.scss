@@ -99,10 +99,11 @@
       padding: 40px 0;
 
       .cartChosenPrice {
-        width: 141px;
+        width: 140px;
+        text-align: center;
+        padding-right: 10px;
 
         .chosenPriceTitle {
-          padding-right: 30px;
           text-align: center;
           align-items: center;
           font-size: 18px;
@@ -112,6 +113,10 @@
           font-family: 'KimjungchulGothic-Bold';
           font-size: 30px;
           align-items: center;
+        }
+        .cartWon {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
         }
       }
 
@@ -140,12 +145,14 @@
       }
 
       .cartSumPrice {
-        width: 141px;
-        padding-left: 30px;
+        width: 140px;
+        padding-left: 10px;
+
+        text-align: center;
 
         .sumPriceTitle {
           font-size: 18px;
-          padding-right: 33px;
+
           text-align: center;
           align-items: center;
         }
