@@ -8,6 +8,7 @@ const BestProduct = () => {
   const status = 'best';
   const category = 'blank';
   const productid = 'blank';
+  const btnDesign = gender === 'female';
 
   const clickWoman = () => {
     setGender('female');
@@ -31,12 +32,20 @@ const BestProduct = () => {
       <p className="header">위클리 베스트</p>
       <ul className="tab">
         <li>
-          <button type="button" onClick={clickWoman}>
+          <button
+            type="button"
+            onClick={clickWoman}
+            className={btnDesign ? 'on' : ''}
+          >
             우먼
           </button>
         </li>
         <li>
-          <button type="button" onClick={clickMan}>
+          <button
+            type="button"
+            onClick={clickMan}
+            className={btnDesign ? '' : 'on'}
+          >
             맨
           </button>
         </li>

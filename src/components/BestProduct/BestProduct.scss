@@ -17,28 +17,35 @@
     text-align: center;
 
     li {
-      position: relative;
       display: inline-block;
       height: 35px;
       margin: 0 20px;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.3s;
+      z-index: 4;
 
       button {
+        position: relative;
         font-size: 20px;
         font-weight: 600;
-      }
-
-      button:after {
+        border-bottom: solid 3px transparent;
         display: block;
-        content: '';
-        border-bottom: solid 3px black;
-        transform: scaleX(0);
-        transition: transform 250ms ease-in-out;
       }
 
-      button:hover:after {
-        transform: scaleX(1);
+      button.on {
+        border-bottom: solid 3px black;
+      }
+
+      button.on::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background-color: #c41e20;
+        border-radius: 50%;
+        top: 0;
+        right: -10px;
       }
     }
   }
