@@ -4,9 +4,9 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigator = useNavigate();
+  const token = localStorage.getItem('token');
 
   const logOut = () => {
-    const token = localStorage.getItem('token');
     if (token) {
       localStorage.removeItem('token');
       alert('로그아웃 되었습니다.');
@@ -17,6 +17,23 @@ const Nav = () => {
     }
   };
 
+  const conditionLink = title => {
+    if (title === 'login') {
+      if (!token) {
+        navigator('/login');
+      } else {
+        alert(' 이미 로그인 되었습니다.');
+      }
+    }
+    if (title === 'cart') {
+      if (token) {
+        navigator('/cart');
+      } else if (!token) {
+        alert('로그인 해주세요');
+        navigator('/login');
+      }
+    }
+  };
   return (
     <div className="nav">
       <div className="width">
@@ -44,13 +61,12 @@ const Nav = () => {
           <ul className="topMemberContent">
             {NAVMEMBER.map(({ id, title, img, altName }) => (
               <li className="topMemberContentList" key={id}>
-                <Link to={`/${title}`}>
-                  <img
-                    className="topMemberContentPhoto"
-                    src={`${img}`}
-                    alt={altName}
-                  />
-                </Link>
+                <img
+                  className="topMemberContentPhoto"
+                  src={`${img}`}
+                  alt={altName}
+                  onClick={() => conditionLink(title)}
+                />
               </li>
             ))}
             <button onClick={logOut}>로그아웃</button>
