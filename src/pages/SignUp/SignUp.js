@@ -4,6 +4,7 @@ import SignUpTerms from './SignUpTerms';
 import './SignUp.scss';
 
 const SignUp = () => {
+  // const [getIsActive, setGetIsActive] = useState(false);
   const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
@@ -39,6 +40,7 @@ const SignUp = () => {
   };
 
   //유효성 검사
+
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
@@ -60,27 +62,21 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch('http://10.58.52.227:8007/invalidEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
+    fetch(`http://10.58.52.201:3010/users/registerd-email?email=${email}`, {
+      method: 'GET',
     })
       .then(response => response.json())
       .then(data => {
-        setEmailCheck(data.result);
-        alert(data.result);
+        setEmailCheck(data.message);
+        alert(data.message);
       });
   };
 
-  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
+  const emailduplication = emailCheck === '가입 가능한 이메일 입니다.';
 
   const goToLogin = event => {
     if (activeBtn && emailduplication) {
-      fetch('http://10.58.52.227:8007/users/signup', {
+      fetch('http://10.58.52.201:3010/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -94,15 +90,24 @@ const SignUp = () => {
           privacyTermEssential: checkedState[0],
           privacyTermOptional: checkedState[1],
         }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
-          navigate('/login');
-        });
-    } else if (activeBtn && !emailduplication) {
+      }).then(response => response.json());
+      alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
+      navigate('/login');
+    } else if (activeBtn) {
       alert('아이디 중복을 확인해 주세요');
     }
+
+    // .then(data => {
+    //   alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
+    //   navigate('/login');
+    // });
+
+    // event.preventDefault();
+    // if (activeBtn) {
+    //   navigate('/login');
+    // } else {
+    //   alert('양식에 맞춰서 다시 입력해주세요.');
+    // }
   };
 
   const goToMain = () => {
