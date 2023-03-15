@@ -13,7 +13,7 @@ const AllProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
     )
       .then(res => res.json())
       .then(data => setData1(data.data));

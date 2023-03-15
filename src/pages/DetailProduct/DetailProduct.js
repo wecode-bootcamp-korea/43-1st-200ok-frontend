@@ -12,6 +12,12 @@ const DetailProduct = () => {
   const { gender, status, category } = location.state;
   const [user, setUser] = useState([]);
   const [isImages, setIsImages] = useState(true);
+  const [count, setCount] = useState(1);
+  const [product, setProduct] = useState({
+    size: '',
+    color: '',
+  });
+  const { size, color } = product;
   const token = localStorage.getItem('token');
   const colorHeart = '/images/colorheart.png';
 
@@ -23,7 +29,6 @@ const DetailProduct = () => {
       navigate('/login');
     }
   };
-
   const onClickWishImg = () => {
     setTimeout(() => {
       alert('wish 리스트에 추가하였습니다.');
@@ -33,16 +38,36 @@ const DetailProduct = () => {
 
   const onClickAddCart = () => {
     if (token) {
-      alert('장바구니에 추가하였습니다.');
+      fetch('', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({
+          productid: id,
+          size: size,
+          color: color,
+          token: token,
+          count: count,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert('장바구니에 추가하였습니다.');
+          navigate('/cart');
+        });
     } else {
       alert('로그인 해주세요');
       navigate('/login');
     }
   };
 
+  const updateProduct = e => {
+    const { value, title } = e.target;
+    setProduct({ ...product, [title]: value });
+  };
+
   useEffect(() => {
     fetch(
-      `http://10.58.52.184:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
@@ -85,31 +110,40 @@ const DetailProduct = () => {
                 </div>
               </div>
               <div className="countInput">
-                {/* <button
+                <button
                   className="minusButton"
                   type="button"
                   onClick={() => {
-                    setCount(count - 1);
+                    if (count > 1) {
+                      setCount(count - 1);
+                    }
                   }}
                 >
                   -1
                 </button>
                 <div className={`productCount${count}`}>수량 : {count}</div>
-                <Count count={count} setCount={setCount} />
                 <button
                   className="plusButton"
                   type="button"
                   onClick={() => {
-                    setCount(count + 1);
+                    if (count < 10) {
+                      setCount(count + 1);
+                    }
                   }}
                 >
                   +1
-                </button> */}
+                </button>
               </div>
               <div className="productColor">
                 <p>[Color]</p>
                 {colors.map(item => (
-                  <button key={item} className="productColor1">
+                  <button
+                    key={item}
+                    className="productColor1"
+                    title="color"
+                    value={item}
+                    onClick={updateProduct}
+                  >
                     {item.toUpperCase()}
                   </button>
                 ))}
@@ -117,13 +151,28 @@ const DetailProduct = () => {
               <div className="productSize">
                 <p>[Size]</p>
                 {sizes.map(item => (
-                  <button key={item} className="productSize1">
+                  <button
+                    key={item}
+                    className="productSize1"
+                    title="size"
+                    value={item}
+                    onClick={updateProduct}
+                  >
                     {item.toUpperCase()}
                   </button>
                 ))}
               </div>
               <div className="sumPrice">
-                <p>총 제품금액 : (100,000 원)</p>
+                <p>
+                  선택 옵션 : {color.toUpperCase()} / {size.toUpperCase()} /
+                  {count}
+                </p>
+              </div>
+              <div className="sumPrice">
+                <p>
+                  총 제품금액 : ({(discounted_price * count).toLocaleString()}
+                  원)
+                </p>
               </div>
               <div className="buttons">
                 <button>
