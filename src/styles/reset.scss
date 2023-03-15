@@ -80,7 +80,8 @@ button {
     '맑은 고딕', dotum, '돋움', sans-serif;
   color: #333;
 }
-​ a {
+
+a {
   color: #333;
   text-decoration: none;
 }
@@ -155,10 +156,4 @@ figure {
 }
 html {
   position: relative;
-}
-a,
-a:hover,
-a:active {
-  text-decoration: none;
-  color: #1a1a1a;
 }

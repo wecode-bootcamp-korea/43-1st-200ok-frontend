@@ -21,6 +21,14 @@ const DetailProduct = () => {
   const token = localStorage.getItem('token');
   const colorHeart = '/images/colorheart.png';
 
+  const onClickWishImg = () => {
+    setTimeout(() => {
+      alert('wish 리스트에 추가하였습니다.');
+      console.log('하트버튼 클릭');
+    }, 100);
+    return setIsImages(false);
+  };
+
   const oderValidation = () => {
     if (token) {
       alert('구매완료');
@@ -28,12 +36,6 @@ const DetailProduct = () => {
       alert('로그인 해주세요');
       navigate('/login');
     }
-  };
-  const onClickWishImg = () => {
-    setTimeout(() => {
-      alert('wish 리스트에 추가하였습니다.');
-    }, 100);
-    return setIsImages(false);
   };
 
   const onClickAddCart = () => {

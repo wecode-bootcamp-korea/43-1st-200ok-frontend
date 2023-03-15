@@ -12,6 +12,8 @@ const AllProductList = () => {
   const productid = 'blank';
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetch(
       `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
     )

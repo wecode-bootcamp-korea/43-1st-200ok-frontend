@@ -5,14 +5,15 @@ export const CartList = ({
   id,
   title,
   price,
+  amount,
   totalPrice,
   setTotalPrice,
   productList,
   setProductList,
-  checkedState,
   toggleSelected,
+  checkedState,
 }) => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(amount);
 
   //체크된것만 결제금액에 포함
   useEffect(() => {

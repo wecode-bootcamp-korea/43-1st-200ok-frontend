@@ -22,7 +22,7 @@ const Login = () => {
 
   const enterKeyUp = event => {
     if (idCondition && pwCondition) {
-      if (event.key === 'Enter') {
+      if (event.key === 13) {
         login();
       }
     }
@@ -34,9 +34,7 @@ const Login = () => {
       fetch('http://10.58.52.248:8007/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify(userInfo),
-        email,
-        password,
+        body: JSON.stringify({ email, password }),
       })
         .then(response => response.json())
         .then(data => {
