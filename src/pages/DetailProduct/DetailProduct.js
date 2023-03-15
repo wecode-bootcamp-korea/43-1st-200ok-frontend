@@ -24,7 +24,6 @@ const DetailProduct = () => {
   const onClickWishImg = () => {
     setTimeout(() => {
       alert('wish 리스트에 추가하였습니다.');
-      console.log('하트버튼 클릭');
     }, 100);
     return setIsImages(false);
   };
@@ -40,17 +39,12 @@ const DetailProduct = () => {
 
   const onClickAddCart = () => {
     if (token) {
-      fetch('', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify({
-          productid: id,
-          size: size,
-          color: color,
-          token: token,
-          count: count,
-        }),
-      })
+      fetch(
+        `http://10.58.52.201:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+        {
+          method: 'POST',
+        }
+      )
         .then(response => response.json())
         .then(data => {
           alert('장바구니에 추가하였습니다.');
@@ -69,7 +63,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${id}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
@@ -145,6 +139,7 @@ const DetailProduct = () => {
                     title="color"
                     value={item}
                     onClick={updateProduct}
+                    style={{ backgroundColor: { item } }}
                   >
                     {item.toUpperCase()}
                   </button>

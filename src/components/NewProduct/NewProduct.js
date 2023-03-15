@@ -6,8 +6,8 @@ const NewProduct = () => {
   const [newPhotoCount, setNewPhotoCount] = useState(0);
   const gender = 'malefemale';
   const status = 'new';
-  const category = 'blank';
-  const productid = 'blank';
+  const category = 'BLANK';
+  const productid = 'BLANK';
 
   const testNext = () => {
     if (newPhotoCount < newPhoto.length - 4 && newPhotoCount >= 0) {
@@ -27,10 +27,11 @@ const NewProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(response => response.json())
       .then(data => setNewPhoto(data.data));
+    window.scrollTo(0, 0);
   }, []);
 
   return (

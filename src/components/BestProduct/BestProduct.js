@@ -6,8 +6,8 @@ const BestProduct = () => {
   const [bestPhoto, setBestPhoto] = useState([]);
   const [gender, setGender] = useState('female');
   const status = 'best';
-  const category = 'blank';
-  const productid = 'blank';
+  const category = 'BLANK';
+  const productid = 'BLANK';
   const btnDesign = gender === 'female';
 
   const clickWoman = () => {
@@ -21,7 +21,7 @@ const BestProduct = () => {
   //백 연동 용
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));

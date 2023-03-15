@@ -12,7 +12,6 @@ const Nav = () => {
       alert('로그아웃 되었습니다.');
       navigator('/');
     } else if (!token) {
-      alert('로그인 해주세요');
       navigator('/login');
     }
   };
@@ -69,7 +68,7 @@ const Nav = () => {
                 />
               </li>
             ))}
-            <button onClick={logOut}>로그아웃</button>
+            <button onClick={logOut}>{token ? '로그아웃' : '로그인'}</button>
           </ul>
         </div>
       </div>
@@ -81,8 +80,8 @@ export default Nav;
 
 const NAVMENU = [
   { id: 1, title: '베스트' },
-  { id: 2, title: 'male' },
-  { id: 3, title: 'female' },
+  { id: 2, title: 'female' },
+  { id: 3, title: 'male' },
   { id: 4, title: '컬러버레이션' },
   { id: 5, title: '키즈' },
   { id: 6, title: '커뮤니티' },

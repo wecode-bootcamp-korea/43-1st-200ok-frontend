@@ -62,27 +62,21 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch('http://10.58.52.248:8007/invalidEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
+    fetch(`http://10.58.52.201:3010/users/registerd-email?email=${email}`, {
+      method: 'GET',
     })
       .then(response => response.json())
       .then(data => {
-        setEmailCheck(data.result);
-        alert(data.result);
+        setEmailCheck(data.message);
+        alert(data.message);
       });
   };
 
-  const emailduplication = emailCheck === '가입가능한 이메일 입니다.';
+  const emailduplication = emailCheck === '가입 가능한 이메일 입니다.';
 
   const goToLogin = event => {
     if (activeBtn && emailduplication) {
-      fetch('http://10.58.52.248:8007/users/signup', {
+      fetch('http://10.58.52.201:3010/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',

@@ -3,17 +3,22 @@ import './CartList.scss';
 
 export const CartList = ({
   id,
+  img,
   title,
   price,
   amount,
+  checkedState,
+  color,
+  size,
+  token,
   totalPrice,
   setTotalPrice,
   productList,
   setProductList,
   toggleSelected,
-  checkedState,
 }) => {
   const [count, setCount] = useState(amount);
+  const typeChange = Number(price);
 
   //체크된것만 결제금액에 포함
   useEffect(() => {
@@ -22,22 +27,28 @@ export const CartList = ({
     } else if (!checkedState && totalPrice !== 0) {
       setTotalPrice(prev => prev - count * price);
     }
+    window.scrollTo(0, 0);
   }, [checkedState]);
 
   const handleDeleteItem = () => {
-    setTotalPrice(prev => (prev -= price * count));
-    setProductList(productList.filter(item => item.id !== id));
+    fetch(`http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(productList.filter(item => item.cartId !== id));
+        setTotalPrice(prev => (prev -= typeChange * count));
+      });
   };
 
   const handlePrice = e => {
     const { name } = e.target;
-
     if (checkedState && name === 'plus' && count < 10) {
       setCount(count => count + 1);
-      setTotalPrice(prev => prev + price);
+      setTotalPrice(prev => prev + typeChange);
     } else if (checkedState && name === 'minus' && count > 1) {
       setCount(count => count - 1);
-      setTotalPrice(prev => prev - price);
+      setTotalPrice(prev => prev - typeChange);
     }
   };
 
@@ -51,19 +62,19 @@ export const CartList = ({
         onChange={toggleSelected}
       />
 
-      <img
-        className="cartProductImg"
-        src="images/cartproduct.png"
-        alt="cart.img"
-      />
+      <img className="cartProductImg" src={img} alt="cart.img" />
       <div className="cartProductDetail">
         <strong className="cartProductTitle">{title}</strong>
-        <p>[옵션: (10)WHITE/M(90)]</p>
+        <p>
+          [color: {color.toUpperCase()} | size: {size.toUpperCase()}]
+        </p>
         {/* <p>옵션변경</p> */}
       </div>
       <div className="cartProductPrice">
         <p className="productPriceTxt">상품금액</p>
-        <p className="productOnePrice">{price}원</p>
+        <p className="productOnePrice">
+          {Math.floor(price).toLocaleString()}원
+        </p>
       </div>
       <div className="count">
         <div className="countInput">
@@ -82,7 +93,7 @@ export const CartList = ({
       </div>
       <div className="oneProductSumPrice">
         <p className="oneProductSumPriceTxt">총 상품금액</p>
-        <p className="onePrice">{price * count}원</p>
+        <p className="onePrice">{(typeChange * count).toLocaleString()}원</p>
       </div>
       <div className="cartOneDelete">
         <button

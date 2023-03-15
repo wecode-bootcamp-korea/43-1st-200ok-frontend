@@ -49,7 +49,7 @@ const ProductForm = ({ num, gender, status, category, productid, item }) => {
             <img
               onClick={heartColorChange}
               className="heart"
-              src={isHeart ? '/images/heart.png' : '/images/heart.png'}
+              src={isHeart ? '/images/heart.png' : '/images/heartPink.png'}
               alt="heart"
             />
           </div>
