@@ -5,7 +5,8 @@ import './Main.scss';
 
 const Main = () => {
   const [mainImg, setMainImg] = useState(0);
-  const bbb = () => {
+
+  const autoSlide = () => {
     if (mainImg < MAINIMAGES.length - 1 && mainImg >= 0) {
       setMainImg(mainImg + 1);
     } else if (mainImg === MAINIMAGES.length - 1) {
@@ -13,7 +14,7 @@ const Main = () => {
     }
   };
 
-  setInterval(bbb, 6000);
+  setInterval(autoSlide, 6000);
 
   return (
     <div className="main">
