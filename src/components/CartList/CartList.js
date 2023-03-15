@@ -13,7 +13,15 @@ export const CartList = ({
   toggleSelected,
 }) => {
   const [count, setCount] = useState(1);
-  totalPrice = count * price;
+
+  //체크된것만 결제금액에 포함
+  useEffect(() => {
+    if (checkedState) {
+      setTotalPrice(prev => prev + count * price);
+    } else if (!checkedState && totalPrice !== 0) {
+      setTotalPrice(prev => prev - count * price);
+    }
+  }, [checkedState]);
 
   const handleDeleteItem = () => {
     setTotalPrice(prev => (prev -= price * count));
@@ -25,10 +33,10 @@ export const CartList = ({
 
     if (checkedState && name === 'plus' && count < 10) {
       setCount(count => count + 1);
-      setTotalPrice(prev => (prev += price));
+      setTotalPrice(prev => prev + price);
     } else if (checkedState && name === 'minus' && count > 1) {
       setCount(count => count - 1);
-      setTotalPrice(prev => (prev -= price));
+      setTotalPrice(prev => prev - price);
     }
   };
 
@@ -73,7 +81,7 @@ export const CartList = ({
       </div>
       <div className="oneProductSumPrice">
         <p className="oneProductSumPriceTxt">총 상품금액</p>
-        <p className="onePrice">{totalPrice}원</p>
+        <p className="onePrice">{price * count}원</p>
       </div>
       <div className="cartOneDelete">
         <button

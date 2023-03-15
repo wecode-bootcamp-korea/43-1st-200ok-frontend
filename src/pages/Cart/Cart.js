@@ -1,3 +1,4 @@
+import { check } from 'prettier';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../components/CartList/CartList';
@@ -6,18 +7,20 @@ import './Cart.scss';
 
 const Cart = () => {
   const [productList, setProductList] = useState([]);
+  console.log(productList);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
   const toggleSelected = e => {
     const { name } = e.target;
+
     const selectedChkBox = productList.map(product => {
       if (product.id.toString() === name) {
         return { ...product, checkedState: !product.checkedState };
       }
       return product;
     });
-    setTotalPrice(totalPrice);
+    // setTotalPrice(totalPrice);
     setProductList(selectedChkBox);
   };
 
@@ -35,7 +38,10 @@ const Cart = () => {
     setTotalPrice(0);
     setProductList(productList.filter(item => item.id === isAllDelete));
   };
-
+  const handleSomeDelete = () => {
+    setTotalPrice(prev => prev - totalPrice);
+    setProductList(productList.filter(({ checkedState }) => !checkedState));
+  };
   const goToShopping = () => {
     navigate('/');
   };
@@ -69,10 +75,14 @@ const Cart = () => {
                 전체 선택
               </button>
             </div>
-
-            <button className="cartAllDelete" onClick={handleAllDelete}>
-              전체 삭제
-            </button>
+            <div>
+              <button className="cartSomeDelete" onClick={handleSomeDelete}>
+                선택 삭제
+              </button>
+              <button className="cartAllDelete" onClick={handleAllDelete}>
+                전체 삭제
+              </button>
+            </div>
           </div>
           <div className="cartProductInfo">
             {productList.length === 0 ? (
