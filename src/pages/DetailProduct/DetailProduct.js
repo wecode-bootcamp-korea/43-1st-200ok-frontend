@@ -4,7 +4,8 @@ import './DetailProduct.scss';
 
 const DetailProduct = () => {
   const [count, setCount] = useState(1);
-  const [user, setUser] = useState();
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState([]);
   const [isImages, setIsImages] = useState(true);
 
   const params = useParams();
@@ -13,18 +14,15 @@ const DetailProduct = () => {
   const token = localStorage.getItem('token');
   const colorHeart = 'images/colorheart.png';
 
-  const oderValidation = () => {
-    if (token) {
-      alert('구매완료');
-    } else {
-      alert('로그인 해주세요');
-      navigate('/login');
-    }
+  const handleSelector = () => {
+    // console.log(color);
+    console.log(setColor);
   };
 
   const onClickWishImg = () => {
     setTimeout(() => {
       alert('wish 리스트에 추가하였습니다.');
+      console.log('하트버튼 클릭');
     }, 100);
     return setIsImages(false);
   };
@@ -37,10 +35,29 @@ const DetailProduct = () => {
     }
   };
 
+  const oderValidation = () => {
+    if (token) {
+      alert('구매완료');
+    } else {
+      alert('로그인 해주세요');
+      navigate('/login');
+    }
+  };
+
   useEffect(() => {
-    fetch(`./data/Man.json/${params.index}`)
+    fetch('/data/colorList.json')
       .then(res => res.json())
-      .then(data => setUser(data));
+      .then(data => {
+        setColor(data);
+      });
+  }, [params.index]);
+
+  useEffect(() => {
+    fetch('/data/sizeList.json')
+      .then(res => res.json())
+      .then(data => {
+        setSize(data);
+      });
   }, [params.index]);
 
   return (
@@ -55,9 +72,7 @@ const DetailProduct = () => {
         </div>
       </section>
       <aside className="infoArea">
-        <div className="productName">
-          [램스울100 라운드넥 스웨터 | C,M_SPKWD23U99]
-        </div>
+        <div className="productName">[남성 아우터 패딩]</div>
         <div className="priceArea">
           <div className="priceArea1">제품 가격 :</div>
           <div className="priceArea2">50,000 원</div>
@@ -65,7 +80,7 @@ const DetailProduct = () => {
           <div className="priceArea4">45,000 원 (10%)</div>
         </div>
         <div className="countInput">
-          {/* <button
+          <button
             className="minusButton"
             type="button"
             onClick={() => {
@@ -73,10 +88,9 @@ const DetailProduct = () => {
             }}
           >
             -1
-          </button> */}
-          {/* <div className={`productCount${count}`}>수량 : {count}</div> */}
-          {/* <Count count={count} setCount={setCount} /> */}
-          {/* <button
+          </button>
+          <div className={`productCount${count}`}>수량 : {count}</div>
+          <button
             className="plusButton"
             type="button"
             onClick={() => {
@@ -84,21 +98,32 @@ const DetailProduct = () => {
             }}
           >
             +1
-          </button> */}
+          </button>
         </div>
         <div className="productColor">
           <p>[Color]</p>
-          <button className="productColor1">red</button>
-          <button className="productColor2">blue</button>
-          <button className="productColor3">green</button>
-          <button className="productColor4">purple</button>
+          {color.map(productColors => {
+            return (
+              <button
+                className="productColor1"
+                key={productColors.id}
+                onClick={handleSelector}
+                value={productColors}
+              >
+                {productColors.color}
+              </button>
+            );
+          })}
         </div>
         <div className="productSize">
           <p>[Size]</p>
-          <button className="productSize1">95</button>
-          <button className="productSize2">100</button>
-          <button className="productSize3">105</button>
-          <button className="productSize4">110</button>
+          {size.map(productSizes => {
+            return (
+              <button className="productSize1" key={productSizes.id}>
+                {productSizes.size}
+              </button>
+            );
+          })}
         </div>
         <div className="sumPrice">
           <p>총 제품금액 : (100,000 원)</p>
