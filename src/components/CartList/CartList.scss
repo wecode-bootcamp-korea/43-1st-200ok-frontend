@@ -1,0 +1,32 @@
+.cartProductInfo {
+  .cartCheckBox {
+  }
+  .cartProductImg {
+  }
+  .cartProductDetail {
+    .cartProductTitle {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 16px;
+    }
+  }
+}
+
+.count {
+  margin: 0 25px 0 25px;
+  .countInput {
+    .countButton {
+      border: 1px solid #ddd;
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      color: black;
+      margin: 0 5px;
+    }
+    .countInputText {
+      margin: 0 5px;
+      display: inline-block;
+      width: 15px;
+      text-align: center;
+    }
+  }
+}

@@ -1,54 +1,62 @@
-import React, { useState } from 'react';
-import './Cart.scss';
-// import Count from '../../components/Count/Count';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartList from '../../components/CartList/CartList';
+import EmptyCart from '../../components/CartList/EmptyCart';
+// import Count from '../../components/Count/Count';
+import './Cart.scss';
 
-const Cart = props => {
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState('5000');
-  const totalPrice = price * count;
-  const [isAllChecked, setAllChecked] = useState(false);
-  const [checkedState, setCheckedState] = useState(new Array(2).fill(false));
-  const [saveOrder, setSaveOrder] = useState([]);
+const Cart = () => {
   const [productList, setProductList] = useState([]);
+  console.log(productList);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
-  const handleDeleteSelected = () => {
-    const selectedProductIds = isAllChecked;
-    setProductList(prevProducts =>
-      prevProducts.filter(
-        product => !selectedProductIds.includes(product.cartId)
-      )
-    );
-    setAllChecked([]);
-  };
+  const toggleSelected = e => {
+    const { name } = e.target;
 
-  const handleAllCheck = () => {
-    setAllChecked(prev => !prev);
-    let array = new Array(2).fill(!isAllChecked);
-    setCheckedState(array);
-  };
-
-  const handleMonoCheck = position => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
-    const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
-      if (currentState === true) {
-        return sum + 1;
+    const selectedChkBox = productList.map(product => {
+      if (product.id.toString() === name) {
+        return { ...product, checkedState: !product.checkedState };
       }
-      return sum;
-    }, 0);
-    setAllChecked(checkedLength === updatedCheckedState.length);
+      return product;
+    });
+    // setTotalPrice(totalPrice);
+    setProductList(selectedChkBox);
   };
 
-  const deleteProduct = item => {
-    setSaveOrder(
-      saveOrder.filter(item => {
-        return item.id !== item.id;
-      })
-    );
+  const onClickAllToggleBtn = () => {
+    const isAllChecked = productList.every(({ checkedState }) => checkedState);
+    const selectedChkBox = productList.map(product => ({
+      ...product,
+      checkedState: isAllChecked ? false : true,
+    }));
+    setProductList(selectedChkBox);
   };
+
+  const handleAllDelete = () => {
+    const isAllDelete = productList.map(item => item.id);
+    setTotalPrice(0);
+    setProductList(productList.filter(item => item.id === isAllDelete));
+  };
+  const handleSomeDelete = () => {
+    setTotalPrice(prev => prev - totalPrice);
+    setProductList(productList.filter(({ checkedState }) => !checkedState));
+  };
+  const goToShopping = () => {
+    navigate('/');
+  };
+
+  const goToPay = () => {
+    alert('결제완료!!! 고객님의 상품을 안전하게 배송해드리겠습니다♡');
+  };
+
+  useEffect(() => {
+    fetch('/data/Cart.json')
+      .then(res => res.json())
+      .then(data =>
+        setProductList(data.map(item => ({ ...item, checkedState: false })))
+      );
+  }, []);
 
   return (
     <div className="cart">
@@ -63,52 +71,44 @@ const Cart = props => {
         <div className="listContent">
           <div className="cardHeader">
             <div className="allCheckBox">
-              <input
-                className="cartAllCheckBox"
-                type="checkbox"
-                checked={isAllChecked}
-                onChange={() => handleAllCheck()}
-              />
-              <label className="cartAllCheck">전체선택</label>
+              <button className="cartAllCheckBox" onClick={onClickAllToggleBtn}>
+                전체 선택
+              </button>
             </div>
-
-            <button className="cartAllDelete">선택상품 삭제</button>
+            <div>
+              <button className="cartSomeDelete" onClick={handleSomeDelete}>
+                선택 삭제
+              </button>
+              <button className="cartAllDelete" onClick={handleAllDelete}>
+                전체 삭제
+              </button>
+            </div>
           </div>
           <div className="cartProductInfo">
-            <div className="cartCard">
-              <div className="cartProductInfo">
-                <input
-                  type="checkbox"
-                  class="cartCheckBox"
-                  checked={checkedState[1]}
-                  onChange={() => handleMonoCheck(1)}
-                />
-                <img
-                  className="cartProductImg"
-                  src="images/cartproduct.png"
-                  alt="cart.img"
-                />
-                <div className="cartProductDetail">
-                  <strong>포켓 트러커 자켓_SPJKD32G08</strong>
-                  <p>[옵션: (10)WHITE/M(90)]</p>
-                  <p>옵션변경</p>
-                </div>
-                <div className="cartProductPrice">
-                  <p className="productPriceTxt">상품금액</p>
-                  <p className="productOnePrice">{price} 원</p>
-                </div>
-                {/* <Count count={count} setCount={setCount} /> */}
-                <div className="cartDelivery">
-                  <p className="deliveryTitle">배송비</p>
-                  <p className="cartDeliveryPrice">무료</p>
-                </div>
-                <div className="cartOneDelete">
-                  <button className="deleteButton" type="reset">
-                    X
-                  </button>
-                </div>
+            {productList.length === 0 ? (
+              <EmptyCart />
+            ) : (
+              <div className="cartCard">
+                {productList.map(
+                  ({ price, id, title, amount, checkedState }) => (
+                    <CartList
+                      key={id}
+                      id={id}
+                      title={title}
+                      price={price}
+                      totalPrice={totalPrice}
+                      setTotalPrice={setTotalPrice}
+                      amount={amount}
+                      productList={productList}
+                      setProductList={setProductList}
+                      toggleSelected={toggleSelected}
+                      checkedState={checkedState}
+                      cart={Cart}
+                    />
+                  )
+                )}
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ const Cart = props => {
         <div className="sumList">
           <div className="cartChosenPrice">
             <p className="chosenPriceTitle">총 상품금액</p>
-            <p className="chosenPrice">{totalPrice} 원</p>
+            <p className="chosenPrice">{totalPrice}원</p>
           </div>
           <img className="cartListPlus" src="images/plus.png" alt="plus" />
           <div className="deliveryInSum">
@@ -127,32 +127,19 @@ const Cart = props => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartsumPrice">{totalPrice} 원</p>
+            <p className="cartFinalSumPrice">{totalPrice}원</p>
           </div>
         </div>
       </div>
       <div className="payYesOrNo">
-        <button className="btnCancelPay">
+        <button className="btnCancelPay" onClick={goToShopping}>
           <span>쇼핑계속하기</span>
         </button>
-        <button className="payButtonAction">
+        <button className="payButtonAction" onClick={goToPay}>
           <span>결제하기</span>
         </button>
-        {/* <button
-          className={payIsActive ? 'payButtonAction' : 'payButtonInaction'}
-          disabled={!payIsActive}
-          onClick={goToPay}
-        >
-          결제하기
-        </button> */}
       </div>
     </div>
-
-    //               {PRODUCT_LIST.map(info => (
-    //                 <div key={info.id} className="ProductList">
-    //                   <div className="cartProductList">
-    //                     <div className="productName">이름 : {info.title}</div>
-    //                     <div className="productPrice">가격 : {info.price}</div>
   );
 };
 
@@ -167,26 +154,3 @@ export default Cart;
 //   setNumberComments(numberComments - 1);
 //   return item.up === true ? setNumberLike(numberlike - 1) : '';
 // };
-
-const PRODUCT_LIST = [
-  {
-    id: 1,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 2,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 3,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-  {
-    id: 4,
-    title: '포켓 트러커 자켓_SPJKD32G08',
-    price: 500,
-  },
-];
