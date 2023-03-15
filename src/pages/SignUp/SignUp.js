@@ -39,7 +39,6 @@ const SignUp = () => {
   };
 
   //유효성 검사
-
   const isValidEmail = email.includes('@', 4) && email.includes('.com');
   const isValidPassWord = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?]).{8,}$/
@@ -104,18 +103,6 @@ const SignUp = () => {
     } else if (activeBtn && !emailduplication) {
       alert('아이디 중복을 확인해 주세요');
     }
-
-    // .then(data => {
-    //   alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
-    //   navigate('/login');
-    // });
-
-    // event.preventDefault();
-    // if (activeBtn) {
-    //   navigate('/login');
-    // } else {
-    //   alert('양식에 맞춰서 다시 입력해주세요.');
-    // }
   };
 
   const goToMain = () => {
