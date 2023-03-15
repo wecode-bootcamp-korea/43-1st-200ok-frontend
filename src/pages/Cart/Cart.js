@@ -188,3 +188,4 @@ export default Cart;
 //   setNumberComments(numberComments - 1);
 //   return item.up === true ? setNumberLike(numberlike - 1) : '';
 // };
+//ㅁㄴㅇㄴㅇ
