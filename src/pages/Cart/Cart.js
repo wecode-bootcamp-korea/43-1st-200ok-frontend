@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartList } from '../../components/CartList/CartList';
+import CartList from '../../components/CartList/CartList';
 import EmptyCart from '../../components/CartList/EmptyCart';
+// import Count from '../../components/Count/Count';
 import './Cart.scss';
 
 const Cart = () => {
   const [productList, setProductList] = useState([]);
-
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const toggleSelected = e => {
     const { name } = e.target;
 
     const selectedChkBox = productList.map(product => {
-      if (product.id.toString() === name) {
+      if (product.cartId.toString() === name) {
         return { ...product, checkedState: !product.checkedState };
       }
       return product;
@@ -33,14 +34,35 @@ const Cart = () => {
   };
 
   const handleAllDelete = () => {
-    const isAllDelete = productList.map(item => item.id);
-    setTotalPrice(0);
-    setProductList(productList.filter(item => item.id === isAllDelete));
+    const isAllDelete = productList.map(item => item.cartId);
+    fetch(
+      `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+      {
+        method: 'DELETE',
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        setProductList(productList.filter(item => item.cartId === isAllDelete));
+        setTotalPrice(0);
+      });
   };
+
   const handleSomeDelete = () => {
-    setTotalPrice(prev => prev - totalPrice);
-    setProductList(productList.filter(({ checkedState }) => !checkedState));
+    const isAllDelete = productList.map(item => item.cartId);
+    fetch(
+      `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+      {
+        method: 'DELETE',
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        setProductList(productList.filter(({ checkedState }) => !checkedState));
+        setTotalPrice(prev => prev - totalPrice);
+      });
   };
+
   const goToShopping = () => {
     navigate('/');
   };
@@ -56,11 +78,17 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch('/data/Cart.json')
+    fetch(`http://10.58.52.201:3010/carts/get?token=${token}`)
       .then(res => res.json())
       .then(data =>
-        setProductList(data.map(item => ({ ...item, checkedState: false })))
+        setProductList(
+          data.data.map(item => ({
+            ...item,
+            checkedState: false,
+          }))
+        )
       );
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -94,23 +122,25 @@ const Cart = () => {
               <EmptyCart />
             ) : (
               <div className="cartCard">
-                {productList.map(
-                  ({ price, id, title, amount, checkedState }) => (
-                    <CartList
-                      key={id}
-                      id={id}
-                      title={title}
-                      price={price}
-                      amount={amount}
-                      totalPrice={totalPrice}
-                      setTotalPrice={setTotalPrice}
-                      productList={productList}
-                      setProductList={setProductList}
-                      toggleSelected={toggleSelected}
-                      checkedState={checkedState}
-                    />
-                  )
-                )}
+                {productList.map(item => (
+                  <CartList
+                    key={item.cartId}
+                    id={item.cartId}
+                    img={item.image_url}
+                    title={item.name}
+                    price={item.discount_price}
+                    amount={item.quantity}
+                    checkedState={item.checkedState}
+                    color={item.color}
+                    size={item.size}
+                    token={token}
+                    totalPrice={totalPrice}
+                    setTotalPrice={setTotalPrice}
+                    productList={productList}
+                    setProductList={setProductList}
+                    toggleSelected={toggleSelected}
+                  />
+                ))}
               </div>
             )}
           </div>
@@ -121,7 +151,7 @@ const Cart = () => {
         <div className="sumList">
           <div className="cartChosenPrice">
             <p className="chosenPriceTitle">총 상품금액</p>
-            <p className="chosenPrice">{totalPrice}원</p>
+            <p className="chosenPrice">{totalPrice.toLocaleString()}원</p>
           </div>
           <img className="cartListPlus" src="images/plus.png" alt="plus" />
           <div className="deliveryInSum">
@@ -131,7 +161,7 @@ const Cart = () => {
           <img className="cartListPlus" src="images/equal.png" alt="equal" />
           <div className="cartSumPrice">
             <p className="sumPriceTitle">총 결제금액</p>
-            <p className="cartFinalSumPrice">{totalPrice}원</p>
+            <p className="cartFinalSumPrice">{totalPrice.toLocaleString()}원</p>
           </div>
         </div>
       </div>
