@@ -80,14 +80,18 @@ button {
     '맑은 고딕', dotum, '돋움', sans-serif;
   color: #333;
 }
-​ a {
+
+​a {
   color: #333;
   text-decoration: none;
 }
+
 a:active,
 a:hover {
-  text-decoration: underline;
+  color: #333;
+  text-decoration: none;
 }
+
 a:active {
   background-color: transparent;
 }
