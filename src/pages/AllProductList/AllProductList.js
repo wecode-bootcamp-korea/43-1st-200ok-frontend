@@ -8,14 +8,14 @@ const AllProductList = () => {
   const { gender } = location.state;
   const [data1, setData1] = useState([]);
   const [category, setCategory] = useState('outer');
-  const status = 'blank';
-  const productid = 'blank';
+  const status = 'BLANK';
+  const productid = 'BLANK';
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&id=${productid}`
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(res => res.json())
       .then(data => setData1(data.data));
