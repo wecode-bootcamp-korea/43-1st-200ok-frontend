@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartList from '../../components/CartList/CartList';
 import EmptyCart from '../../components/CartList/EmptyCart';
-// import Count from '../../components/Count/Count';
 import './Cart.scss';
 
 const Cart = () => {
@@ -16,11 +15,12 @@ const Cart = () => {
 
     const selectedChkBox = productList.map(product => {
       if (product.cartId.toString() === name) {
-        return { ...product, checkedState: !product.checkedState };
+        if (product.id.toString() === name) {
+          return { ...product, checkedState: !product.checkedState };
+        }
+        return product;
       }
-      return product;
     });
-
     setProductList(selectedChkBox);
   };
 
@@ -62,7 +62,6 @@ const Cart = () => {
         setTotalPrice(prev => prev - totalPrice);
       });
   };
-
   const goToShopping = () => {
     navigate('/');
   };
@@ -89,6 +88,12 @@ const Cart = () => {
         )
       );
     window.scrollTo(0, 0);
+
+    fetch('/data/Cart.json')
+      .then(res => res.json())
+      .then(data =>
+        setProductList(data.map(item => ({ ...item, checkedState: false })))
+      );
   }, []);
 
   return (
@@ -146,7 +151,6 @@ const Cart = () => {
           </div>
         </div>
       </div>
-
       <div className="cartSumBox">
         <div className="sumList">
           <div className="cartChosenPrice">
