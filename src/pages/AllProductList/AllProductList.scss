@@ -128,18 +128,22 @@
             text-align: center;
 
             .num {
-              font-size: 0;
-
-              &.new {
-                background-color: #b5b5b5;
-              }
+              left: 0;
+              top: 0;
+              width: 50px;
+              height: 50px;
+              padding: 0;
+              font-size: 0px;
+              text-align: center;
+              position: absolute;
+              z-index: 5;
             }
           }
 
           .images {
             position: relative;
             cursor: pointer;
-            display: flex;
+            display: block;
 
             &::after {
               content: '';
@@ -153,6 +157,7 @@
               z-index: 2;
               opacity: 0;
               transition: all 0.4s;
+              height: 613px;
             }
 
             &:hover::after {
@@ -233,6 +238,7 @@
                 color: #b9b9b9;
                 text-decoration: line-through;
                 font-weight: 400;
+                padding: 0 10px;
               }
 
               .rateDiscount {
@@ -240,7 +246,6 @@
                 color: #c41e20;
               }
             }
-
             .colors {
               margin: 15px 0 0;
               font-size: 0;
@@ -253,22 +258,6 @@
                 margin-right: 3px;
                 border: 1px solid #e6e5e5;
                 box-sizing: border-box;
-
-                &.red {
-                  background-color: red;
-                }
-
-                &.blue {
-                  background-color: blue;
-                }
-
-                &.yellow {
-                  background-color: yellow;
-                }
-
-                &.pink {
-                  background-color: pink;
-                }
               }
             }
           }
