@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BestProduct from '../../components/BestProduct/BestProduct';
 import NewProduct from '../../components/NewProduct/NewProduct';
 import './Main.scss';
@@ -6,15 +6,16 @@ import './Main.scss';
 const Main = () => {
   const [mainImg, setMainImg] = useState(0);
 
-  const autoSlide = () => {
-    if (mainImg < MAINIMAGES.length - 1 && mainImg >= 0) {
-      setMainImg(mainImg + 1);
-    } else if (mainImg === MAINIMAGES.length - 1) {
-      setMainImg(0);
-    }
-  };
-
-  setInterval(autoSlide, 6000);
+  useEffect(() => {
+    const autoSlide = () => {
+      if (mainImg < MAINIMAGES.length - 1 && mainImg >= 0) {
+        setMainImg(mainImg + 1);
+      } else if (mainImg === MAINIMAGES.length - 1) {
+        setMainImg(0);
+      }
+    };
+    setInterval(autoSlide, 6000);
+  }, [mainImg]);
 
   return (
     <div className="main">
