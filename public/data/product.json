@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "url": "/images/pants-gd51329a21_640.jpg",
+    "colors": ["red", "yellow"]
+  },
+  {
+    "id": 2,
+    "url": "/images/samia-liamani-Z_wD2N7K_wQ-unsplash.jpg",
+    "colors": ["red", "blue", "yellow"]
+  },
+  {
+    "id": 3,
+    "url": "/images/isolated-t-shirt-g42a68de19_640.jpg",
+    "colors": ["red", "pink", "yellow"]
+  },
+  {
+    "id": 4,
+    "url": "/images/pants-g5cc65d279_640.jpg",
+    "colors": ["red", "blue", "yellow", "pink"]
+  },
+  {
+    "id": 5,
+    "url": "/images/pants-g97b089277_640.jpg",
+    "colors": ["red", "pink"]
+  },
+  {
+    "id": 6,
+    "url": "/images/pants-g97b089277_640.jpg",
+    "colors": ["red", "blue", "yellow"]
+  },
+  {
+    "id": 7,
+    "url": "/images/isolated-t-shirt-g759dfe828_640.jpg",
+    "colors": ["red", "pink", "yellow", "blue"]
+  },
+  {
+    "id": 8,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"]
+  }
+]
