@@ -27,7 +27,7 @@ const NewProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
+      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(response => response.json())
       .then(data => setNewPhoto(data.data));

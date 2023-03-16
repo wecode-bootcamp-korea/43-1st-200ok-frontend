@@ -21,7 +21,7 @@ const BestProduct = () => {
   //백 연동 용
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
+      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));
