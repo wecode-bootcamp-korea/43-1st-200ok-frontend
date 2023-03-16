@@ -337,7 +337,6 @@ const SignUp = () => {
           </button>
         </div>
       </div>
-      >>>>>>> main
     </div>
   );
 };
