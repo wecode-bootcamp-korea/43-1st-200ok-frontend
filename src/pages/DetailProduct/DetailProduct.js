@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate, useParams } from 'react-router-dom';
-// import Count from '../../components/Count/Count';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
