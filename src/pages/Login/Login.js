@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import './Login.scss';
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
   const login = e => {
     e.preventDefault();
     if (idCondition && pwCondition) {
-      fetch('http://10.58.52.159:8007/users/signin', {
+      fetch(`${APIS.signin}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify({ email, password }),
@@ -51,7 +52,7 @@ const Login = () => {
 
   return (
     <section className="login">
-      <form className="loginForm">
+      <form className="loginForm" onSubmit={enterKeyUp}>
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
         </Link>
@@ -68,7 +69,6 @@ const Login = () => {
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={updateUserInfo}
-            onKeyUp={enterKeyUp}
             name="password"
           />
           <div className="saveEmail">
