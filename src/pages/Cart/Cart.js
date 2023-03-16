@@ -35,6 +35,7 @@ const Cart = () => {
 
   const handleAllDelete = () => {
     const isAllDelete = productList.map(item => item.cartId);
+
     fetch(
       `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
       {
@@ -49,9 +50,12 @@ const Cart = () => {
   };
 
   const handleSomeDelete = () => {
-    const isAllDelete = productList.map(item => item.cartId);
+    const isDelete = productList
+      .filter(item => item.checkedState === true)
+      .map(item => item.cartId);
+
     fetch(
-      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isDelete}`,
       {
         method: 'DELETE',
       }
