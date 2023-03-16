@@ -41,7 +41,6 @@
       margin-left: 225px;
       margin-right: 190px;
       padding-top: 55px;
-      color: black;
     }
   }
   .infoFirst {
@@ -91,18 +90,19 @@
               align-items: center;
 
               .signupInputInfo {
+                padding-left: 10px;
                 margin: 0 20px 0 20px;
                 display: inline-block;
                 border-radius: 5px;
               }
 
               .signupEmailInput {
+                padding-left: 10px;
                 width: 350px;
                 margin-left: 20px;
                 border-radius: 5px;
               }
               .emailCheckBtn {
-                border: 1px solid #bb2420;
                 background-color: #bb2420;
                 color: white;
                 min-width: 100px;
