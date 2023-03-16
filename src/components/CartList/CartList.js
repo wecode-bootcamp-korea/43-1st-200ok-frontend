@@ -20,15 +20,25 @@ export const CartList = ({
   const [count, setCount] = useState(amount);
   const typeChange = Number(price);
 
-  //체크된것만 수량변경
+  //체크된것만 결제금액에 포함
   useEffect(() => {
     if (checkedState) {
       setTotalPrice(prev => prev + count * price);
     } else if (!checkedState && totalPrice !== 0) {
       setTotalPrice(prev => prev - count * price);
     }
-    window.scrollTo(0, 0);
   }, [checkedState]);
+
+  const handleDeleteItem = () => {
+    fetch(`http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(productList.filter(item => item.cartId !== id));
+        setTotalPrice(prev => (prev -= typeChange * count));
+      });
+  };
 
   const handlePrice = e => {
     const { name } = e.target;
@@ -38,22 +48,6 @@ export const CartList = ({
     } else if (checkedState && name === 'minus' && count > 1) {
       setCount(count => count - 1);
       setTotalPrice(prev => prev - typeChange);
-    }
-  };
-
-  const handleDeleteItem = () => {
-    if (checkedState) {
-      fetch(
-        `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${id}`,
-        {
-          method: 'DELETE',
-        }
-      )
-        .then(res => res.json())
-        .then(data => {
-          setProductList(productList.filter(item => item.cartId !== id));
-          setTotalPrice(prev => (prev -= typeChange * count));
-        });
     }
   };
 
@@ -73,7 +67,6 @@ export const CartList = ({
         <p>
           [color: {color.toUpperCase()} | size: {size.toUpperCase()}]
         </p>
-        {/* <p>옵션변경</p> */}
       </div>
       <div className="cartProductPrice">
         <p className="productPriceTxt">상품금액</p>

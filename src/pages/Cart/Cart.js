@@ -15,12 +15,11 @@ const Cart = () => {
 
     const selectedChkBox = productList.map(product => {
       if (product.cartId.toString() === name) {
-        if (product.id.toString() === name) {
-          return { ...product, checkedState: !product.checkedState };
-        }
-        return product;
+        return { ...product, checkedState: !product.checkedState };
       }
+      return product;
     });
+
     setProductList(selectedChkBox);
   };
 
@@ -35,6 +34,7 @@ const Cart = () => {
 
   const handleAllDelete = () => {
     const isAllDelete = productList.map(item => item.cartId);
+
     fetch(
       `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
       {
@@ -52,6 +52,7 @@ const Cart = () => {
     const isDelete = productList
       .filter(item => item.checkedState === true)
       .map(item => item.cartId);
+
     fetch(
       `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isDelete}`,
       {
@@ -64,6 +65,7 @@ const Cart = () => {
         setTotalPrice(prev => prev - totalPrice);
       });
   };
+
   const goToShopping = () => {
     navigate('/');
   };
@@ -88,13 +90,6 @@ const Cart = () => {
             checkedState: false,
           }))
         )
-      );
-    window.scrollTo(0, 0);
-
-    fetch('/data/Cart.json')
-      .then(res => res.json())
-      .then(data =>
-        setProductList(data.map(item => ({ ...item, checkedState: false })))
       );
   }, []);
 
@@ -153,6 +148,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
       <div className="cartSumBox">
         <div className="sumList">
           <div className="cartChosenPrice">
