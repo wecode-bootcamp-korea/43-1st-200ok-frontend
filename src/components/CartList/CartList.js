@@ -42,14 +42,19 @@ export const CartList = ({
   };
 
   const handleDeleteItem = () => {
-    fetch(`http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductList(productList.filter(item => item.cartId !== id));
-        setTotalPrice(prev => (prev -= typeChange * count));
-      });
+    if (checkedState) {
+      fetch(
+        `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${id}`,
+        {
+          method: 'DELETE',
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          setProductList(productList.filter(item => item.cartId !== id));
+          setTotalPrice(prev => (prev -= typeChange * count));
+        });
+    }
   };
 
   return (
