@@ -44,7 +44,8 @@
       }
 
       .allCheckTxt {
-        @include titleDesign;
+        font-family: 'KimjungchulGothic-Bold';
+        font-size: 18px;
         display: inline-block;
         line-height: 20px;
         padding-left: 10px;
