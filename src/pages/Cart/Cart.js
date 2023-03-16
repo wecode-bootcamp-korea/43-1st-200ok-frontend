@@ -182,13 +182,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// const deleteComment = item => {
-//   setSaveComment(
-//     saveComment.filter(items => {
-//       return items.id !== item.id;
-//     })
-//   );
-//   setNumberComments(numberComments - 1);
-//   return item.up === true ? setNumberLike(numberlike - 1) : '';
-// };
