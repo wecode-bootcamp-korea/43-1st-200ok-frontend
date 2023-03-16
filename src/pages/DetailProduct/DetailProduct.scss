@@ -1,0 +1,212 @@
+.detailProduct {
+  width: min(100% - 180px, 1400px);
+  margin-inline: auto;
+  gap: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+
+  .productInfo {
+    font-size: 20px;
+    text-align: center;
+
+    .imgWrapper {
+      width: 600px;
+      height: 800px;
+      overflow: hidden;
+
+      .productImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .infoArea {
+    height: 800px;
+    font-size: 18.3px;
+  }
+
+  .productName {
+    text-align: left;
+    padding: 0.75em;
+    font-size: 22px;
+    font-weight: 900;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+  }
+
+  .priceArea {
+    display: flex;
+    padding: 0.75em;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+
+    .priceArea1 {
+      width: 50%;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: 900;
+      font-size: 21.3px;
+    }
+
+    .priceArea2,
+    .priceArea3,
+    .priceArea4 {
+      width: 50%;
+      text-align: left;
+      margin-top: 10px;
+      font-size: 16.3px;
+    }
+  }
+
+  .countInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75em;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+
+    .minusButton,
+    .plusButton {
+      width: 50px;
+      height: 42px;
+      margin: 0px 50px 0px 50px;
+      color: white;
+      background-color: rgb(159, 165, 71);
+      font-size: 15px;
+      border-radius: 20%;
+    }
+  }
+
+  .productColor {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75em;
+    margin-top: 10px;
+    text-align: left;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+
+    .productColor1 {
+      text-decoration: none;
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.21);
+      border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+      border-radius: 4px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+      width: 90px;
+      height: 42px;
+      margin: 20px 10px 15px 10px;
+      color: white;
+      background-color: #fa5a5a;
+      font-size: 20px;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .productColor2 {
+      @extend .productColor1;
+      background-color: #6698cb;
+    }
+
+    .productColor3 {
+      @extend .productColor1;
+      background-color: #82c8a0;
+    }
+
+    .productColor4 {
+      @extend .productColor1;
+      background-color: #cb99c5;
+    }
+  }
+
+  .productSize {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0.75em;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+
+    .productSize1 {
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.21);
+      border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+      border-radius: 4px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+      width: 60px;
+      height: 40px;
+      margin: 20px 10px 15px 10px;
+      color: white;
+      font-size: 17px;
+      text-align: center;
+      background-color: gray;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .productSize2,
+    .productSize3,
+    .productSize4 {
+      @extend .productSize1;
+    }
+  }
+
+  .sumPrice {
+    text-align: left;
+    margin-top: 10px;
+    font-size: 21.3px;
+    font-weight: 900;
+    padding: 0.75em;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+  }
+
+  .buttons {
+    justify-content: space-around;
+    width: 100%;
+    height: 85px;
+    text-align: left;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+
+    .wishImg {
+      height: 50px;
+      margin: 15px 0 0 10px;
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+
+    .cartButton {
+      text-decoration: none;
+      padding: 10px 30px;
+      display: inline-block;
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.21);
+      border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+      border-radius: 4px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+      width: 190px;
+      height: 50px;
+      margin: 15px 0 0 30px;
+      color: white;
+      font-size: 17.5px;
+      font-weight: 900;
+      background-color: rgb(39, 25, 25);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .orderButton {
+      @extend .cartButton;
+      background-color: rgb(236, 76, 12);
+    }
+  }
+}
