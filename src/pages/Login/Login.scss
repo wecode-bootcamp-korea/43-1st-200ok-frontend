@@ -1,0 +1,59 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10%;
+  text-align: left;
+
+  .mainLogo {
+    width: 300px;
+    margin-bottom: 15px;
+  }
+
+  .idInput,
+  .pwInput {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 25px 0px 25px 25px;
+    border-radius: 4px 4px 0px 0px;
+  }
+
+  .unActiveButton {
+    width: 100%;
+    height: 50px;
+    margin: 15px 0px 15px 0px;
+    color: white;
+    background-color: #ffcbcb;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .activeButton {
+    @extend .unActiveButton;
+    background-color: brown;
+  }
+
+  .saveEmail {
+    display: flex;
+    margin: 10px 0px 10px 0px;
+    color: rgb(117, 117, 117);
+    font-size: 15.3px;
+  }
+
+  .signUp {
+    width: 100%;
+    margin: 35px 0px 15px;
+    color: rgb(117, 117, 117);
+    font-size: 20.3px;
+    font-weight: normal;
+    line-height: 1.33;
+    text-align: center;
+  }
+
+  .lostAccounts {
+    @extend .signUp;
+    margin-left: 50px;
+  }
+}

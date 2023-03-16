@@ -1,0 +1,23 @@
+.main {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 550px;
+  min-width: 1240px;
+
+  .wrap {
+    width: 1920px;
+    margin: 0 auto 0;
+
+    .mainImg {
+      display: flex;
+      overflow: hidden;
+
+      img {
+        height: 1000px;
+        min-width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+@mixin errorMessage {
+  margin-left: 22px;
+  font-size: 13px;
+}
+@mixin signUpEndButton {
+  border: 1px solid #ccc;
+  min-width: 150px;
+  max-width: 150px;
+  height: 40px;
+  font-size: 17px;
+}
+
+@mixin tableDesign {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: 1px solid black;
+}
+
+@mixin thDesign {
+  color: #333;
+  background: #f3f3f3;
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  width: 300px;
+}
+
+.signUp {
+  position: relative;
+  min-width: 1000px;
+  margin-bottom: 50px;
+
+  .signUpHeader {
+    margin: 50px;
+
+    .signUpTitle {
+      text-align: left;
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 35px;
+      border-bottom: 1px solid black;
+      margin-left: 225px;
+      margin-right: 190px;
+      padding-top: 55px;
+    }
+  }
+  .infoFirst {
+    width: 800px;
+    margin: 5px auto;
+    text-align: left;
+
+    .signUpCircle {
+      width: 20px;
+    }
+    .signUpInfoTitle {
+      font-size: 25px;
+      margin-left: 5px;
+      color: black;
+    }
+  }
+  .signUpWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .infoFirstContent {
+      margin-bottom: 50px;
+
+      table {
+        text-align: left;
+        @include tableDesign;
+
+        tr {
+          th {
+            @include thDesign;
+            .signupInfoTitle {
+              padding: 15px 0px 15px 30px;
+              font-size: 18px;
+              .essentialMark {
+                color: #bb2420;
+              }
+            }
+          }
+          td {
+            border-bottom: 1px solid #ddd;
+            width: 500px;
+
+            .signupInputWrap {
+              display: flex;
+              height: 50px;
+              align-items: center;
+
+              .signupInputInfo {
+                padding-left: 10px;
+                margin: 0 20px 0 20px;
+                display: inline-block;
+                border-radius: 5px;
+              }
+
+              .signupEmailInput {
+                padding-left: 10px;
+                width: 350px;
+                margin-left: 20px;
+                border-radius: 5px;
+              }
+              .emailCheckBtn {
+                background-color: #bb2420;
+                color: white;
+                min-width: 100px;
+                max-width: 100px;
+                height: 30px;
+                font-size: 14px;
+                margin-left: 15px;
+              }
+            }
+
+            .signupFormCorrect {
+              @include errorMessage;
+            }
+
+            .signupFormIncorrect {
+              @include errorMessage;
+              color: #bb2420;
+            }
+          }
+        }
+      }
+    }
+
+    .signUpYesOrNo {
+      text-align: center;
+      margin-top: 30px;
+
+      .btnCancelSignup {
+        @include signUpEndButton;
+        background: #fff;
+      }
+
+      .signUpButtonAction {
+        @include signUpEndButton;
+        background: #bb2420;
+        margin-left: 10px;
+        color: white;
+      }
+
+      .signUpButtonInaction {
+        @include signUpEndButton;
+        background: #fff;
+        margin-left: 10px;
+      }
+    }
+  }
+}

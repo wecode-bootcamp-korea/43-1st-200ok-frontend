@@ -1,0 +1,117 @@
+@mixin titleDesign {
+  font-family: 'KimjungchulGothic-Bold';
+  color: #5f5f5f;
+  font-size: 18px;
+}
+
+.signUpTerms {
+  .signUpTermsHeader {
+    width: 800px;
+    text-align: left;
+    margin: 5px auto;
+
+    .signUpCircle {
+      width: 20px;
+    }
+
+    .signUpTermsInfoTitle {
+      font-size: 25px;
+      margin-left: 5px;
+      color: black;
+    }
+  }
+
+  .termsWrap {
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+
+    .allCheck {
+      background: #f3f3f3;
+      padding: 15px 20px;
+      width: 800px;
+      border-top: 1px solid black;
+
+      .customCheck {
+        .checkBox {
+          width: 15px;
+          height: 15px;
+          accent-color: #bb2420;
+        }
+      }
+
+      .allCheckTxt {
+        font-family: 'KimjungchulGothic-Bold';
+        font-size: 18px;
+        display: inline-block;
+        line-height: 20px;
+        padding-left: 10px;
+      }
+    }
+
+    .signUpTermsLine {
+      width: 800px;
+    }
+
+    .termsContentWrap {
+      width: 800px;
+
+      .termsFirstAgree {
+        border-bottom: 1px solid #bbb;
+        padding-bottom: 10px;
+        font-size: 15px;
+        padding-left: 15px;
+
+        .customCheck {
+          .checkBox {
+            accent-color: #bb2420;
+          }
+
+          .firstCheckTxt {
+            padding-left: 10px;
+            font-family: 'KimjungchulGothic-Bold';
+            font-size: 17px;
+          }
+        }
+      }
+
+      .termsTxt {
+        padding: 10px 15px 10px 15px;
+
+        .termContent {
+          font-family: 'KimjungchulGothic-Bold';
+          color: #5f5f5f;
+          font-size: 17px;
+          margin-top: 5px;
+        }
+
+        .signUpTermsContent {
+          font-size: 15px;
+          margin-left: 13px;
+          margin-bottom: 5px;
+        }
+      }
+
+      .termsSecondAgree {
+        border-bottom: 1px solid #bbb;
+        padding: 10px 0px 10px 15px;
+        font-size: 15px;
+
+        .customCheck {
+          .checkBox {
+            accent-color: #bb2420;
+          }
+
+          .secondCheckTxt {
+            padding-left: 10px;
+            font-family: 'KimjungchulGothic-Bold';
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+}
