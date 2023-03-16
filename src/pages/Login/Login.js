@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { APIS } from '../../comfig';
 import './Login.scss';
@@ -48,6 +48,10 @@ const Login = () => {
         });
     }
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <section className="login">

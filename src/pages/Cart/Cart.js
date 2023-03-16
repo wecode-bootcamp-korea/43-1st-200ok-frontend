@@ -34,18 +34,23 @@ const Cart = () => {
 
   const handleAllDelete = () => {
     const isAllDelete = productList.map(item => item.cartId);
+    const isAllChecked = productList.every(item => item.checkedState);
 
-    fetch(
-      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
-      {
-        method: 'DELETE',
-      }
-    )
-      .then(res => res.json())
-      .then(data => {
-        setProductList(productList.filter(item => item.cartId === isAllDelete));
-        setTotalPrice(0);
-      });
+    if (isAllChecked) {
+      fetch(
+        `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+        {
+          method: 'DELETE',
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          setProductList(
+            productList.filter(item => item.cartId === isAllDelete)
+          );
+          setTotalPrice(0);
+        });
+    }
   };
 
   const handleSomeDelete = () => {

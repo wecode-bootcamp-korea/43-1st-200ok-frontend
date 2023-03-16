@@ -138,7 +138,7 @@ const DetailProduct = () => {
                     title="color"
                     value={item}
                     onClick={updateProduct}
-                    style={{ backgroundColor: { item } }}
+                    style={{ backgroundColor: `${item}` }}
                   >
                     {item.toUpperCase()}
                   </button>
