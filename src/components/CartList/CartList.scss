@@ -1,0 +1,113 @@
+.cartProductInfo {
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+
+  .cartCheckBox {
+    transform: scale(1.5);
+    margin: 0 35px 0 35px;
+    accent-color: #bb2420;
+  }
+
+  .cartProductImg {
+    margin-right: 30px;
+    width: 100px;
+    height: 125px;
+  }
+
+  .cartProductDetail {
+    width: 160px;
+    height: 130px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .cartProductTitle {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 16px;
+    }
+  }
+
+  .cartProductPrice {
+    margin-right: 20px;
+    margin-left: 60px;
+    padding-left: 40px;
+    border-left: 1px solid #ddd;
+    height: 130px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .productPriceTxt {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 18px;
+    }
+
+    .productOnePrice {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  .count {
+    margin: 0 25px 0 25px;
+
+    .countInput {
+      .countButton {
+        border: 1px solid #ddd;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        color: black;
+        margin: 0 5px;
+      }
+
+      .countInputText {
+        margin: 0 5px;
+        display: inline-block;
+        width: 15px;
+        text-align: center;
+      }
+    }
+  }
+  .cartDelivery {
+    margin: 0 20px 0 20px;
+
+    .deliveryTitle {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 18px;
+    }
+
+    .cartDeliveryPrice {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
+  .oneProductSumPrice {
+    margin: 0 20px 0 30px;
+
+    .oneProductSumPriceTxt {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 18px;
+    }
+
+    .onePrice {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
+  .cartOneDelete {
+    margin-left: 30px;
+
+    .deleteButton {
+      font-size: 20px;
+      color: #5f5f5f;
+      &:hover {
+        color: #bb2420;
+      }
+    }
+  }
+}

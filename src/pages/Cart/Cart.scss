@@ -1,0 +1,200 @@
+.cart {
+  padding: 100px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1490px;
+  margin: 0 auto;
+
+  .cartHeader {
+    width: 1300px;
+    position: relative;
+    margin: 0 auto;
+
+    .cartPath {
+      float: right;
+      color: #909090;
+      margin-top: 30px;
+
+      .pathHome {
+        &::after {
+          content: ' > ';
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+      .pathCart {
+        color: black;
+      }
+    }
+
+    .cartTitle {
+      font-family: 'KimjungchulGothic-Bold';
+      font-size: 3em;
+      text-align: center;
+      padding: 50px 0 10px 110px;
+      border-bottom: 1px solid #5f5f5f;
+      width: 100%;
+    }
+  }
+
+  .cartList {
+    padding-top: 20px;
+
+    .listContent {
+      .cardHeader {
+        position: relative;
+        padding: 20px;
+        justify-content: space-between;
+        display: flex;
+
+        .allCheckBox {
+          .cartAllCheckBox {
+            font-size: 17px;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+          }
+        }
+        .cartSomeDelete {
+          font-size: 17px;
+          border: 1px solid #ddd;
+          padding: 5px 10px;
+          margin-right: 10px;
+        }
+        .cartAllDelete {
+          font-size: 17px;
+          border: 1px solid #ddd;
+          padding: 5px 10px;
+        }
+      }
+
+      .cartProductInfo {
+        .cartCard {
+          padding-top: 40px;
+          border-radius: 16px;
+          box-sizing: content-box;
+          box-shadow: 0px 3px 9px rgb(0 0 0 / 10%);
+          width: 1000px;
+
+          .cartProductInfo {
+            display: flex;
+            align-items: center;
+            padding-bottom: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .cartSumBox {
+    width: 1000px;
+    height: 150px;
+    background-color: #f7f7f7;
+    margin-top: 80px;
+
+    .sumList {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+
+      .cartChosenPrice {
+        width: 150px;
+        text-align: center;
+        padding-right: 10px;
+
+        .chosenPriceTitle {
+          text-align: center;
+          align-items: center;
+          font-size: 18px;
+        }
+
+        .chosenPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+          align-items: center;
+        }
+        .cartWon {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+        }
+      }
+
+      .cartListPlus {
+        width: 25px;
+        height: 100%;
+      }
+
+      .deliveryInSum {
+        padding: 0 30px 0 30px;
+
+        .payDeliveryTitle {
+          font-size: 18px;
+          text-align: center;
+        }
+
+        .payDeliveryPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+        }
+      }
+
+      .cartListPlus {
+        width: 25px;
+        height: 100%;
+      }
+
+      .cartSumPrice {
+        width: 150px;
+        padding-left: 10px;
+
+        text-align: center;
+
+        .sumPriceTitle {
+          font-size: 18px;
+
+          text-align: center;
+          align-items: center;
+        }
+
+        .cartFinalSumPrice {
+          font-family: 'KimjungchulGothic-Bold';
+          font-size: 30px;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .payYesOrNo {
+    margin-top: 50px;
+
+    .btnCancelPay {
+      border: 1px solid #ccc;
+      background: #fff;
+      min-width: 150px;
+      max-width: 150px;
+      height: 40px;
+      font-size: 17px;
+    }
+
+    .payButtonAction {
+      border: 1px solid #ccc;
+      background: #fff;
+      min-width: 150px;
+      max-width: 150px;
+      height: 40px;
+      font-size: 17px;
+      margin-left: 10px;
+    }
+
+    :hover {
+      background: #bb2420;
+      min-width: 150px;
+      max-width: 150px;
+      height: 40px;
+      font-size: 17px;
+      color: white;
+    }
+  }
+}
