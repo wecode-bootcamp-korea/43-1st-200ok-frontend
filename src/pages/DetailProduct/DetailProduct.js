@@ -40,7 +40,7 @@ const DetailProduct = () => {
   const onClickAddCart = () => {
     if (token) {
       fetch(
-        `http://10.58.52.201:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+        `http://10.58.52.135:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
         {
           method: 'POST',
         }

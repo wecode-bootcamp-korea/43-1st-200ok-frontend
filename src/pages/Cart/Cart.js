@@ -36,7 +36,7 @@ const Cart = () => {
   const handleAllDelete = () => {
     const isAllDelete = productList.map(item => item.cartId);
     fetch(
-      `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
       {
         method: 'DELETE',
       }
@@ -51,7 +51,7 @@ const Cart = () => {
   const handleSomeDelete = () => {
     const isAllDelete = productList.map(item => item.cartId);
     fetch(
-      `http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
+      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
       {
         method: 'DELETE',
       }
@@ -78,7 +78,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.52.201:3010/carts/get?token=${token}`)
+    fetch(`http://10.58.52.135:3010/carts/get?token=${token}`)
       .then(res => res.json())
       .then(data =>
         setProductList(

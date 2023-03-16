@@ -31,7 +31,7 @@ export const CartList = ({
   }, [checkedState]);
 
   const handleDeleteItem = () => {
-    fetch(`http://10.58.52.201:3010/carts/delete?token=${token}&cartId=${id}`, {
+    fetch(`http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())

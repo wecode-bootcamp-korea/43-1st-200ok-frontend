@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch(`http://10.58.52.201:3010/users/registerd-email?email=${email}`, {
+    fetch(`http://10.58.52.135:3010/users/registerd-email?email=${email}`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -76,7 +76,7 @@ const SignUp = () => {
 
   const goToLogin = event => {
     if (activeBtn && emailduplication) {
-      fetch('http://10.58.52.201:3010/users/signup', {
+      fetch('http://10.58.52.135:3010/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
