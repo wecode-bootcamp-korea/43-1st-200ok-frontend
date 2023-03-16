@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartList from '../../components/CartList/CartList';
 import EmptyCart from '../../components/CartList/EmptyCart';
-// import Count from '../../components/Count/Count';
 import './Cart.scss';
 
 const Cart = () => {
@@ -92,7 +91,6 @@ const Cart = () => {
           }))
         )
       );
-    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -182,13 +180,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// const deleteComment = item => {
-//   setSaveComment(
-//     saveComment.filter(items => {
-//       return items.id !== item.id;
-//     })
-//   );
-//   setNumberComments(numberComments - 1);
-//   return item.up === true ? setNumberLike(numberlike - 1) : '';
-// };

@@ -27,7 +27,6 @@ export const CartList = ({
     } else if (!checkedState && totalPrice !== 0) {
       setTotalPrice(prev => prev - count * price);
     }
-    window.scrollTo(0, 0);
   }, [checkedState]);
 
   const handleDeleteItem = () => {
@@ -68,7 +67,6 @@ export const CartList = ({
         <p>
           [color: {color.toUpperCase()} | size: {size.toUpperCase()}]
         </p>
-        {/* <p>옵션변경</p> */}
       </div>
       <div className="cartProductPrice">
         <p className="productPriceTxt">상품금액</p>
