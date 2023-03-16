@@ -5,6 +5,7 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import LostAccounts from './pages/LostAccounts/LostAccounts';
+import AllProductList from './pages/AllProductList/AllProductList';
 import Footer from './components/Footer/Footer';
 
 const Router = () => {
@@ -12,12 +13,13 @@ const Router = () => {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/lostAccounts" element={<LostAccounts />} />
+        <Route path="/allproductlist" element={<AllProductList />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 };
