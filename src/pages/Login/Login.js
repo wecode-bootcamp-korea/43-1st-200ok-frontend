@@ -21,16 +21,15 @@ const Login = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const enterKeyUp = event => {
-    if (idCondition && pwCondition) {
-      if (event.key === 13) {
-        login();
-      }
-    }
-  };
+  // const enterKeyUp = event => {
+  //   if (idCondition && pwCondition) {
+  //     if (event.key === 13) {
+  //       login();
+  //     }
+  //   }
+  // };
 
-  const login = e => {
-    e.preventDefault();
+  const login = () => {
     if (idCondition && pwCondition) {
       fetch(`${APIS.signin}`, {
         method: 'POST',
@@ -52,7 +51,7 @@ const Login = () => {
 
   return (
     <section className="login">
-      <form className="loginForm" onSubmit={enterKeyUp}>
+      <form className="loginForm">
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
         </Link>

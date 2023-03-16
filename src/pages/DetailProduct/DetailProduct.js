@@ -39,7 +39,7 @@ const DetailProduct = () => {
   const onClickAddCart = () => {
     if (token) {
       fetch(
-        `http://10.58.52.201:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+        `http://10.58.52.135:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
         {
           method: 'POST',
         }
@@ -62,7 +62,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
+      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
@@ -159,10 +159,12 @@ const DetailProduct = () => {
                 ))}
               </div>
               <div className="sumPrice">
-                <p>
-                  선택 옵션 : {color.toUpperCase()} / {size.toUpperCase()} /
-                  {count}
-                </p>
+                {color && (
+                  <p>
+                    선택 옵션 : {color.toUpperCase()} / {size.toUpperCase()} /
+                    {count}
+                  </p>
+                )}
               </div>
               <div className="sumPrice">
                 <p>
