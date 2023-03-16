@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import ProductForm from '../../components/';
+import ProductForm from '../../components/ProductForm/ProductForm';
 import './AllProductList.scss';
 
 const AllProductList = () => {
