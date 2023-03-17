@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate, useParams } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
@@ -39,15 +40,18 @@ const DetailProduct = () => {
   const onClickAddCart = () => {
     if (token) {
       fetch(
-        `http://10.58.52.201:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+        `${APIS.cart}/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
         {
           method: 'POST',
         }
       )
         .then(response => response.json())
         .then(data => {
-          alert('장바구니에 추가하였습니다.');
-          navigate('/cart');
+          if (window.confirm('장바구니에 추가하였습니다. 이동하시겠습니까?')) {
+            navigate('/cart');
+          } else {
+            return;
+          }
         });
     } else {
       alert('로그인 해주세요');
@@ -62,7 +66,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
+      `${APIS.product}?gender=${gender}&status=${status}&category=${category}&productId=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));
@@ -138,7 +142,7 @@ const DetailProduct = () => {
                     title="color"
                     value={item}
                     onClick={updateProduct}
-                    style={{ backgroundColor: { item } }}
+                    style={{ backgroundColor: `${item}` }}
                   >
                     {item.toUpperCase()}
                   </button>
@@ -159,10 +163,12 @@ const DetailProduct = () => {
                 ))}
               </div>
               <div className="sumPrice">
-                <p>
-                  선택 옵션 : {color.toUpperCase()} / {size.toUpperCase()} /
-                  {count}
-                </p>
+                {color && (
+                  <p>
+                    선택 옵션 : {color.toUpperCase()} / {size.toUpperCase()} /
+                    {count}
+                  </p>
+                )}
               </div>
               <div className="sumPrice">
                 <p>

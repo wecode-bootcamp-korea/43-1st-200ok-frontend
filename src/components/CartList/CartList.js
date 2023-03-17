@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { APIS } from '../../comfig';
 import './CartList.scss';
 
 export const CartList = ({
@@ -30,7 +31,7 @@ export const CartList = ({
   }, [checkedState]);
 
   const handleDeleteItem = () => {
-    fetch(`http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${id}`, {
+    fetch(`${APIS.cart}/delete?token=${token}&cartId=${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())

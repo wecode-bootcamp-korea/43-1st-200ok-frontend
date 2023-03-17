@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import './Login.scss';
 
 const Login = () => {
@@ -21,17 +22,14 @@ const Login = () => {
   };
 
   const enterKeyUp = event => {
-    if (idCondition && pwCondition) {
-      if (event.key === 13) {
-        login();
-      }
+    if (event.keyCode === 13) {
+      login();
     }
   };
 
-  const login = e => {
-    e.preventDefault();
+  const login = () => {
     if (idCondition && pwCondition) {
-      fetch('http://10.58.52.135:3010/users/signin', {
+      fetch(`${APIS.signin}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify({ email, password }),
@@ -49,8 +47,12 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
-    <section className="login">
+    <section className="login" onKeyUp={enterKeyUp}>
       <form className="loginForm">
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />
@@ -68,7 +70,6 @@ const Login = () => {
             type="password"
             placeholder="비밀번호를 입력하세요."
             onChange={updateUserInfo}
-            onKeyUp={enterKeyUp}
             name="password"
           />
           <div className="saveEmail">

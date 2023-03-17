@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import SignUpTerms from './SignUpTerms';
 import './SignUp.scss';
 
 const SignUp = () => {
-  // const [getIsActive, setGetIsActive] = useState(false);
   const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
@@ -62,7 +62,7 @@ const SignUp = () => {
   };
 
   const goToCheck = () => {
-    fetch(`http://10.58.52.135:3010/users/registerd-email?email=${email}`, {
+    fetch(`${APIS.registerd}?email=${email}`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -76,7 +76,7 @@ const SignUp = () => {
 
   const goToLogin = event => {
     if (activeBtn && emailduplication) {
-      fetch('http://10.58.52.135:3010/users/signup', {
+      fetch(`${APIS.signup}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -94,7 +94,7 @@ const SignUp = () => {
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
       navigate('/login');
     } else if (!emailduplication) {
-      alert('아이디 중복을 확인해 주세요.');
+      alert('이메 중복을 확인해 주세요.');
     } else {
       alert('필수 항목을 다시 확인해 주세요.');
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { APIS } from '../../comfig';
 import ProductForm from '../../components/ProductForm/ProductForm';
 import './AllProductList.scss';
 
@@ -15,7 +16,7 @@ const AllProductList = () => {
     window.scrollTo(0, 0);
 
     fetch(
-      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
+      `${APIS.product}?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(res => res.json())
       .then(data => setData1(data.data));
