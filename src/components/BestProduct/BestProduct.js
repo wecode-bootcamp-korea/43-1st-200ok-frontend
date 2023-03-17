@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductForm from '../ProductForm/ProductForm';
+import { APIS } from '../../comfig';
 import './BestProduct.scss';
 
 const BestProduct = () => {
@@ -21,7 +22,7 @@ const BestProduct = () => {
   //백 연동 용
   useEffect(() => {
     fetch(
-      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
+      `${APIS.product}?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(res => res.json())
       .then(data => setBestPhoto(data.data));

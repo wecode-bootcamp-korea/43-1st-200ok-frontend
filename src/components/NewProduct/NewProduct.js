@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductForm from '../ProductForm/ProductForm';
+import { APIS } from '../../comfig';
 import './NewProduct.scss';
 const NewProduct = () => {
   const [newPhoto, setNewPhoto] = useState([]);
@@ -27,7 +28,7 @@ const NewProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
+      `${APIS.product}?gender=${gender}&status=${status}&category=${category}&productId=${productid}`
     )
       .then(response => response.json())
       .then(data => setNewPhoto(data.data));

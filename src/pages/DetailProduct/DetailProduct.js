@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate, useParams } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import './DetailProduct.scss';
 
 const DetailProduct = () => {
@@ -39,7 +40,7 @@ const DetailProduct = () => {
   const onClickAddCart = () => {
     if (token) {
       fetch(
-        `http://10.58.52.135:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+        `${APIS.cart}/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
         {
           method: 'POST',
         }
@@ -62,7 +63,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
+      `${APIS.product}?gender=${gender}&status=${status}&category=${category}&productId=${id}`
     )
       .then(res => res.json())
       .then(data => setUser(data.data));

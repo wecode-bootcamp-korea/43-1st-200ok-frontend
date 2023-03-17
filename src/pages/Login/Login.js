@@ -21,13 +21,11 @@ const Login = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  // const enterKeyUp = event => {
-  //   if (idCondition && pwCondition) {
-  //     if (event.key === 13) {
-  //       login();
-  //     }
-  //   }
-  // };
+  const enterKeyUp = event => {
+    if (event.keyCode === 13) {
+      login();
+    }
+  };
 
   const login = () => {
     if (idCondition && pwCondition) {
@@ -54,7 +52,7 @@ const Login = () => {
   }, []);
 
   return (
-    <section className="login">
+    <section className="login" onKeyUp={enterKeyUp}>
       <form className="loginForm">
         <Link to="/">
           <img className="mainLogo" src="images/logo.png" alt="mainLogo" />

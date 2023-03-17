@@ -31,10 +31,10 @@ const ProductForm = ({ num, gender, status, category, productid, item }) => {
           key={id}
           to={`/detailproduct/${id}`}
           state={{
-            gender: gender,
-            status: status,
-            category: category,
-            productid: productid,
+            gender,
+            status,
+            category,
+            productid,
           }}
           className="images"
         >

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { APIS } from '../../comfig';
 import CartList from '../../components/CartList/CartList';
 import EmptyCart from '../../components/CartList/EmptyCart';
 import './Cart.scss';
@@ -37,12 +38,9 @@ const Cart = () => {
     const isAllChecked = productList.every(item => item.checkedState);
 
     if (isAllChecked) {
-      fetch(
-        `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isAllDelete}`,
-        {
-          method: 'DELETE',
-        }
-      )
+      fetch(`${APIS.cart}/delete?token=${token}&cartId=${isAllDelete}`, {
+        method: 'DELETE',
+      })
         .then(res => res.json())
         .then(data => {
           setProductList(
@@ -58,12 +56,9 @@ const Cart = () => {
       .filter(item => item.checkedState === true)
       .map(item => item.cartId);
 
-    fetch(
-      `http://10.58.52.135:3010/carts/delete?token=${token}&cartId=${isDelete}`,
-      {
-        method: 'DELETE',
-      }
-    )
+    fetch(`${APIS.cart}/delete?token=${token}&cartId=${isDelete}`, {
+      method: 'DELETE',
+    })
       .then(res => res.json())
       .then(data => {
         setProductList(productList.filter(({ checkedState }) => !checkedState));
@@ -86,7 +81,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.52.135:3010/carts/get?token=${token}`)
+    fetch(`${APIS.cart}/get?token=${token}`)
       .then(res => res.json())
       .then(data =>
         setProductList(
