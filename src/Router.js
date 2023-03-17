@@ -4,10 +4,9 @@ import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
-import LostAccounts from './pages/LostAccounts/LostAccount';
-import AllProductList from './pages/AllProductList/AllProductList';
-import DetailProduct from './pages/DetailProduct/DetailProduct';
 import Cart from './pages/Cart/Cart';
+import LostAccounts from './pages/LostAccounts/LostAccounts';
+import AllProductList from './pages/AllProductList/AllProductList';
 import Footer from './components/Footer/Footer';
 
 const Router = () => {
@@ -15,13 +14,10 @@ const Router = () => {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/lostAccounts" element={<LostAccounts />} />
         <Route path="/allproductlist" element={<AllProductList />} />
-        <Route path="/detailproduct/:id" element={<DetailProduct />} />
-        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>

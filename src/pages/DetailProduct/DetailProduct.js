@@ -39,7 +39,11 @@ const DetailProduct = () => {
   const onClickAddCart = () => {
     if (token) {
       fetch(
+<<<<<<< HEAD
         `http://10.58.52.135:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+=======
+        `http://10.58.52.201:3010/carts/post?productId=${id}&size=${size}&color=${color}&token=${token}&quantity=${count}`,
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         {
           method: 'POST',
         }
@@ -62,7 +66,11 @@ const DetailProduct = () => {
 
   useEffect(() => {
     fetch(
+<<<<<<< HEAD
       `http://10.58.52.135:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
+=======
+      `http://10.58.52.201:3010/products?gender=${gender}&status=${status}&category=${category}&productId=${id}`
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
     )
       .then(res => res.json())
       .then(data => setUser(data.data));

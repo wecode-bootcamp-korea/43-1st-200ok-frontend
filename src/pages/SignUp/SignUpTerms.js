@@ -1,9 +1,6 @@
 import React from 'react';
 import './SignUpTerms.scss';
 
-// const activeBtn = () => {
-//   return checkedState[0] ? setCheckedState(true) : setCheckedState(false);
-// };
 const SignUpTerms = ({
   handleAllCheck,
   handleMonoCheck,
@@ -27,7 +24,7 @@ const SignUpTerms = ({
               type="checkbox"
               className="checkBox"
               checked={isAllChecked}
-              onChange={() => handleAllCheck()}
+              onChange={handleAllCheck}
             />
           </span>
           <label className="allCheckTxt">

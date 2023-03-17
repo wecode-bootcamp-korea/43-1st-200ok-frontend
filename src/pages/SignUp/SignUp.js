@@ -4,7 +4,6 @@ import SignUpTerms from './SignUpTerms';
 import './SignUp.scss';
 
 const SignUp = () => {
-  // const [getIsActive, setGetIsActive] = useState(false);
   const [emailCheck, setEmailCheck] = useState('');
   const [inputValue, setInputValue] = useState({
     userName: '',
@@ -93,21 +92,11 @@ const SignUp = () => {
       }).then(response => response.json());
       alert('가입이 완료되었습니다! 즐거운 쇼핑 되세요♥︎');
       navigate('/login');
-    } else if (activeBtn) {
-      alert('아이디 중복을 확인해 주세요');
+    } else if (!emailduplication) {
+      alert('이메일 중복을 확인해 주세요.');
+    } else {
+      alert('필수 항목을 다시 확인해 주세요.');
     }
-
-    // .then(data => {
-    //   alert('200OK에서 즐거운 쇼핑 되세요♡♥︎♡♥︎');
-    //   navigate('/login');
-    // });
-
-    // event.preventDefault();
-    // if (activeBtn) {
-    //   navigate('/login');
-    // } else {
-    //   alert('양식에 맞춰서 다시 입력해주세요.');
-    // }
   };
 
   const goToMain = () => {
@@ -173,7 +162,7 @@ const SignUp = () => {
                       title="이메일 입력"
                       name="email"
                       value={email}
-                      placeholder="   예 : 200OKKK@spao.com"
+                      placeholder="예 : 200OKKK@spao.com"
                       onChange={handleInput}
                     />
                     <button className="emailCheckBtn" onClick={goToCheck}>
@@ -263,7 +252,7 @@ const SignUp = () => {
                       type="text"
                       className="signupInputInfo"
                       title="생년월일"
-                      placeholder="   예 : 1900/01/01"
+                      placeholder="예 : 1900/01/01"
                     />
                   </div>
                   <div id="em_pwdValidMsg2" />
@@ -285,7 +274,7 @@ const SignUp = () => {
                       type="text"
                       className="signupInputInfo"
                       title="핸드폰번호"
-                      placeholder="   예 : 01012345678"
+                      placeholder="예 : 01012345678"
                       name="phoneNumber"
                       value={phoneNumber}
                       onChange={handleInput}
@@ -317,7 +306,6 @@ const SignUp = () => {
         </div>
         <SignUpTerms
           handleAllCheck={handleAllCheck}
-          ß
           handleMonoCheck={handleMonoCheck}
           isAllChecked={isAllChecked}
           checkedState={checkedState}
@@ -330,7 +318,6 @@ const SignUp = () => {
             className={
               activeBtn ? 'signUpButtonAction' : 'signUpButtonInaction'
             }
-            disabled={!activeBtn}
             onClick={goToLogin}
           >
             가입하기

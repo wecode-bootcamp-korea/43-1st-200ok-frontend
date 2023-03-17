@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red"],
+    "category": "아우터"
+  },
+  {
+    "id": 2,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "category": "아우터"
+  },
+  {
+    "id": 3,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink", "yellow"],
+    "category": "아우터"
+  },
+  {
+    "id": 4,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "blue", "yellow", "pink"]
+  },
+  {
+    "id": 5,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink"]
+  },
+  {
+    "id": 6,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "blue", "yellow"]
+  },
+  {
+    "id": 7,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "pink", "yellow", "blue"]
+  },
+  {
+    "id": 8,
+    "url": "/images/KakaoTalk_20230303_112109123.jpg",
+    "colors": ["red", "blue", "yellow"]
+  }
+]

@@ -9,15 +9,27 @@
     width: 800px;
     text-align: left;
     margin: 5px auto;
+<<<<<<< HEAD
     .signUpCircle {
       width: 20px;
     }
+=======
+
+    .signUpCircle {
+      width: 20px;
+    }
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
     .signUpTermsInfoTitle {
       font-size: 25px;
       margin-left: 5px;
       color: black;
     }
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
   .termsWrap {
     padding: 10px 20px;
     width: 100%;
@@ -25,11 +37,19 @@
     flex-direction: column;
     align-items: center;
     text-align: left;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
     .allCheck {
       background: #f3f3f3;
       padding: 15px 20px;
       width: 800px;
       border-top: 1px solid black;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .customCheck {
         .checkBox {
           width: 15px;
@@ -37,27 +57,53 @@
           accent-color: #bb2420;
         }
       }
+<<<<<<< HEAD
       .allCheckTxt {
         @include titleDesign;
+=======
+
+      .allCheckTxt {
+        font-family: 'KimjungchulGothic-Bold';
+        font-size: 18px;
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         display: inline-block;
         line-height: 20px;
         padding-left: 10px;
       }
     }
+<<<<<<< HEAD
     .signUpTermsLine {
       width: 800px;
     }
     .termsContentWrap {
       width: 800px;
+=======
+
+    .signUpTermsLine {
+      width: 800px;
+    }
+
+    .termsContentWrap {
+      width: 800px;
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .termsFirstAgree {
         border-bottom: 1px solid #bbb;
         padding-bottom: 10px;
         font-size: 15px;
         padding-left: 15px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         .customCheck {
           .checkBox {
             accent-color: #bb2420;
           }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
           .firstCheckTxt {
             padding-left: 10px;
             font-family: 'KimjungchulGothic-Bold';
@@ -65,28 +111,51 @@
           }
         }
       }
+<<<<<<< HEAD
       .termsTxt {
         padding: 10px 15px 10px 15px;
+=======
+
+      .termsTxt {
+        padding: 10px 15px 10px 15px;
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         .termContent {
           font-family: 'KimjungchulGothic-Bold';
           color: #5f5f5f;
           font-size: 17px;
           margin-top: 5px;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         .signUpTermsContent {
           font-size: 15px;
           margin-left: 13px;
           margin-bottom: 5px;
         }
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .termsSecondAgree {
         border-bottom: 1px solid #bbb;
         padding: 10px 0px 10px 15px;
         font-size: 15px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         .customCheck {
           .checkBox {
             accent-color: #bb2420;
           }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
           .secondCheckTxt {
             padding-left: 10px;
             font-family: 'KimjungchulGothic-Bold';

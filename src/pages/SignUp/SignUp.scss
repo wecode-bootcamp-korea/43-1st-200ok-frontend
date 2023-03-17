@@ -29,8 +29,15 @@
   position: relative;
   min-width: 1000px;
   margin-bottom: 50px;
+<<<<<<< HEAD
   .signUpHeader {
     margin: 50px;
+=======
+
+  .signUpHeader {
+    margin: 50px;
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
     .signUpTitle {
       text-align: left;
       font-family: 'KimjungchulGothic-Bold';
@@ -39,7 +46,10 @@
       margin-left: 225px;
       margin-right: 190px;
       padding-top: 55px;
+<<<<<<< HEAD
       color: black;
+=======
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
     }
   }
   .infoFirst {
@@ -63,9 +73,17 @@
 
     .infoFirstContent {
       margin-bottom: 50px;
+<<<<<<< HEAD
       table {
         text-align: left;
         @include tableDesign;
+=======
+
+      table {
+        text-align: left;
+        @include tableDesign;
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
         tr {
           th {
             @include thDesign;
@@ -80,22 +98,41 @@
           td {
             border-bottom: 1px solid #ddd;
             width: 500px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
             .signupInputWrap {
               display: flex;
               height: 50px;
               align-items: center;
+<<<<<<< HEAD
               .signupInputInfo {
+=======
+
+              .signupInputInfo {
+                padding-left: 10px;
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
                 margin: 0 20px 0 20px;
                 display: inline-block;
                 border-radius: 5px;
               }
+<<<<<<< HEAD
               .signupEmailInput {
+=======
+
+              .signupEmailInput {
+                padding-left: 10px;
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
                 width: 350px;
                 margin-left: 20px;
                 border-radius: 5px;
               }
               .emailCheckBtn {
+<<<<<<< HEAD
                 border: 1px solid #bb2420;
+=======
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
                 background-color: #bb2420;
                 color: white;
                 min-width: 100px;
@@ -122,16 +159,28 @@
     .signUpYesOrNo {
       text-align: center;
       margin-top: 30px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .btnCancelSignup {
         @include signUpEndButton;
         background: #fff;
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .signUpButtonAction {
         @include signUpEndButton;
         background: #bb2420;
         margin-left: 10px;
         color: white;
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
       .signUpButtonInaction {
         @include signUpEndButton;
         background: #fff;

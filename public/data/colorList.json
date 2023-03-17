@@ -13,6 +13,10 @@
   },
   {
     "id": 4,
+<<<<<<< HEAD
     "color": "yellow"
+=======
+    "color": "yellowgreen"
+>>>>>>> 5ecb8624b09b02b59277955603b55eaf5ac907d4
   }
 ]

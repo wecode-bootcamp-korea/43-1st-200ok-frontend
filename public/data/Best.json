@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "url": "/images/pants-gd51329a21_640.jpg",
+    "colors": ["red", "yellow"],
+    "category": "아우터"
+  },
+  {
+    "id": 2,
+    "url": "/images/samia-liamani-Z_wD2N7K_wQ-unsplash.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "category": "아우터"
+  },
+  {
+    "id": 3,
+    "url": "/images/isolated-t-shirt-g42a68de19_640.jpg",
+    "colors": ["red", "pink", "yellow"],
+    "category": "상의"
+  },
+  {
+    "id": 4,
+    "url": "/images/pants-g5cc65d279_640.jpg",
+    "colors": ["red", "blue", "yellow", "pink"],
+    "category": "아우터"
+  },
+  {
+    "id": 5,
+    "url": "/images/pants-g97b089277_640.jpg",
+    "colors": ["red", "pink"],
+    "category": "하의"
+  },
+  {
+    "id": 6,
+    "url": "/images/pants-g97b089277_640.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "category": "하의"
+  },
+  {
+    "id": 7,
+    "url": "/images/isolated-t-shirt-g759dfe828_640.jpg",
+    "colors": ["red", "pink", "yellow", "blue"],
+    "category": "이너/웨어"
+  },
+  {
+    "id": 8,
+    "url": "/images/KakaoTalk_20230303_112128342.jpg",
+    "colors": ["red", "blue", "yellow"],
+    "category": "잠옷"
+  }
+]
