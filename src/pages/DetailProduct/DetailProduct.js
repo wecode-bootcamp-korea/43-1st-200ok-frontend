@@ -47,8 +47,11 @@ const DetailProduct = () => {
       )
         .then(response => response.json())
         .then(data => {
-          alert('장바구니에 추가하였습니다.');
-          navigate('/cart');
+          if (window.confirm('장바구니에 추가하였습니다. 이동하시겠습니까?')) {
+            navigate('/cart');
+          } else {
+            return;
+          }
         });
     } else {
       alert('로그인 해주세요');
