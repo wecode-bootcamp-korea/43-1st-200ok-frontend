@@ -15,7 +15,7 @@ const Main = () => {
       }
     };
 
-    setInterval(autoSlide, 6000);
+    setInterval(autoSlide, 2000);
   }, [mainImg]);
 
   return (

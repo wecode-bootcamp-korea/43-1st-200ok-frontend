@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://10.58.52.242:3010';
+export const BASE_URL = 'http://10.58.52.117:3010';
 
 export const APIS = {
   signin: `${BASE_URL}/users/signin`,

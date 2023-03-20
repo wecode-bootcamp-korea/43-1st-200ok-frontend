@@ -11,6 +11,9 @@ const Login = () => {
 
   const { email, password } = userInfo;
 
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   const idCondition = email.includes(('@', 4) && '.com');
