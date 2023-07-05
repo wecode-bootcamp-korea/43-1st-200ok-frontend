@@ -56,8 +56,8 @@ const BestProduct = () => {
           {bestPhoto &&
             bestPhoto.map(
               (item, index) =>
-                index > 0 &&
-                index <= 8 && (
+                index >= 0 &&
+                index <= 7 && (
                   <ProductForm
                     key={item.id}
                     item={item}
